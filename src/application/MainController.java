@@ -11,13 +11,14 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 public class MainController {
 	
 	@FXML
-	private Label status;
+	private TextArea status;
 	
 	@FXML
 	private TextField usernameField;
@@ -65,7 +66,7 @@ public class MainController {
 	
 	@FXML
 	public void chatRoomAccess( ActionEvent event ) {
-		setStage("/application/ChatRoom.fxml", "Messenger Chat Room" , chatRoomButton , "home.css" );
+		setStage("/application/ChatRoom.fxml", "Messenger Chat Room" , homeButton , "home.css" );
 	}
 	
 	@FXML
@@ -83,7 +84,7 @@ public class MainController {
 		try {
 			Stage primaryStage = new Stage();
 			Parent root = FXMLLoader.load( getClass().getResource( resource ) );
-			Scene scene = new Scene(root,300,400);
+			Scene scene = new Scene(root , 300 , 400);
 			scene.getStylesheets().add( getClass().getResource( cssFile ).toExternalForm() );
 			primaryStage.setTitle( title );
 			primaryStage.setScene(scene);

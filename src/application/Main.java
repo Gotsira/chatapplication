@@ -12,7 +12,7 @@ public class Main extends Application {
 	public void start( Stage primaryStage ) {
 		try {
 			Parent root = FXMLLoader.load( getClass().getResource("/application/Login.fxml") );
-			Scene scene = new Scene( root,300,400 );
+			Scene scene = new Scene( root , 300 , 400);
 			scene.getStylesheets().add( getClass().getResource("login.css").toExternalForm() );
 			primaryStage.setTitle( "Messenger Login" );
 			primaryStage.setScene(scene);
