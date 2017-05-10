@@ -74,6 +74,14 @@ public class MainController {
 		setStage("/application/Home.fxml", "Messenger Home" , homeButton , "home.css" );
 	}
 	
+	public String getUsername() {
+		return usernameField.getText();
+	}
+	
+	public String getPassword() {
+		return passwordField.getText();
+	}
+	
 	/**
 	 * Set a new stage from the given resource and set title of its.
 	 * And also call handleCloseButtonAction method to close the stage.
