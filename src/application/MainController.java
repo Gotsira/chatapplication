@@ -14,8 +14,11 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import users.Login;
 
 public class MainController {
+	
+	private Login login;
 	
 	@FXML
 	private TextArea status;
@@ -48,8 +51,9 @@ public class MainController {
 	private MenuItem logoutMenu;
 	
 	@FXML
-	public void login( ActionEvent event ) {
-		if ( !usernameField.getText().isEmpty() && !usernameField.getText().isEmpty() ) {
+	public void login( ActionEvent event ) throws Exception {
+		login = new Login( usernameField.getText(), usernameField.getText() );
+		if ( login.matches() ) {
 			setStage("/application/Home.fxml", "Messenger Home" , loginButton , "home.css" );
 		} else status.setText( "Username or password is either incorrect or not registered." );
 	}
