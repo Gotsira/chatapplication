@@ -30,7 +30,7 @@ public class Login {
 	}
 	
 //	public static void main(String[] args) throws Exception {
-//		Login l = new Login("ad", "asda" );
+//		Login l = new Login("got", "12345" );
 //		System.out.println(l.matches());
 //				
 //	}
