@@ -29,16 +29,9 @@ public class Login {
 		}
 	}
 	
-	public void add() throws SQLException {
-		stmt =  con.prepareStatement("INSERT into passes VALUES(?, ?)");
-		stmt.setString(1, username);
-		stmt.setString(2, password);
-		stmt.executeUpdate();
-	}
-	
 //	public static void main(String[] args) throws Exception {
 //		Login l = new Login("ad", "asda" );
-//		l.add();
+//		System.out.println(l.matches());
 //				
 //	}
 	
