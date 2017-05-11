@@ -17,12 +17,12 @@
             <Font name="Microsoft JhengHei Light" size="15.0" />
          </font>
       </TextField>
-      <PasswordField fx:id="passwordField" layoutX="54.0" layoutY="165.0" promptText="Password">
+      <PasswordField fx:id="passwordField" layoutX="54.0" layoutY="174.0" promptText="Password">
          <font>
             <Font name="Microsoft JhengHei Light" size="15.0" />
          </font>
       </PasswordField>
-      <Button fx:id="loginButton" cancelButton="true" layoutX="74.0" layoutY="211.0" mnemonicParsing="false" onAction="#login" prefHeight="30.0" prefWidth="147.0" text="Login">
+      <Button fx:id="loginButton" cancelButton="true" layoutX="70.0" layoutY="220.0" mnemonicParsing="false" onAction="#login" prefHeight="30.0" prefWidth="147.0" text="LOGIN">
          <font>
             <Font name="Microsoft JhengHei Light" size="15.0" />
          </font>
@@ -48,6 +48,16 @@
             <Image url="@../images/logo.png" />
          </image>
       </ImageView>
-      <Label fx:id="status" layoutX="17.0" layoutY="250.0" prefHeight="56.0" prefWidth="271.0" textFill="#e80000" />
+      <Label fx:id="status" alignment="CENTER" layoutX="14.0" layoutY="258.0" prefHeight="56.0" prefWidth="271.0" textFill="#e80000" />
+      <ImageView fitHeight="20.0" fitWidth="20.0" layoutX="82.0" layoutY="341.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/signup.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="20.0" fitWidth="20.0" layoutX="90.0" layoutY="226.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/login.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

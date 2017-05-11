@@ -3,3 +3,13 @@
     -fx-background-color: rgb(75,166,139);
     -fx-text-fill: WHITE;
 }
+
+.text-field {
+    -fx-background-insets: 0 -1 -1 -1, 0 0 0 0, 0 -1 3 -1;
+    -fx-highlight-fill: rgb(75,166,139);
+}
+
+.text-field:focused {
+    -fx-background-insets: 0 -1 -1 -1, 0 0 0 0, 0 -1 3 -1;
+    -fx-highlight-fill: rgb(75,166,139);
+}

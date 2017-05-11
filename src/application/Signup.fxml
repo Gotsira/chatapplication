@@ -57,6 +57,6 @@
             <Image url="@../images/logo.png" />
          </image>
       </ImageView>
-      <Label fx:id="regisStatus" layoutX="30.0" layoutY="280.0" onDragDetected="#signup" prefHeight="27.0" prefWidth="232.0" textFill="#c90000" />
+      <Label fx:id="regisStatus" alignment="CENTER_RIGHT" layoutX="31.0" layoutY="278.0" onDragDetected="#signup" prefHeight="37.0" prefWidth="245.0" textFill="#c90000" />
    </children>
 </AnchorPane>
