@@ -32,7 +32,10 @@ public class SignUpController extends StageChanged {
 		Register regis = new Register( getRegisUsername() , getRegisPassword() );
 		if ( getRegisUsername().isEmpty() || getRegisPassword().isEmpty() ) {
 			regisStatus.setText( "Cannot register with an empty username or password.");
-		} else {
+		} else if(regis.check()) {
+			regisStatus.setText( "Username already exists.");
+		}
+		else {
 			regis.add();
 			login(event);
 		}
