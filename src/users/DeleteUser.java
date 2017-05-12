@@ -10,12 +10,12 @@ public class DeleteUser {
 		
 	public DeleteUser(String username) throws Exception {
 		Class.forName("com.mysql.jdbc.Driver").newInstance();
-		con = DriverManager.getConnection("jdbc:mysql://localhost:3306/login", "root", "");
+		con = DriverManager.getConnection("jdbc:mysql://localhost:3306/projectdb", "root", "mysqlpassword");
 		this.username = username;
 	}
 	
 	public void delete() throws SQLException {
-		stmt = con.prepareStatement("DELETE FROM `passes` WHERE `username` = ?");
+		stmt = con.prepareStatement("DELETE FROM `accounts` WHERE `username` = ?");
 		stmt.setString(1, username);
 		stmt.executeUpdate();
 	}

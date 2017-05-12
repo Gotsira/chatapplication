@@ -12,13 +12,13 @@ public class Register {
 
 	public Register(String username, String password) throws Exception {
 		Class.forName("com.mysql.jdbc.Driver").newInstance();
-		con = DriverManager.getConnection("jdbc:mysql://localhost:3306/login", "root", "");
+		con = DriverManager.getConnection("jdbc:mysql://localhost:3306/projectdb", "root", "mysqlpassword");
 		this.username = username;
 		this.password = password;
 	}
 
 	public boolean check() throws SQLException {
-		stmt = con.prepareStatement("SELECT `username` FROM `passes` WHERE `username` = ?");
+		stmt = con.prepareStatement("SELECT `username` FROM `accounts` WHERE `username` = ?");
 		stmt.setString(1, username);
 		result = stmt.executeQuery();
 		if (result.next()) {
@@ -28,7 +28,7 @@ public class Register {
 	}
 
 	public void add() throws SQLException {
-		stmt = con.prepareStatement("INSERT into passes VALUES(?, ?)");
+		stmt = con.prepareStatement("INSERT into accounts VALUES(?, ?)");
 		stmt.setString(1, username);
 		stmt.setString(2, password);
 		stmt.executeUpdate();

@@ -31,10 +31,10 @@ public class LoginController extends StageChanged {
 	
 	@FXML
 	public void login( ActionEvent event ) throws Exception {
-//		login = new Login( getUsername() , getPassword() );
-//		if ( login.matches() ) {
+		login = new Login( getUsername() , getPassword() );
+		if ( login.matches() ) {
 		setStage("/application/Home.fxml", "Messenger Home", "home.css", loginButton);
-//		}
+		}
 		 if ( getUsername().isEmpty() || getPassword().isEmpty() ) {
 			status.setText( "Username or password cannot be empty." );
 		} else status.setText( "Username or password is incorrect." );

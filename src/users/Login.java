@@ -11,13 +11,13 @@ public class Login {
 		
 	public Login(String username, String password) throws Exception {
 		Class.forName("com.mysql.jdbc.Driver").newInstance();
-		con = DriverManager.getConnection("jdbc:mysql://localhost:3306/login", "root", "");
+		con = DriverManager.getConnection("jdbc:mysql://localhost:3306/projectdb", "root", "mysqlpassword");
 		this.username = username;
 		this.password = password;
 	}
 	
 	public boolean matches() throws Exception {
-		stmt = con.prepareStatement("SELECT `username`, `password` FROM `passes` WHERE `username` = ? AND`password` = ?");
+		stmt = con.prepareStatement("SELECT `username`, `password` FROM `accounts` WHERE `username` = ? AND`password` = ?");
 		stmt.setString(1, username);
 		stmt.setString(2, password);
 		result = stmt.executeQuery();
