@@ -1,5 +1,5 @@
 package application;
 
-public class ChatController {
+public class ChatController extends StageChanged {
 
 }

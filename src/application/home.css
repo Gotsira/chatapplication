@@ -1,7 +1,6 @@
 #homeLabel {
 	-fx-background-color: rgb(75,166,139);
 	-fx-border-color: rgb(75,166,139);	
-	-fx-skin: "com.sun.javafx.scene.control.skin.ContextMenuSkin";
 	-fx-background-radius: 0 6 6 6, 0 5 5 5, 0 4 4 4;
 }
 
@@ -9,6 +8,7 @@
     -fx-font-size: 14px;
     -fx-background-color: rgb(75,166,139);
     -fx-text-fill: white;
+    -fx-border-radius: 12px;
 }
 
 .menu-item .label {
@@ -24,7 +24,6 @@
 }
 
 .context-menu {
-    -fx-skin: "com.sun.javafx.scene.control.skin.ContextMenuSkin";
     -fx-background-color: black;
     -fx-background-insets: 0, 1, 2;
     -fx-background-radius: 0 6 6 6, 0 5 5 5, 0 4 4 4;
