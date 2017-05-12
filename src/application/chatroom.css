@@ -1,14 +1,12 @@
-#homeLabel {
+#chatRoomLabel {
 	-fx-background-color: rgb(75,166,139);
 	-fx-border-color: rgb(75,166,139);	
-	-fx-skin: "com.sun.javafx.scene.control.skin.ContextMenuSkin";
-	-fx-background-radius: 0 6 6 6, 0 5 5 5, 0 4 4 4;
 }
 
 .button {
     -fx-font-size: 14px;
     -fx-background-color: rgb(75,166,139);
-    -fx-text-fill: white;
+    -fx-text-fill: WHITE;
 }
 
 .menu-item .label {
@@ -30,12 +28,3 @@
     -fx-background-radius: 0 6 6 6, 0 5 5 5, 0 4 4 4;
     -fx-padding: 0.333333em 0.083333em 0.666667em 0.083333em;
 }
-
-.menu-button {
-    -fx-text-fill: white;
-}
-
-.menu-button:focused {
-     -fx-background-color: darkgray;
-}
-
