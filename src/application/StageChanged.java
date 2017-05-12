@@ -14,11 +14,11 @@ public abstract class StageChanged {
 		try {
 			Stage primaryStage = new Stage();
 			Parent root = FXMLLoader.load( getClass().getResource( resource ) );
-			Scene scene = new Scene(root , 300 , 400);
+			Scene scene = new Scene(root);
 			scene.getStylesheets().add( getClass().getResource( cssFile ).toExternalForm() );
 			primaryStage.setTitle( title );
 			primaryStage.setScene(scene);
-			primaryStage.setResizable( false );
+//			primaryStage.setResizable( false );
 			primaryStage.show();
 			handleCloseButtonAction( button );
 		} catch (IOException e) {

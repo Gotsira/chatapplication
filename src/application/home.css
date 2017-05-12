@@ -1,14 +1,18 @@
 #homeLabel {
-	-fx-background-color: rgb(75,166,139);
-	-fx-border-color: rgb(75,166,139);	
+	-fx-background-color: black;
+	-fx-border-color: black;
 	-fx-background-radius: 0 6 6 6, 0 5 5 5, 0 4 4 4;
 }
 
+#menu {
+	-fx-background-color: rgb(255,213,0);
+}
+
 .button {
-    -fx-font-size: 14px;
-    -fx-background-color: rgb(75,166,139);
-    -fx-text-fill: white;
-    -fx-border-radius: 12px;
+	-fx-font-family: "BebasNeue";
+    -fx-font-size: 25px;
+    -fx-background-color: rgb(255,213,0);
+    -fx-text-fill: black;
 }
 
 .menu-item .label {
