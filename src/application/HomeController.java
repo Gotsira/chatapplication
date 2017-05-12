@@ -11,6 +11,6 @@ public class HomeController extends StageChanged {
 	
 	@FXML
 	public void chatRoomAccess( ActionEvent event ) {
-		setStage("/application/ChatRoom.fxml", "Messenger Chat Room", "home.css", chatRoomButton);
+		setStage("/application/ChatRoom.fxml", "Messenger Chat Room", "chatroom.css", chatRoomButton);
 	}
 }

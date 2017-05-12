@@ -2,21 +2,41 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.effect.Reflection?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.HomeController">
    <children>
-      <Label fx:id="homeLabel" alignment="CENTER" prefHeight="68.0" prefWidth="300.0" text="HOME">
+      <Label fx:id="homeLabel" alignment="CENTER" prefHeight="60.0" prefWidth="300.0" text="HOME" textFill="WHITE">
          <font>
-            <Font name="Microsoft JhengHei Light" size="24.0" />
+            <Font name="BebasNeue" size="37.0" />
          </font>
+         <effect>
+            <DropShadow blurType="GAUSSIAN" radius="4.75" width="0.0" />
+         </effect>
       </Label>
       <AnchorPane layoutY="317.0" prefHeight="83.0" prefWidth="300.0">
          <children>
-            <Button fx:id="homeButton" disable="true" layoutX="54.0" layoutY="27.0" mnemonicParsing="false" text="HOME" />
-            <Button fx:id="chatRoomButton" layoutX="157.0" layoutY="27.0" mnemonicParsing="false" onAction="#chatRoomAccess" text="CHAT ROOM" />
+            <Button fx:id="homeButton" disable="true" layoutX="54.0" layoutY="27.0" mnemonicParsing="false" text="HOME">
+               <effect>
+                  <Reflection fraction="0.37" topOpacity="0.3" />
+               </effect></Button>
+            <Button fx:id="chatRoomButton" layoutX="157.0" layoutY="27.0" mnemonicParsing="false" onAction="#chatRoomAccess" text="CHAT ROOM">
+               <effect>
+                  <Reflection fraction="0.37" topOpacity="0.3" />
+               </effect></Button>
          </children>
       </AnchorPane>
+      <MenuButton fx:id="menuBar" layoutX="241.0" layoutY="17.0" mnemonicParsing="false" text="...">
+        <items>
+          <MenuItem fx:id="addMenu" mnemonicParsing="false" text="ADD FRIEND" />
+          <MenuItem fx:id="deleteMenu" mnemonicParsing="false" text="DELETE FRIEND" />
+            <MenuItem fx:id="logoutMenu" mnemonicParsing="false" text="LOG OUT" />
+        </items>
+      </MenuButton>
    </children>
 </AnchorPane>
