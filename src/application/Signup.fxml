@@ -20,45 +20,45 @@
             <Reflection fraction="0.52" topOpacity="0.26" />
          </effect>
       </Button>
-      <Label layoutX="88.0" layoutY="119.0" text="Create your account">
+      <Label layoutX="177.0" layoutY="180.0" text="Create your account">
          <font>
             <Font name="Microsoft JhengHei Light" size="15.0" />
          </font>
       </Label>
-      <Label contentDisplay="RIGHT" layoutX="38.0" layoutY="165.0" prefHeight="27.0" prefWidth="231.0" text="Username:">
+      <Label contentDisplay="RIGHT" layoutX="73.0" layoutY="228.0" prefHeight="44.0" prefWidth="345.0" text="Username: ">
+         <font>
+            <Font name="Microsoft JhengHei Light" size="15.0" />
+         </font>
          <graphic>
-            <TextField fx:id="regisUsername" onAction="#signup" prefHeight="27.0" prefWidth="154.0" promptText="Username" />
+            <TextField fx:id="regisUsername" onAction="#signup" prefHeight="44.0" prefWidth="238.0" promptText="Username" />
+         </graphic>
+      </Label>
+      <Label contentDisplay="RIGHT" layoutX="68.0" layoutY="292.0" prefHeight="44.0" prefWidth="345.0" text="Password: ">
+         <graphic>
+            <PasswordField fx:id="regisPassword" onAction="#signup" prefHeight="44.0" prefWidth="243.0" promptText="Password" />
          </graphic>
          <font>
             <Font name="Microsoft JhengHei Light" size="15.0" />
          </font>
       </Label>
-      <Label contentDisplay="RIGHT" layoutX="38.0" layoutY="192.0" prefHeight="27.0" prefWidth="232.0" text="Password: ">
-         <graphic>
-            <PasswordField fx:id="regisPassword" onAction="#signup" prefHeight="27.0" prefWidth="153.0" promptText="Password" />
-         </graphic>
-         <font>
-            <Font name="Microsoft JhengHei Light" size="15.0" />
-         </font>
-      </Label>
-      <Label contentDisplay="RIGHT" layoutX="123.0" layoutY="509.0" prefHeight="65.0" prefWidth="245.0" text="Already a member?">
+      <Label contentDisplay="RIGHT" layoutX="117.0" layoutY="506.0" prefHeight="65.0" prefWidth="258.0" text="Already a member?">
          <font>
             <Font name="BebasNeue" size="24.0" />
          </font>
          <graphic>
-            <Button fx:id="signinButton" mnemonicParsing="false" onAction="#login" text="Sign in">
+            <Button fx:id="signinButton" mnemonicParsing="false" onAction="#login" prefHeight="45.0" prefWidth="93.0" text="Sign in">
                <effect>
                   <Reflection fraction="0.52" topOpacity="0.26" />
                </effect>
             </Button>
          </graphic>
       </Label>
-      <ImageView fitHeight="149.0" fitWidth="156.0" layoutX="189.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="437.0" AnchorPane.leftAnchor="189.0" AnchorPane.rightAnchor="162.0" AnchorPane.topAnchor="14.0">
+      <ImageView fitHeight="149.0" fitWidth="156.0" layoutX="176.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="437.0" AnchorPane.leftAnchor="176.0" AnchorPane.rightAnchor="175.0" AnchorPane.topAnchor="14.0">
          <image>
             <Image url="@../images/logo.png" />
          </image>
       </ImageView>
-      <Label fx:id="regisStatus" alignment="CENTER_RIGHT" layoutX="73.0" layoutY="432.0" onDragDetected="#signup" prefHeight="65.0" prefWidth="376.0" textFill="#c90000">
+      <Label fx:id="regisStatus" alignment="CENTER_RIGHT" layoutX="58.0" layoutY="430.0" onDragDetected="#signup" prefHeight="65.0" prefWidth="376.0" textFill="#c90000">
          <font>
             <Font name="BebasNeue" size="20.0" />
          </font></Label>
