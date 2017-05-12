@@ -18,7 +18,7 @@ public abstract class StageChanged {
 			scene.getStylesheets().add( getClass().getResource( cssFile ).toExternalForm() );
 			primaryStage.setTitle( title );
 			primaryStage.setScene(scene);
-//			primaryStage.setResizable( false );
+			primaryStage.setResizable( false );
 			primaryStage.show();
 			handleCloseButtonAction( button );
 		} catch (IOException e) {

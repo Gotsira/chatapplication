@@ -2,21 +2,57 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.ChatRoomController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.ChatRoomController">
    <children>
-      <Label fx:id="homeLabel" alignment="CENTER" prefHeight="68.0" prefWidth="300.0" text="CHAT  ROOM">
+      <Label fx:id="chatRoomLabel" alignment="CENTER" prefHeight="75.0" prefWidth="500.0" text="CHAT ROOM" textFill="WHITE">
          <font>
-            <Font name="Microsoft JhengHei Light" size="24.0" />
+            <Font name="BebasNeue" size="37.0" />
          </font>
       </Label>
-      <AnchorPane layoutY="317.0" prefHeight="83.0" prefWidth="300.0">
+      <AnchorPane fx:id="menu" layoutY="526.0" prefHeight="75.0" prefWidth="500.0">
          <children>
-            <Button fx:id="homeButton" layoutX="54.0" layoutY="27.0" mnemonicParsing="false" onAction="#homeAccess" text="HOME" />
-            <Button fx:id="chatRoomButton" disable="true" layoutX="157.0" layoutY="27.0" mnemonicParsing="false" text="CHAT ROOM" />
+            <Button fx:id="chatRoomButton1" layoutX="173.0" layoutY="12.0" mnemonicParsing="false" onAction="#chatRoomAccess" text="CHAT ROOM">
+               <graphic>
+                  <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/chat.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="homeButton1" disable="true" layoutX="24.0" layoutY="12.0" mnemonicParsing="false" text="HOME">
+               <graphic>
+                  <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/Home-64.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="logoutButton" layoutX="345.0" layoutY="12.0" mnemonicParsing="false" text="LOG OUT">
+               <graphic>
+                  <ImageView fx:id="logoutButton" fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/Exit-26.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
          </children>
       </AnchorPane>
+      <MenuButton fx:id="menuBar" layoutX="435.0" layoutY="25.0" mnemonicParsing="false" text="...">
+         <items>
+            <MenuItem fx:id="addMenu" mnemonicParsing="false" text="ADD CHAT" />
+            <MenuItem fx:id="deleteMenu" mnemonicParsing="false" text="DELETE CHAT" />
+            <MenuItem fx:id="clearMenu" mnemonicParsing="false" text="CLEAR CHAT" />
+         </items>
+      </MenuButton>
    </children>
 </AnchorPane>

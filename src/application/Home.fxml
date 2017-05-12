@@ -18,7 +18,7 @@
       </Label>
       <AnchorPane fx:id="menu" layoutY="525.0" prefHeight="75.0" prefWidth="500.0">
          <children>
-            <Button fx:id="chatRoomButton" layoutX="300.0" layoutY="9.0" mnemonicParsing="false" onAction="#chatRoomAccess" text="CHAT ROOM">
+            <Button fx:id="chatRoomButton" layoutX="173.0" layoutY="12.0" mnemonicParsing="false" onAction="#chatRoomAccess" text="CHAT ROOM">
                <graphic>
                   <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -27,11 +27,20 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button fx:id="homeButton" layoutX="73.0" layoutY="9.0" mnemonicParsing="false" text="HOME">
+            <Button fx:id="homeButton" disable="true" layoutX="24.0" layoutY="12.0" mnemonicParsing="false" text="HOME">
                <graphic>
                   <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../images/Home-64.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="logoutButton" layoutX="345.0" layoutY="12.0" mnemonicParsing="false" text="LOG OUT">
+               <graphic>
+                  <ImageView fx:id="logoutButton" fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/Exit-26.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -42,7 +51,6 @@
         <items>
           <MenuItem fx:id="addMenu" mnemonicParsing="false" text="ADD FRIEND" />
           <MenuItem fx:id="deleteMenu" mnemonicParsing="false" text="DELETE FRIEND" />
-            <MenuItem fx:id="logoutMenu" mnemonicParsing="false" text="LOG OUT" />
         </items>
       </MenuButton>
    </children>

@@ -18,7 +18,7 @@ public class Main extends Application {
 			Font.loadFont(getClass().getResourceAsStream("/application/fonts/BebasNeue.otf"), 14);
 			primaryStage.setTitle( "Messenger Login" );
 			primaryStage.setScene(scene);
-//			primaryStage.setResizable( false );
+			primaryStage.setResizable( false );
 			primaryStage.show();
 		} catch (Exception e) {
 			e.printStackTrace();

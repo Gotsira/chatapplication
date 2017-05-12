@@ -13,12 +13,12 @@
    <children>
       <TextField fx:id="usernameField" layoutX="124.0" layoutY="199.0" prefHeight="44.0" prefWidth="254.0" promptText="Username">
          <font>
-            <Font name="BebasNeue" size="20.0" />
+            <Font name="Bangna New" size="20.0" />
          </font>
       </TextField>
       <PasswordField fx:id="passwordField" layoutX="124.0" layoutY="258.0" prefHeight="44.0" prefWidth="254.0" promptText="Password">
          <font>
-            <Font name="BebasNeue" size="20.0" />
+            <Font name="Bangna New" size="20.0" />
          </font>
       </PasswordField>
       <Button fx:id="loginButton" layoutX="170.0" layoutY="341.0" mnemonicParsing="false" onAction="#login" prefHeight="44.0" prefWidth="158.0" text="LOGIN">
