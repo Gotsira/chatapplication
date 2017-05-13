@@ -15,7 +15,9 @@ public class Main extends Application {
 			Parent root = FXMLLoader.load( getClass().getResource("/application/Login.fxml") );
 			Scene scene = new Scene(root);
 			scene.getStylesheets().add( getClass().getResource("login.css").toExternalForm() );
-			Font.loadFont(getClass().getResourceAsStream("/application/fonts/BebasNeue.otf"), 14);
+			Font.loadFont(getClass().getResourceAsStream("/application/fonts/Moon Flower Bold.ttf"), 14);
+			Font.loadFont(getClass().getResourceAsStream("/application/fonts/RaiNgan.ttf"), 14);
+			Font.loadFont(getClass().getResourceAsStream("/application/fonts/Sunrise International Demo.otf"), 14);
 			primaryStage.setTitle( "Messenger Login" );
 			primaryStage.setScene(scene);
 			primaryStage.setResizable( false );

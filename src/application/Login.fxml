@@ -13,24 +13,16 @@
    <children>
       <TextField fx:id="usernameField" layoutX="124.0" layoutY="199.0" prefHeight="44.0" prefWidth="254.0" promptText="Username">
          <font>
-            <Font name="Bangna New" size="20.0" />
+            <Font name="coffee+tea demo Regular" size="24.0" />
          </font>
       </TextField>
       <PasswordField fx:id="passwordField" layoutX="124.0" layoutY="258.0" prefHeight="44.0" prefWidth="254.0" promptText="Password">
          <font>
-            <Font name="Bangna New" size="20.0" />
+            <Font name="coffee+tea demo Regular" size="24.0" />
          </font>
       </PasswordField>
-      <Button fx:id="loginButton" layoutX="170.0" layoutY="341.0" mnemonicParsing="false" onAction="#login" prefHeight="44.0" prefWidth="158.0" text="LOGIN">
-         <graphic>
-            <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../images/login.png" />
-               </image>
-            </ImageView>
-         </graphic>
-      </Button>
-      <Label layoutX="210.0" layoutY="488.0" text="NEW USER?">
+      <Button fx:id="loginButton" layoutX="170.0" layoutY="321.0" mnemonicParsing="false" onAction="#login" prefHeight="44.0" prefWidth="158.0" text="LOGIN" />
+      <Label layoutX="214.0" layoutY="474.0" text="New User?">
          <font>
             <Font name="BebasNeue" size="24.0" />
          </font>
@@ -40,7 +32,7 @@
             <Image url="@../images/logo.png" />
          </image>
       </ImageView>
-      <Label fx:id="status" alignment="CENTER" layoutX="74.0" layoutY="399.0" prefHeight="78.0" prefWidth="358.0" textFill="#e80000">
+      <Label fx:id="status" alignment="CENTER" layoutX="72.0" layoutY="388.0" prefHeight="78.0" prefWidth="358.0" textFill="#e80000">
          <font>
             <Font name="BebasNeue" size="20.0" />
          </font></Label>

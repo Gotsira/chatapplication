@@ -17,7 +17,9 @@ public abstract class StageChanged {
 			Parent root = FXMLLoader.load( getClass().getResource( resource ) );
 			Scene scene = new Scene(root);
 			scene.getStylesheets().add( getClass().getResource( cssFile ).toExternalForm() );
-			Font.loadFont(getClass().getResourceAsStream("/application/fonts/BebasNeue.otf"), 14);
+			Font.loadFont(getClass().getResourceAsStream("/application/fonts/Moon Flower Bold.ttf"), 14);
+			Font.loadFont(getClass().getResourceAsStream("/application/fonts/RaiNgan.ttf"), 14);
+			Font.loadFont(getClass().getResourceAsStream("/application/fonts/Sunrise International Demo.otf"), 14);
 			primaryStage.setTitle( title );
 			primaryStage.setScene(scene);
 			primaryStage.setResizable( false );
