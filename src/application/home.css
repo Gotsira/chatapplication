@@ -17,6 +17,10 @@
     -fx-text-fill: black;
 }
 
+.menu-button {
+	-fx-background-color: black;
+}
+
 .menu-item .label {
     -fx-text-fill: white;
 }
