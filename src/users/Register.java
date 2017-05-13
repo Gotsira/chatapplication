@@ -12,7 +12,7 @@ public class Register {
 
 	public Register(String username, String password) throws Exception {
 		Class.forName("com.mysql.jdbc.Driver").newInstance();
-		con = DriverManager.getConnection("jdbc:mysql://localhost:3306/projectdb", "root", "mysqlpassword");
+		con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/projectdb", "root", "mysqlpassword");
 		this.username = username;
 		this.password = password;
 	}

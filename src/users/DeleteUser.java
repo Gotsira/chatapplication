@@ -10,7 +10,7 @@ public class DeleteUser {
 		
 	public DeleteUser(String username) throws Exception {
 		Class.forName("com.mysql.jdbc.Driver").newInstance();
-		con = DriverManager.getConnection("jdbc:mysql://localhost:3306/projectdb", "root", "mysqlpassword");
+		con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/projectdb", "root", "mysqlpassword");
 		this.username = username;
 	}
 	
@@ -21,7 +21,7 @@ public class DeleteUser {
 	}
 	
 //	public static void main(String[] args) throws Exception {
-//		DeleteUser d = new DeleteUser("got");
+//		DeleteUser d = new DeleteUser("afdaf");
 //		d.delete();
 //	}
 }
