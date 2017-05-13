@@ -78,7 +78,7 @@
                         <FlowPane prefWidth="200.0" />
                      </content>
                   </TitledPane>
-                <TitledPane animated="false" prefHeight="245.0" prefWidth="500.0" text="untitled 2">
+                <TitledPane animated="false" prefHeight="245.0" prefWidth="500.0" text="Friends">
                      <content>
                         <FlowPane />
                      </content>

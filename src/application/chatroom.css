@@ -20,6 +20,7 @@
 }
 
 .menu-item .label {
+	-fx-font-family: "Moon Flower Bold";
     -fx-text-fill: white;
 }
 
