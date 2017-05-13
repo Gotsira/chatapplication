@@ -20,6 +20,7 @@
 }
 
 .menu-item .label {
+	-fx-font-family: "Moon Flower Bold";
     -fx-text-fill: white;
 }
 
@@ -39,3 +40,7 @@
     -fx-padding: 0.333333em 0.083333em 0.666667em 0.083333em;
 }
 
+.titled-pane {
+	-fx-font-family: "Moon Flower Bold";
+	-fx-font-size: 20px;
+}
