@@ -25,10 +25,6 @@ public class LoginController extends StageChanged {
 	
 	@FXML
 	private Button loginButton;
-
-//	
-//	@FXML
-//	private MenuItem logoutMenu;
 	
 	@FXML
 	public void login( ActionEvent event ) throws Exception {

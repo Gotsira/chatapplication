@@ -10,7 +10,16 @@ public class HomeController extends StageChanged {
 	private Button chatRoomButton;
 	
 	@FXML
+	private Button logoutButton;
+	
+	@FXML
 	public void chatRoomAccess( ActionEvent event ) {
 		setStage("/application/ChatRoom.fxml", "Messenger Chat Room", "chatroom.css", chatRoomButton);
 	}
+	
+	@FXML
+	public void logout( ActionEvent event ) {
+		setStage("/application/Login.fxml", "Messenger Login" , "login.css" , logoutButton);
+	}
+	
 }

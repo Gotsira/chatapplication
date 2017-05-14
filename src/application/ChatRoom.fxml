@@ -48,7 +48,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button fx:id="logoutButton" layoutX="345.0" layoutY="11.0" mnemonicParsing="false" text="LOG OUT">
+            <Button fx:id="logoutButton" layoutX="345.0" layoutY="11.0" mnemonicParsing="false" onAction="#logout" text="LOG OUT">
                <graphic>
                   <ImageView fx:id="logoutButton" fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                      <image>
