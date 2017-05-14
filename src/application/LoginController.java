@@ -6,9 +6,10 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.scene.text.Font;
 import users.Login;
+
 import java.sql.*;
+
 
 public class LoginController extends StageChanged {
 
@@ -30,9 +31,9 @@ public class LoginController extends StageChanged {
 	public void login( ActionEvent event ) throws Exception {
 		login = new Login( getUsername() , getPassword() );
 		if ( login.matches() ) {
-		setStage("/application/Home.fxml", "Messenger Home", "home.css", loginButton);
+			setStage("/application/Home.fxml", "Messenger Home", "home.css", loginButton);
 		}
-		 if ( getUsername().isEmpty() || getPassword().isEmpty() ) {
+		if ( getUsername().isEmpty() || getPassword().isEmpty() ) {
 			status.setText( "Username or password cannot be empty." );
 		} else status.setText( "Username or password is incorrect." );
 	}
