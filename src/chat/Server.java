@@ -29,22 +29,20 @@ public class Server extends AbstractServer {
 		if (type.equals("connect")) {
 			String name = message[1];
 			client.setInfo("name", name);
-		} else if (type.equals("message")) {
+		} else if (type.equals("message") || type.equals("image")) {
 			String name = message[1];
 			String data = message[2];
 			for (Thread t : getClientConnections()) {
 				ConnectionToClient c = (ConnectionToClient) t;
 				if (c.getInfo("name").equals(name)) {
 					try {
-						c.sendToClient(client.getInfo("name") + ": " + data);
+						c.sendToClient(client.getInfo("name") + ":" + type + ":" + data);
 					} catch (IOException e) {
 						// do nothing
 					}
 				}
 			}
-		} else if (msg.getClass() == byte[].class) {
-			
-		}
+		} 
 	}
 
 	/**

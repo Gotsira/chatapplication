@@ -1,5 +1,7 @@
 package application;
 
-public class ChatController extends StageChanged {
+import chat.Client;
 
+public class ChatController extends StageChanged {
+	private Client client;
 }
