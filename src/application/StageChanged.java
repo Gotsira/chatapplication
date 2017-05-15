@@ -1,8 +1,12 @@
 package application;
 
+import java.awt.Desktop.Action;
 import java.io.IOException;
 
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -11,7 +15,7 @@ import javafx.stage.Stage;
 
 public abstract class StageChanged {
 	
-	public void setStage(String resource, String title, String cssFile, Button button) {
+	public void setStage(String resource, String title, String cssFile) {
 		try {
 			Stage primaryStage = new Stage();
 			Parent root = FXMLLoader.load( getClass().getResource( resource ) );
@@ -24,18 +28,17 @@ public abstract class StageChanged {
 			primaryStage.setScene(scene);
 			primaryStage.setResizable( false );
 			primaryStage.show();
-			handleCloseButtonAction( button );
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
 	
 	/**
-	 * Closing the current stage.
-	 * @param button for handling closing the stage.
+	 * Hide current page.
+	 * @param event
 	 */
-	public void handleCloseButtonAction( Button button ) {
-		Stage closeStage = (Stage) button.getScene().getWindow();
-	    closeStage.close();
+	@FXML
+	public void hideWindow( ActionEvent event ) {
+		((Node) event.getSource()).getScene().getWindow().hide();
 	}
 }

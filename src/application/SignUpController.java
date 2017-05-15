@@ -43,7 +43,8 @@ public class SignUpController extends StageChanged {
 	
 	@FXML
 	public void login( ActionEvent event ) {
-		setStage("/application/Login.fxml", "Messenger Login" , "login.css" , regisButton);
+		setStage("/application/Login.fxml", "Messenger Login" , "login.css");
+		hideWindow(event);
 	}
 	
 	public String getRegisUsername() {

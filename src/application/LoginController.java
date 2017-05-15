@@ -12,7 +12,6 @@ import java.sql.*;
 
 
 public class LoginController extends StageChanged {
-
 	private Login login;
 	
 	@FXML
@@ -31,7 +30,8 @@ public class LoginController extends StageChanged {
 	public void login( ActionEvent event ) throws Exception {
 		login = new Login( getUsername() , getPassword() );
 		if ( login.matches() ) {
-			setStage("/application/Home.fxml", "Messenger Home", "home.css", loginButton);
+			setStage("/application/Home.fxml", "Messenger Home", "home.css");
+			hideWindow(event);
 		}
 		if ( getUsername().isEmpty() || getPassword().isEmpty() ) {
 			status.setText( "Username or password cannot be empty." );
@@ -40,7 +40,8 @@ public class LoginController extends StageChanged {
 	
 	@FXML
 	public void signup( ActionEvent event ) {
-		setStage("/application/Signup.fxml", "Messenger Sign up", "login.css", loginButton);
+		setStage("/application/Signup.fxml", "Messenger Sign up", "login.css");
+		hideWindow(event);
 	}
 	
 	public String getUsername() {
