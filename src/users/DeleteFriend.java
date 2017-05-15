@@ -17,11 +17,22 @@ public class DeleteFriend {
 	}
 
 	public boolean check() throws SQLException {
-		stmt = con.prepareStatement("SELECT `user`, `friendUser` FROM `friendsList` WHERE `user` = ? AND `friendUser` = ?");
+		stmt = con.prepareStatement(
+				"SELECT `user`, `friendUser` FROM `friendsList` WHERE `user` = ? AND `friendUser` = ?");
 		stmt.setString(1, username);
 		stmt.setString(2, friendUser);
 		result = stmt.executeQuery();
-		if(result.next()) {
+		if (result.next()) {
+			return true;
+		}
+		return false;
+	}
+
+	public boolean exist() throws SQLException {
+		stmt = con.prepareStatement("SELECT `username` FROM `accounts` WHERE `username` = ?");
+		stmt.setString(1, friendUser);
+		result = stmt.executeQuery();
+		if (result.next()) {
 			return true;
 		}
 		return false;
@@ -34,6 +45,6 @@ public class DeleteFriend {
 		stmt.executeUpdate();
 		stmt.setString(1, friendUser);
 		stmt.setString(2, username);
-		stmt.executeQuery();
+		stmt.executeUpdate();
 	}
 }

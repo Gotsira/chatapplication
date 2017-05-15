@@ -26,6 +26,16 @@ public class AddFriend {
 		}
 		return false;
 	}
+	
+	public boolean exist() throws SQLException {
+		stmt = con.prepareStatement("SELECT `username` FROM `accounts` WHERE `username` = ?");
+		stmt.setString(1, friendUser);
+		result = stmt.executeQuery();
+		if(result.next()) {
+			return true;
+		}
+		return false;
+	}
 
 	public void add() throws SQLException {
 		stmt = con.prepareStatement("INSERT into friendsList VALUES(?, ?)");
@@ -34,6 +44,6 @@ public class AddFriend {
 		stmt.executeUpdate();
 		stmt.setString(1, friendUser);
 		stmt.setString(2, username);
-		stmt.executeQuery();
+		stmt.executeUpdate();
 	}
 }
