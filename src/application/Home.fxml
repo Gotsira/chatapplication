@@ -22,8 +22,8 @@
          <graphic>
             <MenuButton fx:id="menuBar" mnemonicParsing="false">
                <items>
-                  <MenuItem fx:id="addMenu" mnemonicParsing="false" text="ADD FRIEND" />
-                  <MenuItem fx:id="deleteMenu" mnemonicParsing="false" text="DELETE FRIEND" />
+                  <MenuItem fx:id="addMenu" mnemonicParsing="false" onAction="#addFreind" text="ADD FRIEND" />
+                  <MenuItem fx:id="deleteMenu" mnemonicParsing="false" onAction="#deleteFriend" text="DELETE FRIEND" />
                </items>
             </MenuButton>
          </graphic>

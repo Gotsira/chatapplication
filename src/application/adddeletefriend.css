@@ -1,0 +1,31 @@
+#toplabel {
+	-fx-font-family: "Sunrise International Demo";
+	-fx-background-color: black;
+	-fx-border-color: black;
+}
+
+#textLabel {
+	-fx-font-family: "Moon Flower Bold";
+	-fx-font-size: 20px;
+}
+
+.text-field {
+	-fx-font-family: "RaiNgan";
+	-fx-font-size: 20px;
+}
+
+.button {
+	-fx-font-family: "Sunrise International Demo";
+    -fx-font-size: 30px;
+    -fx-background-color: rgb(255,213,0);
+    -fx-text-fill: black;
+}
+
+#status {
+	-fx-font-family: "Moon Flower Bold";
+	-fx-font-size: 20px;
+}
+
+#bottomPane {
+	-fx-background-color: rgb(255,213,0);
+}
