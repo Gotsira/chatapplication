@@ -20,17 +20,17 @@
          <children>
             <Label fx:id="textLabel" contentDisplay="RIGHT" layoutX="19.0" layoutY="14.0" prefHeight="63.0" prefWidth="362.0" text="Enter Friend's Username: ">
                <graphic>
-                  <TextField fx:id="friendField" prefHeight="37.0" prefWidth="202.0" promptText="Username" />
+                  <TextField fx:id="friendField" onAction="#add" prefHeight="37.0" prefWidth="202.0" promptText="Username" />
                </graphic>
             </Label>
-            <Label fx:id="status" alignment="CENTER" layoutX="55.0" layoutY="80.0" prefHeight="45.0" prefWidth="290.0" textFill="RED" />
+            <Label fx:id="status" alignment="CENTER" layoutX="55.0" layoutY="80.0" onDragDetected="#add" prefHeight="45.0" prefWidth="290.0" textFill="RED" />
          </children>
       </AnchorPane>
    </center>
    <bottom>
       <AnchorPane fx:id="bottomPane" prefHeight="77.0" prefWidth="400.0" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="addButton" layoutX="76.0" layoutY="10.0" mnemonicParsing="false" text="ADD" />
+            <Button fx:id="addButton" layoutX="76.0" layoutY="10.0" mnemonicParsing="false" onAction="#add" text="ADD" />
             <Button fx:id="cancelButton" layoutX="235.0" layoutY="10.0" mnemonicParsing="false" onAction="#cancel" text="CANCEL" />
          </children>
       </AnchorPane>
