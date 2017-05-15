@@ -2,12 +2,18 @@ package application;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.text.Font;
+import javafx.stage.Stage;
 import users.Login;
 
+import java.io.IOException;
 import java.sql.*;
 
 
@@ -30,7 +36,24 @@ public class LoginController extends StageChanged {
 	public void login( ActionEvent event ) throws Exception {
 		login = new Login( getUsername() , getPassword() );
 		if ( login.matches() ) {
-			setStage("/application/Home.fxml", "Messenger Home", "home.css");
+			try {
+				Stage stage = new Stage();
+				FXMLLoader loader = new FXMLLoader(getClass().getResource("/application/Home.fxml"));     
+				Parent root = (Parent)loader.load();          
+				HomeController home = loader.<HomeController>getController();
+				home.getUsername( getUsername() );
+				Scene scene = new Scene(root); 
+				scene.getStylesheets().add( getClass().getResource("home.css").toExternalForm() );
+				Font.loadFont(getClass().getResourceAsStream("/application/fonts/Moon Flower Bold.ttf"), 14);
+				Font.loadFont(getClass().getResourceAsStream("/application/fonts/RaiNgan.ttf"), 14);
+				Font.loadFont(getClass().getResourceAsStream("/application/fonts/Sunrise International Demo.otf"), 14);
+				stage.setResizable( false );
+				stage.setTitle( "Messenger Home" );
+				stage.setScene(scene);
+				stage.show();   
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 			hideWindow(event);
 		}
 		if ( getUsername().isEmpty() || getPassword().isEmpty() ) {

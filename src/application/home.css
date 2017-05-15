@@ -4,6 +4,11 @@
 		-fx-border-color: black;
 }
 
+#username {
+	-fx-font-family: "RaiNgan";
+	-fx-font-size: 20px;
+}
+
 #menu {
 	-fx-font-family: "Sunrise International Demo";
 	-fx-background-color: rgb(255,213,0);

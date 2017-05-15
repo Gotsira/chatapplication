@@ -3,7 +3,7 @@ package application;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.control.TextArea;
+import javafx.scene.control.Label;
 
 public class HomeController extends StageChanged {
 	
@@ -14,7 +14,7 @@ public class HomeController extends StageChanged {
 	private Button logoutButton;
 	
 	@FXML
-	private TextArea userInfo;
+	private Label username;
 	
 	@FXML
 	public void chatRoomAccess( ActionEvent event ) {
@@ -26,6 +26,10 @@ public class HomeController extends StageChanged {
 	public void logout( ActionEvent event ) {
 		setStage("/application/Login.fxml", "Messenger Login" , "login.css");
 		hideWindow(event);
+	}
+	
+	public void getUsername( String name ) {
+		username.setText( name );
 	}
 	
 }

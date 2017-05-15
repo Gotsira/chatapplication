@@ -1,6 +1,5 @@
 package application;
 
-import java.awt.Desktop.Action;
 import java.io.IOException;
 
 import javafx.event.ActionEvent;
@@ -9,7 +8,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
