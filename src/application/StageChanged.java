@@ -15,17 +15,18 @@ public abstract class StageChanged {
 	
 	public void setStage(String resource, String title, String cssFile) {
 		try {
-			Stage primaryStage = new Stage();
-			Parent root = FXMLLoader.load( getClass().getResource( resource ) );
-			Scene scene = new Scene(root);
-			scene.getStylesheets().add( getClass().getResource( cssFile ).toExternalForm() );
+			Stage stage = new Stage();
+			FXMLLoader loader = new FXMLLoader(getClass().getResource(resource));     
+			Parent root = (Parent) loader.load();          
+			Scene scene = new Scene(root); 
+			scene.getStylesheets().add( getClass().getResource(cssFile).toExternalForm() );
 			Font.loadFont(getClass().getResourceAsStream("/application/fonts/Moon Flower Bold.ttf"), 14);
 			Font.loadFont(getClass().getResourceAsStream("/application/fonts/RaiNgan.ttf"), 14);
 			Font.loadFont(getClass().getResourceAsStream("/application/fonts/Sunrise International Demo.otf"), 14);
-			primaryStage.setTitle( title );
-			primaryStage.setScene(scene);
-			primaryStage.setResizable( false );
-			primaryStage.show();
+			stage.setResizable( false );
+			stage.setTitle(title);
+			stage.setScene(scene);
+			stage.show();   
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
