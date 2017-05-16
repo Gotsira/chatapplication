@@ -20,7 +20,7 @@ public class AddFriendController extends StageChanged {
 	public void add(ActionEvent event) throws Exception {
 		addFriend = new AddFriend(getUserName(), getFriendName());
 		if (addFriend.exist()) {
-			if (!(addFriend.check())) {
+			if (!(addFriend.check()) && !getUserName().equals(getFriendName())) {
 				addFriend.add();
 				status.setText("Completed!");
 			} else if (getFriendName().isEmpty()) {
@@ -28,7 +28,7 @@ public class AddFriendController extends StageChanged {
 			} else if (addFriend.check()) {
 				status.setText("Username is already your friend.");
 			} else
-				status.setText("Cannot add this username.");
+				status.setText("Cannot add your own username.");
 		} else {
 			status.setText("Username does not exist");
 		}
