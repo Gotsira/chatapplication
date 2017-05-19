@@ -20,13 +20,13 @@ public class DeleteFriendController extends StageChanged {
 	public void delete(ActionEvent event) throws Exception {
 		deleteFriend = new DeleteFriend( getUserName(), getFriendName() );
 		if ( deleteFriend.exist() ) {
-			if ( !deleteFriend.check() && !getUserName().equals(getFriendName()) ) {
+			if ( deleteFriend.check() && !getUserName().equals(getFriendName()) ) {
 				deleteFriend.add();
 				status.setText("Completed!");
 			} else if ( getFriendName().isEmpty() ) {
 				status.setText("Username cannot be empty.");
-			} else if ( deleteFriend.check() ) {
-				status.setText("Username is already your friend.");
+			} else if ( !deleteFriend.check() ) {
+				status.setText("Username is not your friend.");
 			} else status.setText("Cannot add your own username.");
 		} else {
 			status.setText("Username does not exist");

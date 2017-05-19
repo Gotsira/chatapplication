@@ -10,7 +10,7 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextField;
 
 public class ChatController extends StageChanged {
-	private static Client client;
+	private static Client client = new Client("35.185.184.40", 5135);
 	private static Thread thread;
 	
 	@FXML
@@ -31,9 +31,5 @@ public class ChatController extends StageChanged {
 	@FXML
 	private MenuItem sendContact;
 	
-	public static void main(String[] args) throws IOException {
-		client = new Client("", 5555);
-		thread = new Thread();
-		client.openConnection();
-	}
+
 }

@@ -33,7 +33,7 @@ public class Client extends AbstractClient {
 				// do nothing
 			}
 		} else if (type.equals("video")) {
-
+			
 		}
 	}
 

@@ -11,7 +11,7 @@ public class Login {
 		
 	public Login(String username, String password) throws Exception {
 		Class.forName("com.mysql.jdbc.Driver").newInstance();
-		con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/projectdb", "root", "mysqlpassword");
+		con = DriverManager.getConnection("jdbc:mysql://35.186.149.50:3306/projectdb?useSSL=false", "root", "mysqlpassword");
 		this.username = username;
 		this.password = password;
 	}

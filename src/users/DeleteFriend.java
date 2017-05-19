@@ -11,14 +11,14 @@ public class DeleteFriend {
 
 	public DeleteFriend(String username, String friendUser) throws Exception {
 		Class.forName("com.mysql.jdbc.Driver").newInstance();
-		con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/projectdb", "root", "mysqlpassword");
+		con = DriverManager.getConnection("jdbc:mysql://35.186.149.50:3306/projectdb?useSSL=false", "root", "mysqlpassword");
 		this.username = username;
 		this.friendUser = friendUser;
 	}
 
 	public boolean check() throws SQLException {
 		stmt = con.prepareStatement(
-				"SELECT `user`, `friendUser` FROM `friendsList` WHERE `user` = ? AND `friendUser` = ?");
+				"SELECT `username`, `friendsUser` FROM `friendsList` WHERE `username` = ? AND `friendsUser` = ?");
 		stmt.setString(1, username);
 		stmt.setString(2, friendUser);
 		result = stmt.executeQuery();
@@ -39,7 +39,7 @@ public class DeleteFriend {
 	}
 
 	public void add() throws SQLException {
-		stmt = con.prepareStatement("DELETE FROM `friendsList` WHERE `user` = ? AND `friendUser` = ?");
+		stmt = con.prepareStatement("DELETE FROM `friendsList` WHERE `username` = ? AND `friendsUser` = ?");
 		stmt.setString(1, username);
 		stmt.setString(2, friendUser);
 		stmt.executeUpdate();
