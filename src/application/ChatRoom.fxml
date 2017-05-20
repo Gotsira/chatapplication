@@ -4,6 +4,8 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -60,4 +62,12 @@
          </children>
       </AnchorPane>
    </bottom>
+   <center>
+      <TableView prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+        <columns>
+          <TableColumn fx:id="friend" editable="false" prefWidth="156.0" text="Friend" />
+          <TableColumn fx:id="message" prefWidth="343.0" text="Message" />
+        </columns>
+      </TableView>
+   </center>
 </BorderPane>
