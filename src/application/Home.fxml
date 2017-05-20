@@ -20,10 +20,24 @@
             <Font name="BebasNeue" size="37.0" />
          </font>
          <graphic>
-            <MenuButton fx:id="menuBar" mnemonicParsing="false">
+            <MenuButton fx:id="menuBar" ellipsisString="" mnemonicParsing="false">
                <items>
-                  <MenuItem fx:id="addMenu" mnemonicParsing="false" onAction="#addFreind" text="ADD FRIEND" />
-                  <MenuItem fx:id="deleteMenu" mnemonicParsing="false" onAction="#deleteFriend" text="DELETE FRIEND" />
+                  <MenuItem fx:id="addMenu" mnemonicParsing="false" onAction="#addFreind" text="ADD FRIEND">
+                     <graphic>
+                        <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/signup-white.png" />
+                           </image>
+                        </ImageView>
+                     </graphic></MenuItem>
+                  <MenuItem fx:id="deleteMenu" mnemonicParsing="false" onAction="#deleteFriend" text="DELETE FRIEND">
+                     <graphic>
+                        <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/delete.png" />
+                           </image>
+                        </ImageView>
+                     </graphic></MenuItem>
                </items>
             </MenuButton>
          </graphic>
