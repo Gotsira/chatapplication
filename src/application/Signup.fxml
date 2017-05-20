@@ -12,7 +12,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.SignUpController">
    <children>
-      <Button fx:id="regisButton" layoutX="183.0" layoutY="345.0" mnemonicParsing="false" onAction="#signup" text="Register">
+      <Button fx:id="regisButton" layoutX="77.0" layoutY="342.0" mnemonicParsing="false" onAction="#signup" prefHeight="49.0" prefWidth="345.0" text="Register">
          <font>
             <Font name="Microsoft JhengHei Light" size="15.0" />
          </font>
@@ -32,28 +32,28 @@
             <Font name="Microsoft JhengHei Light" size="15.0" />
          </font>
       </Label>
-      <Label contentDisplay="RIGHT" layoutX="74.0" layoutY="233.0" prefHeight="44.0" prefWidth="345.0" text="Username: ">
+      <Label contentDisplay="RIGHT" layoutX="78.0" layoutY="233.0" prefHeight="44.0" prefWidth="345.0" text="Username: ">
          <font>
             <Font name="Microsoft JhengHei Light" size="15.0" />
          </font>
          <graphic>
-            <TextField fx:id="regisUsername" onAction="#signup" prefHeight="44.0" prefWidth="242.0" promptText="Username" />
+            <TextField fx:id="regisUsername" onAction="#signup" prefHeight="44.0" prefWidth="261.0" promptText="Username" />
          </graphic>
       </Label>
-      <Label contentDisplay="RIGHT" layoutX="74.0" layoutY="288.0" prefHeight="44.0" prefWidth="345.0" text="Password: ">
+      <Label contentDisplay="RIGHT" layoutX="78.0" layoutY="288.0" prefHeight="44.0" prefWidth="345.0" text="Password: ">
          <graphic>
-            <PasswordField fx:id="regisPassword" onAction="#signup" prefHeight="44.0" prefWidth="243.0" promptText="Password" />
+            <PasswordField fx:id="regisPassword" onAction="#signup" prefHeight="44.0" prefWidth="261.0" promptText="Password" />
          </graphic>
          <font>
             <Font name="Microsoft JhengHei Light" size="15.0" />
          </font>
       </Label>
-      <Label contentDisplay="RIGHT" layoutX="127.0" layoutY="508.0" prefHeight="65.0" prefWidth="238.0" text="Already a member?">
+      <Label contentDisplay="RIGHT" layoutX="105.0" layoutY="509.0" prefHeight="65.0" prefWidth="292.0" text="Already a member?">
          <font>
             <Font name="BebasNeue" size="24.0" />
          </font>
          <graphic>
-            <Button fx:id="signinButton" mnemonicParsing="false" onAction="#login" prefHeight="45.0" prefWidth="93.0" text="Sign in">
+            <Button fx:id="signinButton" mnemonicParsing="false" onAction="#login" prefHeight="49.0" prefWidth="149.0" text="Sign in">
                <effect>
                   <Reflection fraction="0.52" topOpacity="0.26" />
                </effect>
@@ -65,7 +65,7 @@
             <Image url="@../images/logo.png" />
          </image>
       </ImageView>
-      <Label fx:id="regisStatus" alignment="CENTER_RIGHT" layoutX="21.0" layoutY="430.0" onDragDetected="#signup" prefHeight="65.0" prefWidth="449.0" textFill="#c90000">
+      <Label fx:id="regisStatus" alignment="CENTER_RIGHT" layoutX="26.0" layoutY="425.0" onDragDetected="#signup" prefHeight="65.0" prefWidth="449.0" textFill="#c90000">
          <font>
             <Font name="BebasNeue" size="20.0" />
          </font></Label>
