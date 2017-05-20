@@ -1,16 +1,19 @@
 package application;
 
-import java.awt.event.ActionEvent;
+import java.io.File;
 import java.io.IOException;
 
 import chat.Client;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.stage.FileChooser;
+import javafx.stage.FileChooser.ExtensionFilter;
+import javafx.stage.Stage;
 
 public class ChatController extends StageChanged {
 	
@@ -19,9 +22,7 @@ public class ChatController extends StageChanged {
 	
 	@FXML
 	private TextField field;
-	
-	@FXML
-	private MenuButton menu;
+
 	
 	@FXML
 	private MenuItem sendPhoto;
@@ -38,6 +39,7 @@ public class ChatController extends StageChanged {
 	@FXML
 	private TextArea message;
 	
+	
 	@FXML
 	public void send(ActionEvent event) throws IOException {
 		client.sendToServer("message " + field.getText());
@@ -45,5 +47,19 @@ public class ChatController extends StageChanged {
 	
 	public void displayMessage(String message) {
 		
+	}
+
+	public void photoChooser(ActionEvent event) {
+		FileChooser chooser = new FileChooser();
+		chooser.getExtensionFilters().addAll(new ExtensionFilter( "Image Files", "*.png", "*.jpg", "*.gif" ));
+		File file = chooser.showOpenDialog(null);
+		if ( file != null ) field.setText( file.getName() );
+	}
+	
+	public void videoChooser(ActionEvent event) {
+		FileChooser chooser = new FileChooser();
+		chooser.getExtensionFilters().addAll(new ExtensionFilter( "Video Files", "*.mp4" ));
+		File file = chooser.showOpenDialog(null);
+		if ( file != null ) field.setText( file.getName() );
 	}
 }
