@@ -51,6 +51,8 @@ public class LoginController extends StageChanged {
 				stage.setTitle( "Messenger Home" );
 				stage.setScene(scene);
 				stage.show();   
+				client.openConnection();
+				client.sendToServer("connect " + getUsername());
 			} catch (IOException e) {
 				e.printStackTrace();
 			}

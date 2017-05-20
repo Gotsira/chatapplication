@@ -2,6 +2,7 @@ package application;
 
 import java.io.IOException;
 
+import chat.Client;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -12,9 +13,10 @@ import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
 public abstract class StageChanged {
+	static Client client = new Client("", 5135);
 	
 	public void setStage(String resource, String title, String cssFile) {
-		try {
+		try { 
 			Stage stage = new Stage();
 			FXMLLoader loader = new FXMLLoader(getClass().getResource(resource));     
 			Parent root = (Parent) loader.load();          

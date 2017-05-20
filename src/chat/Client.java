@@ -8,11 +8,14 @@ import javax.imageio.ImageIO;
 
 import com.lloseng.ocsf.client.AbstractClient;
 
+import application.ChatController;
+
 public class Client extends AbstractClient {
 	private String host;
-	private static final int PORT = 5555;
+	private static final int PORT = 5135;
 	private String message;
 	private BufferedImage image = null;
+	private ChatController reciever = new ChatController();
 
 	public Client(String host, int port) {
 		super(host, port);
@@ -25,7 +28,7 @@ public class Client extends AbstractClient {
 		String type = chat[1];
 		String data = chat[2];
 		if (type.equals("message")) {
-
+			reciever.displayMessage(data);
 		} else if (type.equals("image")) {
 			try {
 				image = convertStringtoImg(data);

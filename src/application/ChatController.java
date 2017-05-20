@@ -1,5 +1,6 @@
 package application;
 
+import java.awt.event.ActionEvent;
 import java.io.IOException;
 
 import chat.Client;
@@ -10,8 +11,6 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextField;
 
 public class ChatController extends StageChanged {
-	private static Client client = new Client("35.185.184.40", 5135);
-	private static Thread thread;
 	
 	@FXML
 	private Button sendButton;
@@ -31,5 +30,12 @@ public class ChatController extends StageChanged {
 	@FXML
 	private MenuItem sendContact;
 	
-
+	@FXML
+	public void send(ActionEvent event) throws IOException {
+		client.sendToServer("message " + field.getText());
+	}
+	
+	public void displayMessage(String message) {
+		
+	}
 }
