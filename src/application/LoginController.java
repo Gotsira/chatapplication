@@ -32,6 +32,7 @@ public class LoginController extends StageChanged implements Initializable {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		EventHandler<ActionEvent> loginHandle = new EventHandler<ActionEvent>() {
+			
 			@Override
 			public void handle(ActionEvent event) {
 				try {
@@ -41,6 +42,7 @@ public class LoginController extends StageChanged implements Initializable {
 				}
 			}
 		};
+		
 		usernameField.setOnAction(loginHandle);
 		passwordField.setOnAction(loginHandle);
 	}

@@ -1,17 +1,20 @@
 package application;
 
 
-import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
+import java.net.URL;
+import java.util.ResourceBundle;
 
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.stage.Stage;
 import users.Register;
 
-public class SignUpController extends StageChanged {
+public class SignUpController extends StageChanged implements Initializable {
 	
 	@FXML
 	private Label regisStatus;
@@ -27,6 +30,24 @@ public class SignUpController extends StageChanged {
 	
 	@FXML
 	private Button signinButton;
+	
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {
+		EventHandler<ActionEvent> signupHandle = new EventHandler<ActionEvent>() {
+
+			@Override
+			public void handle(ActionEvent event) {
+				try {
+					signup(event);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		};
+		
+		regisUsername.setOnAction(signupHandle);
+		regisPassword.setOnAction(signupHandle);
+	}
 	
 	@FXML
 	public void signup( ActionEvent event ) throws Exception {

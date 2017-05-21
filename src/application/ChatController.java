@@ -2,10 +2,14 @@ package application;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
 import chat.Client;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuItem;
@@ -13,9 +17,8 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
-import javafx.stage.Stage;
 
-public class ChatController extends StageChanged {
+public class ChatController extends StageChanged implements Initializable {
 	
 	@FXML
 	private Button sendButton;
@@ -37,6 +40,23 @@ public class ChatController extends StageChanged {
 	
 	@FXML
 	private TextArea message;
+	
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {
+		EventHandler<ActionEvent> sendHandle = new EventHandler<ActionEvent>() {
+
+			@Override
+			public void handle(ActionEvent event) {
+				try {
+					send(event);
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+		};
+		
+		field.setOnAction(sendHandle);
+	}
 	
 	@FXML
 	public void send(ActionEvent event) throws IOException {
