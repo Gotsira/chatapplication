@@ -23,7 +23,6 @@ public class ChatController extends StageChanged {
 	@FXML
 	private TextField field;
 
-	
 	@FXML
 	private MenuItem sendPhoto;
 	

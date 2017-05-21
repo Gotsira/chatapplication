@@ -4,7 +4,12 @@
 	-fx-border-color: black;
 }
 
-#username {
+#usernameLabel {
+	-fx-font-family: "RaiNgan";
+	-fx-font-size: 20px;
+}
+
+#userStatus {
 	-fx-font-family: "RaiNgan";
 	-fx-font-size: 20px;
 }

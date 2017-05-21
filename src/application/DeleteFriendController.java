@@ -8,19 +8,18 @@ import users.DeleteFriend;
 
 public class DeleteFriendController extends StageChanged {
 	private DeleteFriend deleteFriend;
-	private String username;
 
 	@FXML
 	private TextField friendField;
 
 	@FXML
 	private Label status;
-
+	
 	@FXML
 	public void delete(ActionEvent event) throws Exception {
-		deleteFriend = new DeleteFriend( getUserName(), getFriendName() );
+		deleteFriend = new DeleteFriend( username, getFriendName() );
 		if ( deleteFriend.exist() ) {
-			if ( deleteFriend.check() && !getUserName().equals(getFriendName()) ) {
+			if ( deleteFriend.check() && !username.equals(getFriendName()) ) {
 				deleteFriend.add();
 				status.setText("Completed!");
 			} else if ( getFriendName().isEmpty() ) {
@@ -40,14 +39,6 @@ public class DeleteFriendController extends StageChanged {
 
 	public String getFriendName() {
 		return friendField.getText();
-	}
-
-	public void setUserName(String username) {
-		this.username = username;
-	}
-
-	public String getUserName() {
-		return this.username;
 	}
 
 }
