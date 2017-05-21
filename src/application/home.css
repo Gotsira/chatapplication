@@ -1,7 +1,5 @@
 #homeLabel {
 	-fx-font-family: "Sunrise International Demo";
-	-fx-background-color: black;
-	-fx-border-color: black;
 }
 
 #usernameLabel {
@@ -12,6 +10,10 @@
 #userStatus {
 	-fx-font-family: "RaiNgan";
 	-fx-font-size: 20px;
+}
+
+#top {
+	-fx-background-color: black;
 }
 
 #menu {
