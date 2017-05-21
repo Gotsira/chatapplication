@@ -67,3 +67,7 @@
 	-fx-background-color: rgb(255,213,0);
     -fx-text-fill: black;
 }
+
+#friendList {
+	-fx-font-family: "RaiNgan";
+}

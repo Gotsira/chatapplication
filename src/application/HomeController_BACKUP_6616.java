@@ -24,11 +24,15 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.FileChooser;
 import users.DisplayFriends;
+import users.EditPicture;
 import javafx.stage.FileChooser.ExtensionFilter;
 
 public class HomeController extends StageChanged implements Initializable{
 	
+<<<<<<< HEAD
+=======
 	private DisplayFriends display;
+>>>>>>> benben
 	
 	@FXML
 	private ListView<String> friendList;
@@ -78,13 +82,15 @@ public class HomeController extends StageChanged implements Initializable{
 		setStage("/application/DeleteFriend.fxml", "Messenger Delete Friend" , "adddeletefriend.css");
 	}
 	
-	public void editPicture(ActionEvent event) {
+	public void editPicture(ActionEvent event) throws Exception {
 		FileChooser chooser = new FileChooser();
 		chooser.getExtensionFilters().addAll(new ExtensionFilter( "Image Files", "*.png", "*.jpg" ));
 		File file = chooser.showOpenDialog(null);
+		EditPicture edit = new EditPicture(username, convertImgtoString(file.getAbsolutePath()));
 		if ( file != null ) {
 			Image image = new Image(file.toURI().toString());
 			userPicture.setImage(image);
+			edit.setImage();
 		}
 	}
 	
