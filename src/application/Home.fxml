@@ -81,13 +81,13 @@
          <children>
             <AnchorPane fx:id="top" prefHeight="100.0" prefWidth="500.0">
                <children>
-                  <Label fx:id="username" layoutX="125.0" layoutY="8.0" prefHeight="44.0" prefWidth="251.0" />
-                  <ImageView fx:id="profilePicture" fitHeight="90.0" fitWidth="90.0" layoutX="14.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
+                  <Label fx:id="username" layoutX="123.0" layoutY="14.0" prefHeight="35.0" prefWidth="234.0" />
+                  <ImageView fx:id="userPicture" fitHeight="90.0" fitWidth="90.0" layoutX="14.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../images/175ffe255790108f8c44746c439f845e_users-profile-icon-profile-icon-clipart_500-500.png" />
                      </image>
                   </ImageView>
-                  <Button fx:id="editButton" layoutX="453.0" layoutY="6.0" mnemonicParsing="false" onAction="#editPicture" prefHeight="25.0" prefWidth="18.0">
+                  <Button fx:id="editButton" layoutX="424.0" layoutY="7.0" mnemonicParsing="false" onAction="#editPicture" prefHeight="30.0" prefWidth="69.0" text="Edit">
                      <graphic>
                         <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -96,6 +96,7 @@
                         </ImageView>
                      </graphic>
                   </Button>
+                  <Label fx:id="userStatus" layoutX="125.0" layoutY="50.0" prefHeight="37.0" prefWidth="229.0" />
                </children>
             </AnchorPane>
             <Accordion fx:id="list" prefHeight="350.0" prefWidth="500.0">
