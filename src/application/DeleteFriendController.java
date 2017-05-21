@@ -4,6 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 import users.DeleteFriend;
 
 public class DeleteFriendController extends StageChanged {
@@ -15,6 +16,11 @@ public class DeleteFriendController extends StageChanged {
 
 	@FXML
 	private Label status;
+	
+	@Override
+	public void start(Stage primaryStage) throws Exception {
+		
+	}
 
 	@FXML
 	public void delete(ActionEvent event) throws Exception {
