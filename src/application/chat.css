@@ -1,7 +1,13 @@
 #chatLabel {
 	-fx-font-family: "Sunrise International Demo";
+	-fx-font-size: 35px;
 	-fx-background-color: black;
 	-fx-border-color: black;
+}
+
+#name {
+	-fx-font-family: "RaiNgan";
+	-fx-font-size: 15px;
 }
 
 #menu {

@@ -7,24 +7,20 @@
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.text.Font?>
 
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.ChatController">
+<FlowPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.ChatController">
    <children>
-      <Label fx:id="chatLabel" alignment="CENTER" contentDisplay="RIGHT" prefHeight="75.0" prefWidth="500.0" text="CHAT" textFill="WHITE">
-         <font>
-            <Font name="BebasNeue" size="37.0" />
-         </font>
-      </Label>
-      <Label fx:id="name" prefHeight="60.0" prefWidth="500.0" />
-      <TextArea fx:id="message" editable="false" prefHeight="390.0" prefWidth="500.0" />
+      <Label fx:id="chatLabel" alignment="CENTER" prefHeight="75.0" prefWidth="500.0" text="CHAT" textFill="WHITE" />
+      <Label fx:id="name" alignment="CENTER" prefHeight="50.0" prefWidth="500.0" />
+      <TextArea fx:id="message" editable="false" prefHeight="400.0" prefWidth="500.0" />
       <AnchorPane fx:id="menu" prefHeight="75.0" prefWidth="500.0">
          <children>
-            <TextField fx:id="field" layoutX="69.0" layoutY="15.0" onAction="#send" prefHeight="45.0" prefWidth="346.0" />
-            <Button fx:id="sendButton" layoutX="423.0" layoutY="15.0" mnemonicParsing="false" onAction="#send" prefHeight="45.0" prefWidth="63.0" text="Send" />
-            <MenuButton fx:id="menu" layoutX="6.0" layoutY="15.0" mnemonicParsing="false" popupSide="TOP" prefHeight="45.0" prefWidth="50.0">
+            <TextField fx:id="field" layoutX="67.0" layoutY="15.0" onAction="#send" prefHeight="45.0" prefWidth="346.0" />
+            <Button fx:id="sendButton" layoutX="426.0" layoutY="14.0" mnemonicParsing="false" onAction="#send" prefHeight="45.0" prefWidth="63.0" text="Send" />
+            <MenuButton fx:id="menuButton" layoutX="5.0" layoutY="15.0" mnemonicParsing="false" popupSide="TOP" prefHeight="45.0" prefWidth="50.0">
                <items>
                   <MenuItem fx:id="sendPhoto" mnemonicParsing="false" onAction="#photoChooser" text="Photo" />
                   <MenuItem fx:id="sendVideo" mnemonicParsing="false" onAction="#videoChooser" text="Video" />
@@ -37,4 +33,4 @@
          </children>
       </AnchorPane>
    </children>
-</VBox>
+</FlowPane>
