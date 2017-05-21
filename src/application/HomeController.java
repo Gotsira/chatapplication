@@ -4,26 +4,34 @@ import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.ResourceBundle;
 
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.geometry.Orientation;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.SelectionMode;
+import javafx.scene.control.TitledPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.FileChooser;
 import users.DisplayFriends;
 import javafx.stage.FileChooser.ExtensionFilter;
 
 public class HomeController extends StageChanged implements Initializable{
 	
+	private DisplayFriends display;
+	
 	@FXML
 	private ListView<String> friendList;
-	
-	private DisplayFriends display;
 	
 	@FXML
 	private Label usernameLabel;
@@ -31,15 +39,18 @@ public class HomeController extends StageChanged implements Initializable{
 	@FXML
 	private ImageView userPicture;
 	
+	@FXML
+	private TitledPane freindTitle;
+	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		usernameLabel.setText( username );
-		friendList = new ListView<>();
+		usernameLabel.setText( "USERNAME: " + username );
 		try {
 			display = new DisplayFriends( username );
 			ArrayList<String> list = display.display();
-			friendList.getItems().addAll(list);
-			friendList.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+			freindTitle.setText( "Friends (" + list.size() + ")");
+			ObservableList<String> observerList = FXCollections.<String>observableArrayList( list );
+			friendList.setItems(observerList);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
