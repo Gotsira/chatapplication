@@ -12,35 +12,6 @@
 <?import javafx.scene.text.Font?>
 
 <BorderPane prefHeight="600.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.HomeController">
-   <top>
-      <Label fx:id="homeLabel" alignment="CENTER" contentDisplay="RIGHT" prefHeight="75.0" prefWidth="500.0" text="HOME                                " textFill="WHITE" BorderPane.alignment="CENTER">
-         <font>
-            <Font name="BebasNeue" size="37.0" />
-         </font>
-         <graphic>
-            <MenuButton fx:id="menuBar" ellipsisString="" mnemonicParsing="false">
-               <items>
-                  <MenuItem fx:id="addMenu" mnemonicParsing="false" onAction="#addFreind" text="ADD FRIEND">
-                     <graphic>
-                        <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../images/signup-white.png" />
-                           </image>
-                        </ImageView>
-                     </graphic></MenuItem>
-                  <MenuItem fx:id="deleteMenu" mnemonicParsing="false" onAction="#deleteFriend" text="DELETE FRIEND">
-                     <graphic>
-                        <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../images/delete.png" />
-                           </image>
-                        </ImageView>
-                     </graphic></MenuItem>
-               </items>
-            </MenuButton>
-         </graphic>
-      </Label>
-   </top>
    <bottom>
       <AnchorPane fx:id="menu" prefHeight="75.0" prefWidth="500.0" BorderPane.alignment="CENTER">
          <children>
@@ -77,7 +48,7 @@
    <center>
       <FlowPane prefHeight="200.0" prefWidth="500.0" BorderPane.alignment="CENTER">
          <children>
-            <AnchorPane fx:id="top" prefHeight="100.0" prefWidth="500.0">
+            <AnchorPane prefHeight="100.0" prefWidth="500.0">
                <children>
                   <Label fx:id="usernameLabel" layoutX="123.0" layoutY="14.0" prefHeight="35.0" prefWidth="234.0" />
                   <ImageView fx:id="userPicture" fitHeight="90.0" fitWidth="90.0" layoutX="14.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
@@ -99,4 +70,40 @@
          </children>
       </FlowPane>
    </center>
+   <top>
+      <AnchorPane fx:id="top" prefHeight="75.0" prefWidth="500.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label fx:id="homeLabel" alignment="CENTER" contentDisplay="RIGHT" layoutX="14.0" prefHeight="75.0" prefWidth="104.0" text="HOME                                " textFill="WHITE">
+               <font>
+                  <Font name="BebasNeue" size="37.0" />
+               </font>
+            </Label>
+            <MenuButton fx:id="menuBar" ellipsisString="" layoutX="416.0" layoutY="12.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="70.0">
+               <items>
+                  <MenuItem fx:id="addMenu" mnemonicParsing="false" onAction="#addFreind" text="ADD FRIEND">
+                     <graphic>
+                        <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/signup-white.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </MenuItem>
+                  <MenuItem fx:id="deleteMenu" mnemonicParsing="false" onAction="#deleteFriend" text="DELETE FRIEND">
+                     <graphic>
+                        <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/delete.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </MenuItem>
+               </items>
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </MenuButton>
+         </children>
+      </AnchorPane>
+   </top>
 </BorderPane>

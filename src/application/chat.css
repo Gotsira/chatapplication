@@ -1,8 +1,6 @@
 #chatLabel {
 	-fx-font-family: "Sunrise International Demo";
 	-fx-font-size: 35px;
-	-fx-background-color: black;
-	-fx-border-color: black;
 }
 
 #name {
@@ -12,6 +10,10 @@
 
 #menu {
 	-fx-background-color: rgb(255,213,0);
+}
+
+#top {
+	-fx-background-color: black;
 }
 
 .text-field {

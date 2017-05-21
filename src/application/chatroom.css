@@ -1,7 +1,9 @@
 #chatRoomLabel {
 	-fx-font-family: "Sunrise International Demo";
+}
+
+#top {
 	-fx-background-color: black;
-	-fx-border-color: black;
 }
 
 #menu {
