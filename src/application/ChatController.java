@@ -51,7 +51,14 @@ public class ChatController extends StageChanged {
 		FileChooser chooser = new FileChooser();
 		chooser.getExtensionFilters().addAll(new ExtensionFilter( "Image Files", "*.png", "*.jpg", "*.gif" ));
 		File file = chooser.showOpenDialog(null);
-		if ( file != null ) field.setText( file.getName() );
+		if ( file != null ) {
+			try {
+				client.sendToServer("image " + client.convertImgtoString(file.getName()));
+				message.appendText("Image Sent");
+			} catch (IOException e) {
+				message.appendText("Failed to send image");
+			}
+		}
 	}
 	
 	public void videoChooser(ActionEvent event) {

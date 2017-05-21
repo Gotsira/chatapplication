@@ -23,10 +23,13 @@ public class Client extends AbstractClient {
 
 	@Override
 	protected void handleMessageFromServer(Object msg) {
-		String[] chat = ((String) msg).split(":");
+		String[] chat = ((String) msg).split(" ");
 		String sender = chat[0];
 		String type = chat[1];
-		String data = chat[2];
+		String data = "";
+		for(int i = 2; i < chat.length; i++) {
+			data += chat[i];
+		}
 		if (type.equals("message")) {
 			reciever.displayMessage(data);
 		} else if (type.equals("image")) {
