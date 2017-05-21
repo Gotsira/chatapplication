@@ -28,11 +28,6 @@ public class SignUpController extends StageChanged {
 	@FXML
 	private Button signinButton;
 	
-	@Override
-	public void start(Stage primaryStage) throws Exception {
-
-	}
-	
 	@FXML
 	public void signup( ActionEvent event ) throws Exception {
 		Register regis = new Register( getRegisUsername() , getRegisPassword() );

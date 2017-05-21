@@ -13,8 +13,9 @@ import javafx.scene.Scene;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
-public abstract class StageChanged extends Application {
+public abstract class StageChanged {
 	static Client client = new Client("35.185.184.40", 3014);
+	static String username = null;
 	
 	public void setStage(String resource, String title, String cssFile) {
 		try { 

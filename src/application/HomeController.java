@@ -2,24 +2,27 @@ package application;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.text.Font;
 import javafx.stage.FileChooser;
-import javafx.stage.Stage;
+import users.DisplayFriends;
 import javafx.stage.FileChooser.ExtensionFilter;
 
-public class HomeController extends StageChanged {
+public class HomeController extends StageChanged implements Initializable{
+	
+	private ListView<String> friendList;
+	private DisplayFriends display;
 	
 	@FXML
-	private Label username;
+	private Label usernameLabel;
 	
 	@FXML
 	private ImageView userPicture;
@@ -28,8 +31,14 @@ public class HomeController extends StageChanged {
 	private Label userStatus;
 	
 	@Override
-	public void start(Stage primaryStage) throws Exception {
-
+	public void initialize(URL location, ResourceBundle resources) {
+		usernameLabel.setText( username );
+		friendList = new ListView<>();
+		try {
+			display = new DisplayFriends( username );
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 	
 	@FXML
@@ -46,52 +55,12 @@ public class HomeController extends StageChanged {
 	
 	@FXML
 	public void addFreind( ActionEvent event ) {
-//		setStage("/application/AddFriend.fxml", "Messenger Add Friend" , "adddeletefriend.css");
-		try {
-			Stage stage = new Stage();
-			FXMLLoader loader = new FXMLLoader(getClass().getResource("/application/AddFriend.fxml"));     
-			Parent root = (Parent)loader.load();          
-			AddFriendController add = loader.<AddFriendController>getController();
-			add.setUserName( username.getText() );
-			Scene scene = new Scene(root); 
-			scene.getStylesheets().add( getClass().getResource("adddeletefriend.css").toExternalForm() );
-			Font.loadFont(getClass().getResourceAsStream("/application/fonts/Moon Flower Bold.ttf"), 14);
-			Font.loadFont(getClass().getResourceAsStream("/application/fonts/RaiNgan.ttf"), 14);
-			Font.loadFont(getClass().getResourceAsStream("/application/fonts/Sunrise International Demo.otf"), 14);
-			stage.setResizable( false );
-			stage.setTitle( "Messenger Add Friend" );
-			stage.setScene(scene);
-			stage.show();   
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		setStage("/application/AddFriend.fxml", "Messenger Add Friend" , "adddeletefriend.css");
 	}
 	
 	@FXML
 	public void deleteFriend( ActionEvent event ) {
-//		setStage("/application/DeleteFriend.fxml", "Messenger Delete Friend" , "adddeletefriend.css");
-		try {
-			Stage stage = new Stage();
-			FXMLLoader loader = new FXMLLoader(getClass().getResource("/application/DeleteFriend.fxml"));     
-			Parent root = (Parent)loader.load();
-			DeleteFriendController delete = loader.<DeleteFriendController>getController();
-			delete.setUserName( username.getText() );
-			Scene scene = new Scene(root); 
-			scene.getStylesheets().add( getClass().getResource("adddeletefriend.css").toExternalForm() );
-			Font.loadFont(getClass().getResourceAsStream("/application/fonts/Moon Flower Bold.ttf"), 14);
-			Font.loadFont(getClass().getResourceAsStream("/application/fonts/RaiNgan.ttf"), 14);
-			Font.loadFont(getClass().getResourceAsStream("/application/fonts/Sunrise International Demo.otf"), 14);
-			stage.setResizable( false );
-			stage.setTitle( "Messenger Delete Friend" );
-			stage.setScene(scene);
-			stage.show();   
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-	}
-	
-	public void getUsername( String name ) {
-		username.setText( name );
+		setStage("/application/DeleteFriend.fxml", "Messenger Delete Friend" , "adddeletefriend.css");
 	}
 	
 	public void editPicture(ActionEvent event) {

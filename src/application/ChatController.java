@@ -38,12 +38,6 @@ public class ChatController extends StageChanged {
 	@FXML
 	private TextArea message;
 	
-	@Override
-	public void start(Stage primaryStage) throws Exception {
-		// TODO Auto-generated method stub
-		
-	}
-	
 	@FXML
 	public void send(ActionEvent event) throws IOException {
 		client.sendToServer("message " + field.getText());
