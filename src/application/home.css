@@ -49,3 +49,14 @@
 	-fx-font-family: "Moon Flower Bold";
 	-fx-font-size: 20px;
 }
+
+#profilePicture {
+	-fx-padding: 100;
+}
+
+#editButton {
+	-fx-font-family: "Sunrise International Demo";
+	-fx-font-size: 15px;
+	-fx-background-color: rgb(255,213,0);
+    -fx-text-fill: black;
+}
