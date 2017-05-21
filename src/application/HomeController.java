@@ -22,7 +22,10 @@ public class HomeController extends StageChanged {
 	private Label username;
 	
 	@FXML
-	private ImageView profilePicture = null;
+	private ImageView userPicture;
+	
+	@FXML
+	private Label userStatus;
 	
 	@FXML
 	public void chatRoomAccess( ActionEvent event ) {
@@ -88,11 +91,11 @@ public class HomeController extends StageChanged {
 	
 	public void editPicture(ActionEvent event) {
 		FileChooser chooser = new FileChooser();
-		chooser.getExtensionFilters().addAll(new ExtensionFilter( "Image Files", "*.png", "*.jpg", "*.gif" ));
+		chooser.getExtensionFilters().addAll(new ExtensionFilter( "Image Files", "*.png", "*.jpg" ));
 		File file = chooser.showOpenDialog(null);
 		if ( file != null ) {
 			Image image = new Image(file.toURI().toString());
-			profilePicture.setImage(image);
+			userPicture.setImage(image);
 		}
 	}
 	
