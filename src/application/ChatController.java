@@ -23,7 +23,6 @@ public class ChatController extends StageChanged {
 	@FXML
 	private TextField field;
 
-	
 	@FXML
 	private MenuItem sendPhoto;
 	
@@ -38,6 +37,12 @@ public class ChatController extends StageChanged {
 	
 	@FXML
 	private TextArea message;
+	
+	@Override
+	public void start(Stage primaryStage) throws Exception {
+		// TODO Auto-generated method stub
+		
+	}
 	
 	@FXML
 	public void send(ActionEvent event) throws IOException {

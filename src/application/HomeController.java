@@ -27,6 +27,11 @@ public class HomeController extends StageChanged {
 	@FXML
 	private Label userStatus;
 	
+	@Override
+	public void start(Stage primaryStage) throws Exception {
+
+	}
+	
 	@FXML
 	public void chatRoomAccess( ActionEvent event ) {
 		setStage("/application/ChatRoom.fxml", "Messenger Chat Room", "chatroom.css");

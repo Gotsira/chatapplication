@@ -3,6 +3,7 @@ package application;
 import java.io.IOException;
 
 import chat.Client;
+import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -12,7 +13,7 @@ import javafx.scene.Scene;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
-public abstract class StageChanged {
+public abstract class StageChanged extends Application {
 	static Client client = new Client("35.185.184.40", 3014);
 	
 	public void setStage(String resource, String title, String cssFile) {

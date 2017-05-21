@@ -32,6 +32,11 @@ public class LoginController extends StageChanged {
 	@FXML
 	private Button loginButton;
 	
+	@Override
+	public void start(Stage primaryStage) throws Exception {
+
+	}
+	
 	@FXML
 	public void login( ActionEvent event ) throws Exception {
 		login = new Login( getUsername() , getPassword() );
