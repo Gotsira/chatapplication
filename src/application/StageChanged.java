@@ -1,6 +1,15 @@
 package application;
 
+import java.awt.image.BufferedImage;
+import java.awt.image.DataBufferByte;
+import java.awt.image.WritableRaster;
+import java.io.ByteArrayInputStream;
+import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
+import java.util.Arrays;
+
+import javax.imageio.ImageIO;
 
 import chat.Client;
 import javafx.application.Application;
@@ -13,9 +22,28 @@ import javafx.scene.Scene;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
-public abstract class StageChanged {
+public  class StageChanged {
 	static Client client = new Client("35.185.184.40", 3014);
 	static String username = null;
+	
+	public String convertImgtoString(String filePath) throws IOException {
+		File imgPath = new File(filePath);
+		BufferedImage bufferedImage = ImageIO.read(imgPath);
+		WritableRaster raster = bufferedImage.getRaster();
+		DataBufferByte data = (DataBufferByte) raster.getDataBuffer();
+		String message = Arrays.toString(data.getData());
+		return message;
+	}
+
+	public BufferedImage convertStringtoImg(String image) throws IOException {
+		String[] byteValues = image.substring(1, image.length() - 1).split(",");
+		byte[] imgInByte = new byte[byteValues.length];
+		for (int i = 0; i < byteValues.length; i++) {
+			imgInByte[i] = Byte.parseByte(byteValues[i].trim());
+		}
+		InputStream in = new ByteArrayInputStream(imgInByte);
+		return ImageIO.read(in);
+	}
 	
 	public void setStage(String resource, String title, String cssFile) {
 		try { 
@@ -34,6 +62,11 @@ public abstract class StageChanged {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+	}
+	
+	public static void main(String[] args) throws IOException {
+		StageChanged s = new StageChanged();
+		System.out.println(s.convertImgtoString("C:/Users/USER/Pictures/0.jpg").length());
 	}
 	
 	/**
