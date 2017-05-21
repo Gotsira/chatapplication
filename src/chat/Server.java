@@ -40,7 +40,11 @@ public class Server extends AbstractServer {
 				} 
 			}
 		} else if (type.equals("disconnect")) {
-			
+			try {
+				client.close();
+			} catch (IOException e) {
+				//do nothing
+			}
 		}
 	}
 

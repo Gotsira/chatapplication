@@ -7,12 +7,12 @@ import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
+import java.sql.SQLException;
 import java.util.Arrays;
 
 import javax.imageio.ImageIO;
 
 import chat.Client;
-import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -21,6 +21,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
+import users.GetPicture;
 
 public  class StageChanged {
 	static Client client = new Client("35.185.184.40", 3014);
@@ -36,13 +37,13 @@ public  class StageChanged {
 	}
 
 	public BufferedImage convertStringtoImg(String image) throws IOException {
-		String[] byteValues = image.substring(1, image.length() - 1).split(",");
+		String[] byteValues = image.substring(1, image.length()-1).split(",");
 		byte[] imgInByte = new byte[byteValues.length];
 		for (int i = 0; i < byteValues.length; i++) {
 			imgInByte[i] = Byte.parseByte(byteValues[i].trim());
 		}
-		InputStream in = new ByteArrayInputStream(imgInByte);
-		return ImageIO.read(in);
+		System.out.println(imgInByte);
+		return ImageIO.read(new ByteArrayInputStream(imgInByte));
 	}
 	
 	public void setStage(String resource, String title, String cssFile) {
@@ -64,9 +65,11 @@ public  class StageChanged {
 		}
 	}
 	
-	public static void main(String[] args) throws IOException {
+	public static void main(String[] args) throws Exception {
+		GetPicture p = new GetPicture("got");
 		StageChanged s = new StageChanged();
-		System.out.println(s.convertImgtoString("C:/Users/USER/Pictures/0.jpg").length());
+		String a = s.convertImgtoString("C:/Users/USER/Desktop/New folder (2)/chatapplication/src/cat.jpg");
+		System.out.println(s.convertStringtoImg(a));
 	}
 	
 	/**

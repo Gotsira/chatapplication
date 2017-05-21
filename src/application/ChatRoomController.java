@@ -1,5 +1,7 @@
 package application;
 
+import java.io.IOException;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -20,8 +22,10 @@ public class ChatRoomController extends StageChanged {
 	}
 	
 	@FXML
-	public void logout( ActionEvent event ) {
+	public void logout( ActionEvent event ) throws IOException {
 		setStage("/application/Login.fxml", "Messenger Login" , "login.css");
+		client.sendToServer("disconnect " + username);
+		client.closeConnection();
 		hideWindow(event);
 	}
 	

@@ -11,6 +11,7 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -25,11 +26,13 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.FileChooser;
 import users.DisplayFriends;
 import users.EditPicture;
+import users.GetPicture;
 import javafx.stage.FileChooser.ExtensionFilter;
 
 public class HomeController extends StageChanged implements Initializable{
 	
 	private DisplayFriends display;
+	private GetPicture pic;
 	
 	@FXML
 	private ListView<String> friendList;
@@ -45,7 +48,7 @@ public class HomeController extends StageChanged implements Initializable{
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		usernameLabel.setText( "USERNAME: " + username );
+		usernameLabel.setText( "USERNAME: " + username );		
 		try {
 			display = new DisplayFriends( username );
 			ArrayList<String> list = display.display();
@@ -64,8 +67,10 @@ public class HomeController extends StageChanged implements Initializable{
 	}
 	
 	@FXML
-	public void logout( ActionEvent event ) {
+	public void logout( ActionEvent event ) throws IOException {
 		setStage("/application/Login.fxml", "Messenger Login" , "login.css");
+		client.sendToServer("disconnect " + username);
+		client.closeConnection();
 		hideWindow(event);
 	}
 	
@@ -83,10 +88,10 @@ public class HomeController extends StageChanged implements Initializable{
 		FileChooser chooser = new FileChooser();
 		chooser.getExtensionFilters().addAll(new ExtensionFilter( "Image Files", "*.png", "*.jpg" ));
 		File file = chooser.showOpenDialog(null);
-		EditPicture edit = new EditPicture(username, convertImgtoString(file.getAbsolutePath()));
 		if ( file != null ) {
 			Image image = new Image(file.toURI().toString());
 			userPicture.setImage(image);
+			EditPicture edit = new EditPicture(username, convertImgtoString(file.getAbsolutePath()));
 			edit.setImage();
 		}
 	}
