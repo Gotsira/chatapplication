@@ -81,7 +81,21 @@
          <children>
             <AnchorPane fx:id="top" prefHeight="100.0" prefWidth="500.0">
                <children>
-                  <Label fx:id="username" layoutX="111.0" layoutY="9.0" prefHeight="44.0" prefWidth="218.0" />
+                  <Label fx:id="username" layoutX="125.0" layoutY="8.0" prefHeight="44.0" prefWidth="251.0" />
+                  <ImageView fx:id="profilePicture" fitHeight="90.0" fitWidth="90.0" layoutX="14.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/175ffe255790108f8c44746c439f845e_users-profile-icon-profile-icon-clipart_500-500.png" />
+                     </image>
+                  </ImageView>
+                  <Button fx:id="editButton" layoutX="453.0" layoutY="6.0" mnemonicParsing="false" onAction="#editPicture" prefHeight="25.0" prefWidth="18.0">
+                     <graphic>
+                        <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/edit.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
                </children>
             </AnchorPane>
             <Accordion fx:id="list" prefHeight="350.0" prefWidth="500.0">

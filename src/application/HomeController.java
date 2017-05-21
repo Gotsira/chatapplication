@@ -1,5 +1,6 @@
 package application;
 
+import java.io.File;
 import java.io.IOException;
 
 import javafx.event.ActionEvent;
@@ -8,13 +9,20 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.text.Font;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import javafx.stage.FileChooser.ExtensionFilter;
 
 public class HomeController extends StageChanged {
 	
 	@FXML
 	private Label username;
+	
+	@FXML
+	private ImageView profilePicture = null;
 	
 	@FXML
 	public void chatRoomAccess( ActionEvent event ) {
@@ -76,6 +84,16 @@ public class HomeController extends StageChanged {
 	
 	public void getUsername( String name ) {
 		username.setText( name );
+	}
+	
+	public void editPicture(ActionEvent event) {
+		FileChooser chooser = new FileChooser();
+		chooser.getExtensionFilters().addAll(new ExtensionFilter( "Image Files", "*.png", "*.jpg", "*.gif" ));
+		File file = chooser.showOpenDialog(null);
+		if ( file != null ) {
+			Image image = new Image(file.toURI().toString());
+			profilePicture.setImage(image);
+		}
 	}
 	
 }
