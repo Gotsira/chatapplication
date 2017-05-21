@@ -23,4 +23,9 @@ public class ChatRoomController extends StageChanged {
 		setStage("/application/Login.fxml", "Messenger Login" , "login.css");
 		hideWindow(event);
 	}
+	
+	@FXML
+	public void chat( ActionEvent event ) {
+		setStage("/application/Chat.fxml", "Messenger Chat" , "chat.css");
+	}
 }

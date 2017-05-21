@@ -39,7 +39,6 @@ public class ChatController extends StageChanged {
 	@FXML
 	private TextArea message;
 	
-	
 	@FXML
 	public void send(ActionEvent event) throws IOException {
 		client.sendToServer("message " + field.getText());

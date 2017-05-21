@@ -13,7 +13,7 @@ import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
 public abstract class StageChanged {
-	static Client client = new Client("", 5135);
+	static Client client = new Client("35.185.184.40", 3014);
 	
 	public void setStage(String resource, String title, String cssFile) {
 		try { 

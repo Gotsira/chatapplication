@@ -63,11 +63,14 @@
       </AnchorPane>
    </bottom>
    <center>
-      <TableView prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+      <TableView prefHeight="450.0" prefWidth="261.0" BorderPane.alignment="CENTER">
         <columns>
           <TableColumn fx:id="friend" editable="false" prefWidth="156.0" text="Friend" />
           <TableColumn fx:id="message" prefWidth="343.0" text="Message" />
         </columns>
       </TableView>
    </center>
+   <left>
+      <Button fx:id="chatButton" mnemonicParsing="false" onAction="#chat" text="chat" BorderPane.alignment="CENTER" />
+   </left>
 </BorderPane>
