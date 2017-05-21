@@ -17,7 +17,7 @@ public class AddFriend {
 	}
 
 	public boolean check() throws SQLException {
-		stmt = con.prepareStatement("SELECT `username`, `friendsUser` FROM `friendsList` WHERE `username` = ? AND `friendsUser` = ?");
+		stmt = con.prepareStatement("SELECT `username`, `friendsUser` FROM `FriendsList` WHERE `username` = ? AND `friendsUser` = ?");
 		stmt.setString(1, username);
 		stmt.setString(2, friendUser);
 		result = stmt.executeQuery();
@@ -38,7 +38,7 @@ public class AddFriend {
 	}
 
 	public void add() throws SQLException {
-		stmt = con.prepareStatement("INSERT into friendsList VALUES(?, ?)");
+		stmt = con.prepareStatement("INSERT into FriendsList VALUES(?, ?)");
 		stmt.setString(1, username);
 		stmt.setString(2, friendUser);
 		stmt.executeUpdate();

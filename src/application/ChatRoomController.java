@@ -13,11 +13,6 @@ public class ChatRoomController extends StageChanged {
 	@FXML
 	private Button logoutButton;
 	
-	@Override
-	public void start(Stage primaryStage) throws Exception {
-		
-	}
-	
 	@FXML
 	public void homeAccess( ActionEvent event ) {
 		setStage("/application/Home.fxml", "Messenger Home", "home.css");

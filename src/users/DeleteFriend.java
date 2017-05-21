@@ -18,7 +18,7 @@ public class DeleteFriend {
 
 	public boolean check() throws SQLException {
 		stmt = con.prepareStatement(
-				"SELECT `username`, `friendsUser` FROM `friendsList` WHERE `username` = ? AND `friendsUser` = ?");
+				"SELECT `username`, `friendsUser` FROM `FriendsList` WHERE `username` = ? AND `friendsUser` = ?");
 		stmt.setString(1, username);
 		stmt.setString(2, friendUser);
 		result = stmt.executeQuery();
@@ -39,7 +39,7 @@ public class DeleteFriend {
 	}
 
 	public void add() throws SQLException {
-		stmt = con.prepareStatement("DELETE FROM `friendsList` WHERE `username` = ? AND `friendsUser` = ?");
+		stmt = con.prepareStatement("DELETE FROM `FriendsList` WHERE `username` = ? AND `friendsUser` = ?");
 		stmt.setString(1, username);
 		stmt.setString(2, friendUser);
 		stmt.executeUpdate();

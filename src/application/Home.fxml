@@ -81,10 +81,10 @@
          <children>
             <AnchorPane fx:id="top" prefHeight="100.0" prefWidth="500.0">
                <children>
-                  <Label fx:id="username" layoutX="123.0" layoutY="14.0" prefHeight="35.0" prefWidth="234.0" />
+                  <Label fx:id="usernameLabel" layoutX="123.0" layoutY="14.0" prefHeight="35.0" prefWidth="234.0" />
                   <ImageView fx:id="userPicture" fitHeight="90.0" fitWidth="90.0" layoutX="14.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../images/175ffe255790108f8c44746c439f845e_users-profile-icon-profile-icon-clipart_500-500.png" />
+                        <Image url="@../images/profile-pic.png" />
                      </image>
                   </ImageView>
                   <Button fx:id="editButton" layoutX="424.0" layoutY="7.0" mnemonicParsing="false" onAction="#editPicture" prefHeight="30.0" prefWidth="69.0" text="Edit">
