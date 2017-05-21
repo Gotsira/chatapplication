@@ -28,9 +28,10 @@ public class Register {
 	}
 
 	public void add() throws SQLException {
-		stmt = con.prepareStatement("INSERT into Accounts VALUES(?, ?)");
+		stmt = con.prepareStatement("INSERT into Accounts VALUES(?, ?, ?)");
 		stmt.setString(1, username);
 		stmt.setString(2, password);
+		stmt.setString(3, null);
 		stmt.executeUpdate();
 	}
 }
