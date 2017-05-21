@@ -6,37 +6,45 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
+import com.j256.ormlite.dao.Dao;
+import com.j256.ormlite.dao.DaoManager;
+import com.j256.ormlite.jdbc.JdbcConnectionSource;
+import com.j256.ormlite.support.ConnectionSource;
 import com.mysql.jdbc.ConnectionImpl;
 
 public class DisplayFriends {
 	private String username;
-	private ConnectionImpl con = null;
+	private ConnectionSource con = null;
 	private PreparedStatement stmt = null;
 	private ResultSet result = null;
 	private ArrayList<String> friends = new ArrayList<String>();
+	private Dao<FriendsList, String> friendDao = null;
+	        
 
 	public DisplayFriends(String username) throws Exception {
 		Class.forName("com.mysql.jdbc.Driver").newInstance();
-		con = (ConnectionImpl) DriverManager.getConnection("jdbc:mysql://35.186.149.50:3306/projectdb?useSSL=false", "root", "mysqlpassword");
+		con = new JdbcConnectionSource("jdbc:mysql://35.186.149.50:3306/projectdb?useSSL=false", "root", "mysqlpassword");
+		friendDao = DaoManager.createDao(con, FriendsList.class);
 		this.username = username;
 	}
 	
 	public ArrayList<String> display() throws SQLException {
-		stmt = con.prepareStatement("SELECT `username` FROM `friendsList` WHERE `username` = ?");
-		stmt.setString(1, username);
-		result = stmt.executeQuery();
-		while(result.next()) {
-			friends.add(con.getProperties().get("friendUser") + "");
+		List<FriendsList> list = friendDao.queryForAll();
+		for(int i = 0; i < list.size(); i++) {
+			if(list.get(i).getName().equals(username)) {
+				friends.add(list.get(i).getFriends());
+			}
 		}
 		return friends;
 	}
 	
-	public static void main(String[] args) throws Exception {
-		DisplayFriends d = new DisplayFriends("got");
-		ArrayList<String> l = d.display();
-		for(int i = 0; i < l.size(); i++) {
-			System.out.println(l.get(i));
-		}
-	}
+//	public static void main(String[] args) throws Exception {
+//		DisplayFriends d = new DisplayFriends("got");
+//		ArrayList<String> l = d.display();
+//		for(int i = 0; i < l.size(); i++) {
+//			System.out.println(l.get(i));
+//		}
+//	}
 }
