@@ -57,10 +57,6 @@
 	-fx-font-size: 20px;
 }
 
-#profilePicture {
-	-fx-padding: 100;
-}
-
 #editButton {
 	-fx-font-family: "Sunrise International Demo";
 	-fx-font-size: 15px;
@@ -70,4 +66,8 @@
 
 #friendList {
 	-fx-font-family: "RaiNgan";
+}
+
+#newButton {
+	-fx-font-family: "Sunrise International Demo";
 }

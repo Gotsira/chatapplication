@@ -55,6 +55,7 @@ public class HomeController extends StageChanged implements Initializable{
 			freindTitle.setText( "Friends (" + list.size() + ")");
 			ObservableList<String> observerList = FXCollections.<String>observableArrayList( list );
 			friendList.setItems(observerList);
+			friendList.getSelectionModel().setSelectionMode( SelectionMode.MULTIPLE );
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -94,6 +95,10 @@ public class HomeController extends StageChanged implements Initializable{
 			EditPicture edit = new EditPicture(username, convertImgtoString(file.getAbsolutePath()));
 			edit.setImage();
 		}
+	}
+	
+	public void newChat( ActionEvent event ) {
+		ObservableList<String> freind = friendList.getSelectionModel().getSelectedItems();
 	}
 	
 }
