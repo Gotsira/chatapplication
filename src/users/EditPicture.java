@@ -40,4 +40,8 @@ public class EditPicture {
 		}
 	}
 
+//	public static void main(String[] args) throws Exception {
+//		EditPicture e = new EditPicture("got", null);
+//		e.setImage();
+//	}
 }
