@@ -28,7 +28,7 @@ public class AddFriend {
 	}
 	
 	public boolean exist() throws SQLException {
-		stmt = con.prepareStatement("SELECT `username` FROM `accounts` WHERE `username` = ?");
+		stmt = con.prepareStatement("SELECT `username` FROM `Accounts` WHERE `username` = ?");
 		stmt.setString(1, friendUser);
 		result = stmt.executeQuery();
 		if(result.next()) {

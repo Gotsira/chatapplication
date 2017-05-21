@@ -17,7 +17,7 @@ public class Login {
 	}
 	
 	public boolean matches() throws Exception {
-		stmt = con.prepareStatement("SELECT `username`, `password` FROM `accounts` WHERE `username` = ? AND`password` = ?");
+		stmt = con.prepareStatement("SELECT `username`, `password` FROM `Accounts` WHERE `username` = ? AND`password` = ?");
 		stmt.setString(1, username);
 		stmt.setString(2, password);
 		result = stmt.executeQuery();
