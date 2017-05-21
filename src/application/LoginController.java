@@ -1,7 +1,12 @@
 package application;
 
+import java.net.URL;
+import java.util.ResourceBundle;
+
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
@@ -9,7 +14,7 @@ import javafx.scene.control.TextField;
 import users.Login;
 
 
-public class LoginController extends StageChanged {
+public class LoginController extends StageChanged implements Initializable {
 	private Login login;
 	
 	@FXML
@@ -23,6 +28,22 @@ public class LoginController extends StageChanged {
 	
 	@FXML
 	private Button loginButton;
+	
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {
+		EventHandler<ActionEvent> loginHandle = new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent event) {
+				try {
+					login(event);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		};
+		usernameField.setOnAction(loginHandle);
+		passwordField.setOnAction(loginHandle);
+	}
 	
 	@FXML
 	public void login( ActionEvent event ) throws Exception {

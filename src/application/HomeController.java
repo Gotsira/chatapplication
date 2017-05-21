@@ -3,6 +3,7 @@ package application;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import javafx.event.ActionEvent;
@@ -10,6 +11,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.control.SelectionMode;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
@@ -18,7 +20,9 @@ import javafx.stage.FileChooser.ExtensionFilter;
 
 public class HomeController extends StageChanged implements Initializable{
 	
+	@FXML
 	private ListView<String> friendList;
+	
 	private DisplayFriends display;
 	
 	@FXML
@@ -27,15 +31,15 @@ public class HomeController extends StageChanged implements Initializable{
 	@FXML
 	private ImageView userPicture;
 	
-	@FXML
-	private Label userStatus;
-	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		usernameLabel.setText( username );
 		friendList = new ListView<>();
 		try {
 			display = new DisplayFriends( username );
+			ArrayList<String> list = display.display();
+			friendList.getItems().addAll(list);
+			friendList.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
