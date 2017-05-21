@@ -46,9 +46,10 @@ public class Client extends AbstractClient {
 	public String convertImgtoString(String filePath) throws IOException {
 		File imgPath = new File(filePath);
 		BufferedImage bufferedImage = ImageIO.read(imgPath);
-		WritableRaster raster = bufferedImage.getRaster();
-		DataBufferByte data = (DataBufferByte) raster.getDataBuffer();
-		message = Arrays.toString(data.getData());
+		ByteArrayOutputStream baos = new ByteArrayOutputStream();
+		ImageIO.write(bufferedImage, "png", baos);
+		byte[] imageByteArray = baos.toByteArray();
+		String message = Arrays.toString(imageByteArray);
 		return message;
 	}
 
@@ -58,7 +59,7 @@ public class Client extends AbstractClient {
 		for (int i = 0; i < byteValues.length; i++) {
 			imgInByte[i] = Byte.parseByte(byteValues[i].trim());
 		}
-		InputStream in = new ByteArrayInputStream(imgInByte);
+		ByteArrayInputStream in = new ByteArrayInputStream(imgInByte);
 		return ImageIO.read(in);
 	}
 

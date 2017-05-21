@@ -50,12 +50,15 @@ public class HomeController extends StageChanged implements Initializable{
 	public void initialize(URL location, ResourceBundle resources) {
 		usernameLabel.setText( "USERNAME: " + username );		
 		try {
+			pic = new GetPicture(username);
 			display = new DisplayFriends( username );
 			ArrayList<String> list = display.display();
 			freindTitle.setText( "Friends (" + list.size() + ")");
 			ObservableList<String> observerList = FXCollections.<String>observableArrayList( list );
 			friendList.setItems(observerList);
 			friendList.getSelectionModel().setSelectionMode( SelectionMode.MULTIPLE );
+			Image image = SwingFXUtils.toFXImage(convertStringtoImg(pic.get()), null);
+			userPicture.setImage(image);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
