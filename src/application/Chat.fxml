@@ -33,9 +33,9 @@
       <AnchorPane fx:id="top" prefHeight="125.0" prefWidth="500.0" BorderPane.alignment="CENTER">
          <children>
             <Label fx:id="chatLabel" alignment="CENTER" layoutX="199.0" prefHeight="75.0" prefWidth="102.0" text="CHAT" textFill="WHITE" />
-            <AnchorPane fx:id="namePane" layoutY="79.0" prefHeight="50.0" prefWidth="500.0">
+            <AnchorPane fx:id="namePane" layoutY="68.0" prefHeight="57.0" prefWidth="500.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="68.0">
                <children>
-                  <Label fx:id="name" alignment="CENTER" layoutX="58.0" layoutY="6.0" prefHeight="39.0" prefWidth="418.0" />
+                  <Label fx:id="name" alignment="CENTER" layoutY="6.0" prefHeight="50.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                </children>
             </AnchorPane>
          </children>

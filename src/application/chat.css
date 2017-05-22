@@ -9,7 +9,7 @@
 
 #name {
 	-fx-font-family: "RaiNgan";
-	-fx-font-size: 15px;
+	-fx-font-size: 30px;
 	-fx-background-color: white;
 }
 
@@ -19,6 +19,10 @@
 
 #top {
 	-fx-background-color: black;
+}
+
+.text-area {
+	-fx-font-family: "RaiNgan";
 }
 
 .text-field {

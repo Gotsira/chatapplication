@@ -103,8 +103,8 @@ public class HomeController extends StageChanged implements Initializable {
 			edit.setImage();
 		}
 	}
-
-	public void newChat(ActionEvent event) {
+	
+	public void newChat( ActionEvent event ) throws IOException {
 		ObservableList<String> selected = friendList.getSelectionModel().getSelectedItems();
 		if (!selected.isEmpty()) {
 			friend = selected;
@@ -116,7 +116,7 @@ public class HomeController extends StageChanged implements Initializable {
 			} catch (IOException e) {
 				System.out.println("fail");
 			}
-			chatController.setStage("/application/Chat.fxml", "Messenger Chat", "chat.css");
+			chatController.setStage("/application/Chat.fxml", "Messenger Chat" , "chat.css");
 		}
 	}
 
