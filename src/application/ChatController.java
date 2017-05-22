@@ -69,8 +69,8 @@ public class ChatController extends StageChanged implements Initializable {
 		field.setText("");
 	}
 	
-	public void display(Object message) {
-		System.out.println(message);
+	public void display(Object friendMessage) {
+		message.appendText( friendMessage.toString() + "\n" );
 	}
 
 	public void photoChooser(ActionEvent event) {
