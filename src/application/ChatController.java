@@ -25,8 +25,7 @@ import javafx.stage.FileChooser.ExtensionFilter;
 
 public class ChatController extends StageChanged implements Initializable {
 
-	private String self;
-	private String friend;
+	private String friend = friendUser;
 
 	@FXML
 	private Button sendButton;
@@ -49,14 +48,10 @@ public class ChatController extends StageChanged implements Initializable {
 	@FXML
 	private TextArea message;
 	
-	public ChatController(String self, String friend) {
-		this.self = self;
-		this.friend = friend;
-	}
-
+	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		name.setText( friend.toString().replaceAll("[\\[\\]]", "") );
+		name.setText( friend );
 		EventHandler<ActionEvent> sendHandle = new EventHandler<ActionEvent>() {
 		
 			@Override
@@ -105,13 +100,6 @@ public class ChatController extends StageChanged implements Initializable {
 		if ( file != null ) field.setText( file.getName() );
 	}
 	
-	public String getSelf() {
-		return this.self;
-	}
-	
-	public String getFriend() {
-		return this.friend;
-	}
 	
 	public String getText() {
 		return field.getText();

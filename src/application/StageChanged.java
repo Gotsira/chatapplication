@@ -23,6 +23,7 @@ import javafx.stage.Stage;
 public class StageChanged {
 	static Client client = new Client("35.185.184.40", 3014);
 	static String username = null;
+	static String friendUser = null;
 	static String keep = "";
 	static ObservableList<String> friend = null;
 
