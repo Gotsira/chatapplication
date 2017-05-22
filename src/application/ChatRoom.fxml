@@ -54,9 +54,6 @@
         </columns>
       </TableView>
    </center>
-   <left>
-      <Button fx:id="chatButton" mnemonicParsing="false" onAction="#chat" text="chat" BorderPane.alignment="CENTER" />
-   </left>
    <top>
       <AnchorPane fx:id="top" prefHeight="75.0" prefWidth="500.0" BorderPane.alignment="CENTER">
          <children>

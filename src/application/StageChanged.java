@@ -10,6 +10,7 @@ import java.util.Arrays;
 import javax.imageio.ImageIO;
 
 import chat.Client;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -23,6 +24,7 @@ public class StageChanged {
 	static Client client = new Client("35.185.184.40", 3014, null);
 	static String username = null;
 	static String keep = "";
+	static ObservableList<String> friend = null;
 
 	public String convertImgtoString(String filePath) throws IOException {
 		File imgPath = new File(filePath);
