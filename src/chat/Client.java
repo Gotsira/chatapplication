@@ -2,6 +2,7 @@ package chat;
 
 import java.awt.image.*;
 import java.io.*;
+import java.util.ArrayList;
 import java.util.Arrays;
 
 import javax.imageio.ImageIO;
@@ -15,33 +16,36 @@ public class Client extends AbstractClient {
 	private static final int PORT = 3014;
 	private String message;
 	private BufferedImage image = null;
-	private ChatController chatUI;
+	private ArrayList<ChatController> allChats = new ArrayList<ChatController>();
 
 	public Client(String host, int port) {
 		super(host, port);
-		chatUI = new ChatController();
 	}
-	
+
 	@Override
 	public void handleMessageFromServer(Object msg) {
-		String[] chat = ((String) msg).split(" ");
-		String sender = chat[0];
-		String type = chat[1];
-		String data = "";
-		for (int i = 2; i < chat.length; i++) {
-			data += chat[i];
-		}
-		if (type.equals("message")) {
-			chatUI.display(sender+ ": " + data);
-		} else if (type.equals("image")) {
-			try {
-				image = convertStringtoImg(data);
-				chatUI.display(image);
-			} catch (IOException e) {
-				// do nothing
+		if (msg.getClass() == String.class) {
+			String[] chat = ((String) msg).split(" ");
+			String sender = chat[0];
+			String type = chat[1];
+			String data = "";
+			for (int i = 2; i < chat.length; i++) {
+				data += chat[i];
 			}
-		} else if (type.equals("video")) {
+			if (type.equals("message")) {
+//				chatUI.display(sender + ": " + data);
+			} else if (type.equals("image")) {
+				try {
+					image = convertStringtoImg(data);
+//					chatUI.display(image);
+				} catch (IOException e) {
+					// do nothing
+				}
+			} else if (type.equals("video")) {
 
+			}
+		} else if(msg.getClass() == ChatController.class) {
+			allChats.add((ChatController) msg);
 		}
 	}
 

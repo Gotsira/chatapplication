@@ -8,6 +8,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import chat.Client;
 import javafx.application.Platform;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -21,6 +22,9 @@ import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
 
 public class ChatController extends StageChanged implements Initializable {
+	
+	private String self;
+	private String friend;
 
 	@FXML
 	private Button sendButton;
@@ -42,6 +46,11 @@ public class ChatController extends StageChanged implements Initializable {
 
 	@FXML
 	private TextArea message;
+	
+	public ChatController(String self, String friend) {
+		this.self = self;
+		this.friend = friend;
+	}
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
