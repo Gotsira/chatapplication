@@ -7,32 +7,36 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.DeleteFriendController">
-   <top>
-      <Label fx:id="toplabel" alignment="CENTER" contentDisplay="RIGHT" prefHeight="70.0" prefWidth="400.0" text="DELETE FRIEND" textFill="WHITE" BorderPane.alignment="CENTER">
-         <font>
-            <Font name="BebasNeue" size="37.0" />
-         </font>
-      </Label>
-   </top>
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="250.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.DeleteFriendController">
    <center>
       <AnchorPane BorderPane.alignment="CENTER">
          <children>
-            <Label fx:id="textLabel" contentDisplay="RIGHT" layoutX="19.0" layoutY="14.0" prefHeight="63.0" prefWidth="362.0" text="Enter Friend's Username: ">
+            <Label fx:id="textLabel" contentDisplay="RIGHT" layoutX="19.0" layoutY="7.0" prefHeight="63.0" prefWidth="362.0" text="Enter Friend's Username: ">
                <graphic>
                   <TextField fx:id="friendField" onAction="#delete" prefHeight="37.0" prefWidth="202.0" promptText="Username" />
                </graphic>
             </Label>
-            <Label fx:id="status" alignment="CENTER" layoutX="55.0" layoutY="80.0" prefHeight="45.0" prefWidth="290.0" textFill="RED" />
+            <Label fx:id="status" alignment="CENTER" layoutX="55.0" layoutY="67.0" prefHeight="41.0" prefWidth="283.0" textFill="RED" />
          </children>
       </AnchorPane>
    </center>
    <bottom>
-      <AnchorPane fx:id="bottomPane" prefHeight="77.0" prefWidth="400.0" BorderPane.alignment="CENTER">
+      <AnchorPane fx:id="bottomPane" prefHeight="61.0" prefWidth="400.0" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="deleteButton" layoutX="76.0" layoutY="10.0" mnemonicParsing="false" onAction="#delete" text="DELETE" />
-            <Button fx:id="cancelButton" layoutX="235.0" layoutY="10.0" mnemonicParsing="false" onAction="#cancel" text="CANCEL" />
+            <Button fx:id="deleteButton" layoutX="76.0" layoutY="7.0" mnemonicParsing="false" onAction="#delete" text="DELETE" />
+            <Button fx:id="cancelButton" layoutX="237.0" layoutY="8.0" mnemonicParsing="false" onAction="#cancel" text="CANCEL" />
          </children>
       </AnchorPane>
    </bottom>
+   <top>
+      <AnchorPane fx:id="top" prefHeight="70.0" prefWidth="400.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label fx:id="toplabel" alignment="CENTER" contentDisplay="RIGHT" prefHeight="70.0" prefWidth="400.0" text="DELETE FRIEND" textFill="WHITE">
+               <font>
+                  <Font name="BebasNeue" size="37.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+   </top>
 </BorderPane>
