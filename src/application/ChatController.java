@@ -6,6 +6,8 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.URL;
 import java.util.ResourceBundle;
+
+
 import chat.Client;
 import javafx.application.Platform;
 import javafx.collections.ObservableList;
@@ -22,28 +24,28 @@ import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
 
 public class ChatController extends StageChanged implements Initializable {
-	
+
 	private String self;
 	private String friend;
 
 	@FXML
 	private Button sendButton;
-
+	
 	@FXML
 	private TextField field;
 
 	@FXML
 	private MenuItem sendPhoto;
-
+	
 	@FXML
 	private MenuItem sendVideo;
-
+	
 	@FXML
 	private MenuItem sendContact;
-
+	
 	@FXML
 	private Label name;
-
+	
 	@FXML
 	private TextArea message;
 	
@@ -54,9 +56,9 @@ public class ChatController extends StageChanged implements Initializable {
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		name.setText(friend.toString().replaceAll("[\\[\\]]", ""));
+		name.setText( friend.toString().replaceAll("[\\[\\]]", "") );
 		EventHandler<ActionEvent> sendHandle = new EventHandler<ActionEvent>() {
-
+		
 			@Override
 			public void handle(ActionEvent event) {
 				try {
@@ -66,26 +68,27 @@ public class ChatController extends StageChanged implements Initializable {
 				}
 			}
 		};
-
+		
 		field.setOnAction(sendHandle);
 	}
-
+	
 	@FXML
 	public void send(ActionEvent event) throws IOException {
-		client.sendToServer("message " + name.getText() + " " + getText());
-		message.appendText(getText() + "\n");
+		client.sendToServer("message "+ name.getText() + " " + getText());
+		message.appendText( getText() + "\n" );
 		field.setText("");
 	}
-
+	
 	public void display(Object friendMessage) {
+		message.appendText( friendMessage.toString() + "\n" );
 		System.out.println(friendMessage);
 	}
 
 	public void photoChooser(ActionEvent event) {
 		FileChooser chooser = new FileChooser();
-		chooser.getExtensionFilters().addAll(new ExtensionFilter("Image Files", "*.png", "*.jpg", "*.gif"));
+		chooser.getExtensionFilters().addAll(new ExtensionFilter( "Image Files", "*.png", "*.jpg", "*.gif" ));
 		File file = chooser.showOpenDialog(null);
-		if (file != null) {
+		if ( file != null ) {
 			try {
 				client.sendToServer("image " + client.convertImgtoString(file.getName()));
 				message.appendText("Image Sent");
@@ -94,15 +97,22 @@ public class ChatController extends StageChanged implements Initializable {
 			}
 		}
 	}
-
+	
 	public void videoChooser(ActionEvent event) {
 		FileChooser chooser = new FileChooser();
-		chooser.getExtensionFilters().addAll(new ExtensionFilter("Video Files", "*.mp4"));
+		chooser.getExtensionFilters().addAll(new ExtensionFilter( "Video Files", "*.mp4" ));
 		File file = chooser.showOpenDialog(null);
-		if (file != null)
-			field.setText(file.getName());
+		if ( file != null ) field.setText( file.getName() );
 	}
-
+	
+	public String getSelf() {
+		return this.self;
+	}
+	
+	public String getFriend() {
+		return this.friend;
+	}
+	
 	public String getText() {
 		return field.getText();
 	}

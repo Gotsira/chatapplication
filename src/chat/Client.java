@@ -28,21 +28,26 @@ public class Client extends AbstractClient {
 			String[] chat = ((String) msg).split(" ");
 			String sender = chat[0];
 			String type = chat[1];
+			String reciever = chat[chat.length -1];
 			String data = "";
-			for (int i = 2; i < chat.length; i++) {
+			for (int i = 2; i < chat.length-2; i++) {
 				data += chat[i];
 			}
-			if (type.equals("message")) {
-//				chatUI.display(sender + ": " + data);
-			} else if (type.equals("image")) {
-				try {
-					image = convertStringtoImg(data);
-//					chatUI.display(image);
-				} catch (IOException e) {
-					// do nothing
-				}
-			} else if (type.equals("video")) {
+			for(int i = 0; i < allChats.size(); i++) {
+				if(allChats.get(i).getSelf() == reciever && allChats.get(i).getFriend() == sender) {
+					if (type.equals("message")) {
+						allChats.get(i).display(sender + ": " + data);
+					} else if (type.equals("image")) {
+						try {
+							image = convertStringtoImg(data);
+							allChats.get(i).display(image);
+						} catch (IOException e) {
+							// do nothing
+						}
+					} else if (type.equals("video")) {
 
+					}
+				}
 			}
 		} else if(msg.getClass() == ChatController.class) {
 			allChats.add((ChatController) msg);
