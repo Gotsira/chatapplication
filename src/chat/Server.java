@@ -29,8 +29,10 @@ public class Server extends AbstractServer {
 			for(int i = 2; i < message.length; i++) {
 				data += message[i] + " ";
 			}
+			System.out.println(Arrays.toString(message));
 			for (Thread t : getClientConnections()) {
 				ConnectionToClient c = (ConnectionToClient) t;
+				System.out.println(c.getInfo("name"));
 				if (c.getInfo("name").equals(name)) {
 					try {
 						c.sendToClient(client.getInfo("name") + " " + type + " " + data);
@@ -49,7 +51,7 @@ public class Server extends AbstractServer {
 	}
 
 	public static void main(String[] args) {
-		Server server = new Server(5135);
+		Server server = new Server(3014);
 		try {
 			server.listen();
 		} catch (IOException e) {
