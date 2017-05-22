@@ -21,8 +21,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
 
-public class ChatController extends StageChanged implements Initializable, ChatIF {
-	Thread thread = new Thread(new Accept());
+public class ChatController extends StageChanged implements Initializable {
 	
 	@FXML
 	private Button sendButton;
@@ -47,9 +46,7 @@ public class ChatController extends StageChanged implements Initializable, ChatI
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		client.setClientUI(this);
 		name.setText( friend.toString().replaceAll("[\\[\\]]", "") );
-		thread.start();
 		EventHandler<ActionEvent> sendHandle = new EventHandler<ActionEvent>() {
 		
 			@Override
@@ -72,8 +69,7 @@ public class ChatController extends StageChanged implements Initializable, ChatI
 		field.setText("");
 	}
 	
-	@Override
-	public void display(String message) {
+	public void display(Object message) {
 		System.out.println(message);
 	}
 
@@ -96,36 +92,6 @@ public class ChatController extends StageChanged implements Initializable, ChatI
 		chooser.getExtensionFilters().addAll(new ExtensionFilter( "Video Files", "*.mp4" ));
 		File file = chooser.showOpenDialog(null);
 		if ( file != null ) field.setText( file.getName() );
-	}
-	
-	public static class Accept implements Runnable {
-
-		public void accept() 
-		  {
-		    try
-		    {
-		      BufferedReader fromConsole = 
-		        new BufferedReader(new InputStreamReader(System.in));
-		      String message;
-
-		      while (true) 
-		      {
-		        message = fromConsole.readLine();
-		        client.handleMessageFromServer(message);
-		      }
-		    } 
-		    catch (Exception ex) 
-		    {
-		      System.out.println
-		        ("Unexpected error while reading from console!");
-		    }
-		  }
-		
-		@Override
-		public void run() {
-			accept();
-		}
-		
 	}
 	
 	public String getText() {
