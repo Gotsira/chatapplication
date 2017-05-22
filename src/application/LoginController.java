@@ -54,7 +54,7 @@ public class LoginController extends StageChanged implements Initializable {
 			username = getUsername();
 			client.openConnection();
 			client.sendToServer("connect " + getUsername());
-			setStage("/application/Home.fxml", "title", "home.css");
+			setStage("/application/Home.fxml", "Messenger Home", "home.css");
 			hideWindow(event);
 		}
 		if ( getUsername().isEmpty() || getPassword().isEmpty() ) {
