@@ -3,10 +3,6 @@
 	-fx-font-size: 40px;
 }
 
-#namePane {
-	-fx-background-color: white;
-}
-
 #name {
 	-fx-font-family: "RaiNgan";
 	-fx-font-size: 30px;
@@ -19,10 +15,6 @@
 
 #top {
 	-fx-background-color: black;
-}
-
-.text-area {
-	-fx-font-family: "RaiNgan";
 }
 
 .text-field {
