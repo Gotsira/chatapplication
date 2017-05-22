@@ -7,6 +7,7 @@ import java.io.InputStreamReader;
 import java.net.URL;
 import java.util.ResourceBundle;
 import chat.Client;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -68,7 +69,7 @@ public class ChatController extends StageChanged implements Initializable {
 	}
 
 	public void display(Object friendMessage) {
-		message.appendText(friendMessage.toString() + "\n");
+		System.out.println(friendMessage);
 	}
 
 	public void photoChooser(ActionEvent event) {

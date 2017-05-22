@@ -15,10 +15,11 @@ public class Client extends AbstractClient {
 	private static final int PORT = 3014;
 	private String message;
 	private BufferedImage image = null;
-	private ChatController chatUI = new ChatController();
+	private ChatController chatUI;
 
 	public Client(String host, int port) {
 		super(host, port);
+		chatUI = new ChatController();
 	}
 	
 	@Override
