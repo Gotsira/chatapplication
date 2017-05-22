@@ -1,10 +1,13 @@
 package application;
 
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import chat.ChatIF;
 import chat.Client;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -18,7 +21,8 @@ import javafx.scene.control.TextField;
 import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
 
-public class ChatController extends StageChanged implements Initializable {
+public class ChatController extends StageChanged implements Initializable, ChatIF {
+	Thread thread = new Thread(new Accept());
 	
 	@FXML
 	private Button sendButton;
@@ -43,8 +47,10 @@ public class ChatController extends StageChanged implements Initializable {
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		client.setClientUI(this);
+		thread.start();
 		EventHandler<ActionEvent> sendHandle = new EventHandler<ActionEvent>() {
-
+		
 			@Override
 			public void handle(ActionEvent event) {
 				try {
@@ -63,8 +69,9 @@ public class ChatController extends StageChanged implements Initializable {
 		client.sendToServer("message " + field.getText());
 	}
 	
-	public void displayMessage(String message) {
-		
+	@Override
+	public void display(String message) {
+		System.out.println(message);
 	}
 
 	public void photoChooser(ActionEvent event) {
@@ -86,5 +93,35 @@ public class ChatController extends StageChanged implements Initializable {
 		chooser.getExtensionFilters().addAll(new ExtensionFilter( "Video Files", "*.mp4" ));
 		File file = chooser.showOpenDialog(null);
 		if ( file != null ) field.setText( file.getName() );
+	}
+	
+	public static class Accept implements Runnable {
+
+		public void accept() 
+		  {
+		    try
+		    {
+		      BufferedReader fromConsole = 
+		        new BufferedReader(new InputStreamReader(System.in));
+		      String message;
+
+		      while (true) 
+		      {
+		        message = fromConsole.readLine();
+		        client.handleMessageFromServer(message);
+		      }
+		    } 
+		    catch (Exception ex) 
+		    {
+		      System.out.println
+		        ("Unexpected error while reading from console!");
+		    }
+		  }
+		
+		@Override
+		public void run() {
+			accept();
+		}
+		
 	}
 }

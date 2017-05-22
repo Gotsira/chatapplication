@@ -8,30 +8,33 @@ import javax.imageio.ImageIO;
 
 import com.lloseng.ocsf.client.AbstractClient;
 
-import application.ChatController;
-
 public class Client extends AbstractClient {
 	private String host;
-	private static final int PORT = 5135;
+	private static final int PORT = 3014;
 	private String message;
+	private ChatIF clientUI;
 	private BufferedImage image = null;
-	private ChatController reciever = new ChatController();
 
 	public Client(String host, int port) {
 		super(host, port);
 	}
 
+	public Client(String host, int port, ChatIF clientUI) {
+		super(host, port);
+		this.clientUI = clientUI;
+	}
+
 	@Override
-	protected void handleMessageFromServer(Object msg) {
+	public void handleMessageFromServer(Object msg) {
 		String[] chat = ((String) msg).split(" ");
 		String sender = chat[0];
 		String type = chat[1];
 		String data = "";
-		for(int i = 2; i < chat.length; i++) {
+		for (int i = 2; i < chat.length; i++) {
 			data += chat[i];
 		}
 		if (type.equals("message")) {
-			reciever.displayMessage(data);
+			clientUI.display(data);
 		} else if (type.equals("image")) {
 			try {
 				image = convertStringtoImg(data);
@@ -39,7 +42,13 @@ public class Client extends AbstractClient {
 				// do nothing
 			}
 		} else if (type.equals("video")) {
-			
+
+		}
+	}
+
+	public void setClientUI(ChatIF clientUI) {
+		if (this.clientUI == null) {
+			this.clientUI = clientUI;
 		}
 	}
 

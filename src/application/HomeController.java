@@ -3,26 +3,14 @@ package application;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.ResourceBundle;
+import java.util.*;
 
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
+import javafx.collections.*;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
-import javafx.geometry.Orientation;
-import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
-import javafx.scene.control.SelectionMode;
-import javafx.scene.control.TitledPane;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import javafx.scene.layout.AnchorPane;
+import javafx.fxml.*;
+import javafx.scene.control.*;
+import javafx.scene.image.*;
 import javafx.stage.FileChooser;
 import users.DisplayFriends;
 import users.EditPicture;
@@ -33,6 +21,8 @@ public class HomeController extends StageChanged implements Initializable{
 	
 	private DisplayFriends display;
 	private GetPicture pic;
+	private Image image = null;
+	ArrayList<String> list = null;
 	
 	@FXML
 	private ListView<String> friendList;
@@ -52,11 +42,16 @@ public class HomeController extends StageChanged implements Initializable{
 		try {
 			pic = new GetPicture(username);
 			display = new DisplayFriends( username );
-			ArrayList<String> list = display.display();
+			if(list == null) {
+				list = display.display();				
+			}
 			freindTitle.setText( "Friends (" + list.size() + ")");
 			ObservableList<String> observerList = FXCollections.<String>observableArrayList( list );
 			friendList.setItems(observerList);
 			friendList.getSelectionModel().setSelectionMode( SelectionMode.MULTIPLE );
+			if(image != null) {
+				userPicture.setImage(image);
+			}
 			Image image = SwingFXUtils.toFXImage(convertStringtoImg(pic.get()), null);
 			userPicture.setImage(image);
 		} catch (Exception e) {
