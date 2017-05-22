@@ -3,14 +3,23 @@ package application;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
-import java.util.*;
 
-import javafx.collections.*;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
-import javafx.fxml.*;
-import javafx.scene.control.*;
-import javafx.scene.image.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.ResourceBundle;
+
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
+import javafx.scene.control.SelectionMode;
+import javafx.scene.control.TitledPane;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
 import users.DisplayFriends;
 import users.EditPicture;
@@ -45,6 +54,8 @@ public class HomeController extends StageChanged implements Initializable{
 			if(list == null) {
 				list = display.display();				
 			}
+			ArrayList<String> list = display.display();
+			Collections.sort(list);
 			freindTitle.setText( "Friends (" + list.size() + ")");
 			ObservableList<String> observerList = FXCollections.<String>observableArrayList( list );
 			friendList.setItems(observerList);
