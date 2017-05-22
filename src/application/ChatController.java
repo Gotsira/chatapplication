@@ -48,6 +48,7 @@ public class ChatController extends StageChanged implements Initializable, ChatI
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		client.setClientUI(this);
+		name.setText( friend.toString().replaceAll("[\\[\\]]", "") );
 		thread.start();
 		EventHandler<ActionEvent> sendHandle = new EventHandler<ActionEvent>() {
 		

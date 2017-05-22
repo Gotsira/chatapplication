@@ -29,8 +29,4 @@ public class ChatRoomController extends StageChanged {
 		hideWindow(event);
 	}
 	
-	@FXML
-	public void chat( ActionEvent event ) {
-		setStage("/application/Chat.fxml", "Messenger Chat" , "chat.css");
-	}
 }

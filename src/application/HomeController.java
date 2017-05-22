@@ -54,7 +54,6 @@ public class HomeController extends StageChanged implements Initializable{
 			if(list == null) {
 				list = display.display();				
 			}
-			ArrayList<String> list = display.display();
 			Collections.sort(list);
 			freindTitle.setText( "Friends (" + list.size() + ")");
 			ObservableList<String> observerList = FXCollections.<String>observableArrayList( list );
@@ -107,7 +106,9 @@ public class HomeController extends StageChanged implements Initializable{
 	}
 	
 	public void newChat( ActionEvent event ) {
-		ObservableList<String> freind = friendList.getSelectionModel().getSelectedItems();
+		ObservableList<String> selected = friendList.getSelectionModel().getSelectedItems();
+		friend = selected;
+		setStage("/application/Chat.fxml", "Messenger Chat" , "chat.css");
 	}
 	
 }
