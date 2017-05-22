@@ -9,6 +9,8 @@ import java.util.ResourceBundle;
 
 
 import chat.Client;
+import javafx.application.Platform;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -22,7 +24,10 @@ import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
 
 public class ChatController extends StageChanged implements Initializable {
-	
+
+	private String self;
+	private String friend;
+
 	@FXML
 	private Button sendButton;
 	
@@ -44,6 +49,11 @@ public class ChatController extends StageChanged implements Initializable {
 	@FXML
 	private TextArea message;
 	
+	public ChatController(String self, String friend) {
+		this.self = self;
+		this.friend = friend;
+	}
+
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		name.setText( friend.toString().replaceAll("[\\[\\]]", "") );
@@ -71,6 +81,7 @@ public class ChatController extends StageChanged implements Initializable {
 	
 	public void display(Object friendMessage) {
 		message.appendText( friendMessage.toString() + "\n" );
+		System.out.println(friendMessage);
 	}
 
 	public void photoChooser(ActionEvent event) {
@@ -92,6 +103,14 @@ public class ChatController extends StageChanged implements Initializable {
 		chooser.getExtensionFilters().addAll(new ExtensionFilter( "Video Files", "*.mp4" ));
 		File file = chooser.showOpenDialog(null);
 		if ( file != null ) field.setText( file.getName() );
+	}
+	
+	public String getSelf() {
+		return this.self;
+	}
+	
+	public String getFriend() {
+		return this.friend;
 	}
 	
 	public String getText() {

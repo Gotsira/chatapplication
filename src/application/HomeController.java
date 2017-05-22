@@ -106,8 +106,11 @@ public class HomeController extends StageChanged implements Initializable {
 	
 	public void newChat( ActionEvent event ) {
 		ObservableList<String> selected = friendList.getSelectionModel().getSelectedItems();
-		friend = selected;
-		setStage("/application/Chat.fxml", "Messenger Chat" , "chat.css");
+		if ( !selected.isEmpty() ) {
+			friend = selected;
+			ChatController chatController = new ChatController(username, friend.toString());
+			chatController.setStage("/application/Chat.fxml", "Messenger Chat" , "chat.css");
+		}
 	}
 
 }

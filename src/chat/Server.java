@@ -35,7 +35,7 @@ public class Server extends AbstractServer {
 				System.out.println(c.getInfo("name"));
 				if (c.getInfo("name").equals(name)) {
 					try {
-						c.sendToClient(client.getInfo("name") + " " + type + " " + data);
+						c.sendToClient(client.getInfo("name") + " " + type + " " + data + "to " + name);
 					} catch (IOException e) {
 						//do nothing
 					}
