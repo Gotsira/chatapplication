@@ -14,19 +14,13 @@ public class Client extends AbstractClient {
 	private String host;
 	private static final int PORT = 3014;
 	private String message;
-	private ChatIF clientUI;
 	private BufferedImage image = null;
 	private ChatController chatUI = new ChatController();
 
 	public Client(String host, int port) {
 		super(host, port);
 	}
-
-	public Client(String host, int port, ChatIF clientUI) {
-		super(host, port);
-		this.clientUI = clientUI;
-	}
-
+	
 	@Override
 	public void handleMessageFromServer(Object msg) {
 		String[] chat = ((String) msg).split(" ");
@@ -37,7 +31,7 @@ public class Client extends AbstractClient {
 			data += chat[i];
 		}
 		if (type.equals("message")) {
-			chatUI.display(data);
+			chatUI.display(sender+ ": " + data);
 		} else if (type.equals("image")) {
 			try {
 				image = convertStringtoImg(data);
@@ -47,12 +41,6 @@ public class Client extends AbstractClient {
 			}
 		} else if (type.equals("video")) {
 
-		}
-	}
-
-	public void setClientUI(ChatIF clientUI) {
-		if (this.clientUI == null) {
-			this.clientUI = clientUI;
 		}
 	}
 
