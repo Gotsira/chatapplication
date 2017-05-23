@@ -16,6 +16,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.ProgressIndicator;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
 import javafx.util.Duration;
 import users.Login;
 
@@ -67,8 +68,12 @@ public class LoginController extends StageChanged implements Initializable {
 			username = getUsername();
 			client.openConnection();
 			client.sendToServer("connect " + getUsername());
-			setStage("/application/Home.fxml", "Messenger Home", "home.css");
-			hideWindow(event);
+			try {
+				BorderPane homePane = FXMLLoader.load( getClass().getResource("/application/Home.fxml") );
+				root.getChildren().setAll(homePane);
+			} catch (IOException io) {
+				io.printStackTrace();
+			}
 		}
 		if ( getUsername().isEmpty() || getPassword().isEmpty() ) {
 			status.setText( "Username or password cannot be empty." );
@@ -76,9 +81,9 @@ public class LoginController extends StageChanged implements Initializable {
 	}
 	
 	@FXML
-	public void signup( ActionEvent event ) {
-		setStage("/application/Signup.fxml", "Messenger Sign up", "login.css");
-		hideWindow(event);
+	public void signup( ActionEvent event ) throws IOException {
+		AnchorPane signupPane = FXMLLoader.load( getClass().getResource("/application/Signup.fxml") );
+		root.getChildren().setAll(signupPane);
 	}
 	
 	public String getUsername() {

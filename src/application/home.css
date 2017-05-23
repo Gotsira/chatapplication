@@ -1,5 +1,6 @@
 #homeLabel {
 	-fx-font-family: "Sunrise International Demo";
+	-fx-font-size: 40px;
 }
 
 #usernameLabel {

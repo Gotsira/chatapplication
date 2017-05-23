@@ -12,15 +12,18 @@ public class Main extends Application {
 	public static boolean isWelcome = false;
 
 	@Override
-	public void start( Stage primaryStage ) {
+	public void start( Stage stage ) {
 		try {
 			Parent root = FXMLLoader.load( getClass().getResource("/application/Login.fxml") );
 			Scene scene = new Scene(root);
 			scene.getStylesheets().add( getClass().getResource("login.css").toExternalForm() );
-			primaryStage.setTitle( "Messenger Login" );
-			primaryStage.setScene(scene);
-			primaryStage.setResizable( false );
-			primaryStage.show();
+			scene.getStylesheets().add( getClass().getResource("home.css").toExternalForm() );
+			scene.getStylesheets().add( getClass().getResource("chatroom.css").toExternalForm() );
+			stage.setHeight(625);
+			stage.setWidth(500);
+			stage.setScene(scene);
+			stage.setResizable( false );
+			stage.show();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

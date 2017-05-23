@@ -13,6 +13,7 @@ import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
@@ -20,6 +21,8 @@ import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TitledPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
 import javafx.stage.FileChooser;
 import users.DisplayFriends;
 import users.EditPicture;
@@ -27,12 +30,15 @@ import users.GetPicture;
 import javafx.stage.FileChooser.ExtensionFilter;
 
 public class HomeController extends StageChanged implements Initializable {
-
+	
 	private DisplayFriends display;
 	private GetPicture pic;
 	private Image image = null;
 	ArrayList<String> list = null;
 
+	@FXML
+	private BorderPane root;
+	
 	@FXML
 	private ListView<String> friendList;
 
@@ -72,6 +78,8 @@ public class HomeController extends StageChanged implements Initializable {
 	public void chatRoomAccess(ActionEvent event) {
 		setStage("/application/ChatRoom.fxml", "Messenger Chat Room", "chatroom.css");
 		hideWindow(event);
+//		BorderPane chatRoomPane = FXMLLoader.load( getClass().getResource("/application/ChatRoom.fxml") );
+//		root.getChildren().setAll(chatRoomPane);
 	}
 
 	@FXML

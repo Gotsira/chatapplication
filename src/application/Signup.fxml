@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.SignUpController">
+<AnchorPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.SignUpController">
    <children>
       <Button fx:id="regisButton" layoutX="73.0" layoutY="345.0" mnemonicParsing="false" onAction="#signup" prefHeight="49.0" prefWidth="345.0" text="Register">
          <font>
@@ -48,7 +48,7 @@
             <Font name="Microsoft JhengHei Light" size="15.0" />
          </font>
       </Label>
-      <Label contentDisplay="RIGHT" layoutX="78.0" layoutY="521.0" prefHeight="65.0" prefWidth="345.0" text="Already a member?">
+      <Label contentDisplay="RIGHT" layoutX="78.0" layoutY="511.0" prefHeight="65.0" prefWidth="345.0" text="Already a member?">
          <font>
             <Font name="BebasNeue" size="24.0" />
          </font>
@@ -72,7 +72,7 @@
             <Image url="@../images/logo.png" />
          </image>
       </ImageView>
-      <Label fx:id="regisStatus" alignment="CENTER_RIGHT" layoutX="21.0" layoutY="421.0" onDragDetected="#signup" prefHeight="65.0" prefWidth="449.0" textFill="#c90000">
+      <Label fx:id="regisStatus" alignment="CENTER" layoutX="21.0" layoutY="421.0" onDragDetected="#signup" prefHeight="65.0" prefWidth="449.0" textFill="#c90000">
          <font>
             <Font name="BebasNeue" size="20.0" />
          </font></Label>

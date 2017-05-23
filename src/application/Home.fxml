@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane prefHeight="600.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.HomeController">
+<BorderPane fx:id="root" prefHeight="600.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.HomeController">
    <bottom>
       <AnchorPane fx:id="menu" prefHeight="75.0" prefWidth="500.0" BorderPane.alignment="CENTER">
          <children>
@@ -49,12 +49,12 @@
    <top>
       <AnchorPane fx:id="top" prefHeight="75.0" prefWidth="500.0" BorderPane.alignment="CENTER">
          <children>
-            <Label fx:id="homeLabel" alignment="CENTER" contentDisplay="RIGHT" layoutX="14.0" prefHeight="75.0" prefWidth="104.0" text="HOME                                " textFill="WHITE">
+            <Label fx:id="homeLabel" alignment="CENTER" contentDisplay="RIGHT" layoutY="12.0" prefHeight="50.0" prefWidth="104.0" text="HOME" textFill="WHITE">
                <font>
                   <Font name="BebasNeue" size="37.0" />
                </font>
             </Label>
-            <MenuButton fx:id="menuBar" ellipsisString="" layoutX="416.0" layoutY="12.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="70.0">
+            <MenuButton fx:id="menuBar" alignment="TOP_LEFT" ellipsisString="" layoutX="312.0" layoutY="14.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="45.0">
                <items>
                   <MenuItem fx:id="addMenu" mnemonicParsing="false" onAction="#addFreind" text="ADD FRIEND">
                      <graphic>
@@ -79,6 +79,7 @@
                   <Font size="24.0" />
                </font>
             </MenuButton>
+            <Button fx:id="newButton" layoutX="376.0" layoutY="13.0" mnemonicParsing="false" onAction="#newChat" prefHeight="38.0" prefWidth="110.0" text="NEW CHAT" />
          </children>
       </AnchorPane>
    </top>
@@ -87,13 +88,13 @@
          <children>
             <AnchorPane prefHeight="100.0" prefWidth="500.0">
                <children>
-                  <Label fx:id="usernameLabel" layoutX="132.0" layoutY="14.0" prefHeight="35.0" prefWidth="198.0" />
+                  <Label fx:id="usernameLabel" layoutX="121.0" layoutY="33.0" prefHeight="35.0" prefWidth="310.0" />
                   <ImageView fx:id="userPicture" fitHeight="90.0" fitWidth="90.0" layoutX="14.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../images/profile-pic.png" />
                      </image>
                   </ImageView>
-                  <Button fx:id="editButton" layoutX="84.0" layoutY="56.0" mnemonicParsing="false" onAction="#editPicture" prefHeight="30.0" prefWidth="35.0">
+                  <Button fx:id="editButton" layoutX="447.0" layoutY="12.0" mnemonicParsing="false" onAction="#editPicture" prefHeight="25.0" prefWidth="36.0">
                      <graphic>
                         <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -102,7 +103,6 @@
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button fx:id="newButton" layoutX="376.0" layoutY="22.0" mnemonicParsing="false" onAction="#newChat" prefHeight="54.0" prefWidth="110.0" text="NEW CHAT" />
                </children>
             </AnchorPane>
             <TitledPane fx:id="freindTitle" layoutX="-6.0" layoutY="100.0" prefHeight="350.0" prefWidth="500.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="100.0">
