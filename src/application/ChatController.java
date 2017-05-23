@@ -14,8 +14,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-import javafx.scene.text.Text;
-import javafx.scene.text.TextFlow;
 import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
 
@@ -40,11 +38,6 @@ public class ChatController extends StageChanged implements Initializable {
 
 	@FXML
 	private TextArea message;
-	
-	@FXML
-	private TextFlow messageFlow = new TextFlow();
-	
-	private Text text = new Text();
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -68,16 +61,11 @@ public class ChatController extends StageChanged implements Initializable {
 	@FXML
 	public void send(ActionEvent event) throws IOException {
 		client.sendToServer("message " + name.getText() + " " + getText() + " " + username);
-//		message.appendText(username + ": " + getText() + "\n");
-		text.setText(text.getText() + username + ": " + getText() + "\n");
-		messageFlow.getChildren().addAll(text);
+		message.appendText(username + ": " + getText() + "\n");
 		field.setText("");
 	}
 
 	public void display(Object friendMessage) {
-		System.out.println(friendMessage);
-		text.setText(text.getText() + friendMessage.toString() + "\n");
-		messageFlow.getChildren().addAll(text);
 		message.appendText(friendMessage.toString() + "\n");
 	}
 
