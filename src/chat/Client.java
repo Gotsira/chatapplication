@@ -1,5 +1,6 @@
 package chat;
 
+import java.awt.Image;
 import java.awt.image.*;
 import java.io.*;
 import java.util.ArrayList;
@@ -27,43 +28,32 @@ public class Client extends AbstractClient {
 
 		String[] chat = ((String) msg).split(" ");
 		String sender = chat[0];
-
+		String type = chat[1];
 		String data = "";
-		for (int i = 2; i < chat.length - 2; i++) {
-			data += chat[i];
+		if (type.equals("message")) {
+			for (int i = 2; i < chat.length; i++) {
+				data += chat[i];
+			}
 		}
-		
-		for(ChatController chatUI : allChats) {
-			if(sender.equals(chatUI.getFriend())){
-				//senderChat = chatUI;
+
+		for (ChatController chatUI : allChats) {
+			if (sender.equals(chatUI.getFriend())) {
 				chatUI.display(data);
 			}
 		}
-		
+
 	}
-	
+
 	public void addChat(ChatController chat) {
 		allChats.add(chat);
 	}
 
-	public String convertImgtoString(String filePath) throws IOException {
-		File imgPath = new File(filePath);
-		BufferedImage bufferedImage = ImageIO.read(imgPath);
-		ByteArrayOutputStream baos = new ByteArrayOutputStream();
-		ImageIO.write(bufferedImage, "png", baos);
-		byte[] imageByteArray = baos.toByteArray();
-		String message = Arrays.toString(imageByteArray);
-		return message;
-	}
-
-	public BufferedImage convertStringtoImg(String image) throws IOException {
-		String[] byteValues = image.substring(1, image.length() - 1).split(",");
-		byte[] imgInByte = new byte[byteValues.length];
-		for (int i = 0; i < byteValues.length; i++) {
-			imgInByte[i] = Byte.parseByte(byteValues[i].trim());
+	public void deleteChat(String friend) {
+		for(ChatController chat : allChats) {
+			if(chat.getFriend() == friend) {
+				allChats.remove(chat);
+			}
 		}
-		ByteArrayInputStream in = new ByteArrayInputStream(imgInByte);
-		return ImageIO.read(in);
 	}
 
 }

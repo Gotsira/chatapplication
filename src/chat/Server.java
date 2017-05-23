@@ -1,18 +1,14 @@
 package chat;
 
 import java.io.IOException;
-import java.net.*;
 import java.util.*;
-
-import javax.imageio.ImageIO;
 
 import com.lloseng.ocsf.server.AbstractServer;
 import com.lloseng.ocsf.server.ConnectionToClient;
 
-import application.ChatController;
 
 public class Server extends AbstractServer {
-	final private static int DEFAULT_PORT = 135;
+	final private static int DEFAULT_PORT = 3014;
 
 	public Server(int port) {
 		super(port);
@@ -37,7 +33,7 @@ public class Server extends AbstractServer {
 				System.out.println(c.getInfo("name"));
 				if (c.getInfo("name").equals(name)) {
 					try {
-						c.sendToClient(client.getInfo("name") + " " + type + " " + data + "to " + name);
+						c.sendToClient(client.getInfo("name") + " " + type + " " + data);
 					} catch (IOException e) {
 						// do nothing
 					}
