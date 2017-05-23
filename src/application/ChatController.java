@@ -44,7 +44,7 @@ public class ChatController extends StageChanged implements Initializable {
 	@FXML
 	private TextFlow messageFlow = new TextFlow();
 	
-	private Text text;
+	private Text text = new Text();
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -69,15 +69,15 @@ public class ChatController extends StageChanged implements Initializable {
 	public void send(ActionEvent event) throws IOException {
 		client.sendToServer("message " + name.getText() + " " + getText() + " " + username);
 //		message.appendText(username + ": " + getText() + "\n");
-		text = new Text(username + ": " + getText() + "\n");
-		messageFlow.getChildren().add(text);
+		text.setText(text.getText() + username + ": " + getText() + "\n");
+		messageFlow.getChildren().addAll(text);
 		field.setText("");
 	}
 
 	public void display(Object friendMessage) {
 		System.out.println(friendMessage);
-		text.setText(friendMessage.toString() + "\n");
-		messageFlow.getChildren().add(text);
+		text.setText(text.getText() + friendMessage.toString() + "\n");
+		messageFlow.getChildren().addAll(text);
 		message.appendText(friendMessage.toString() + "\n");
 	}
 
