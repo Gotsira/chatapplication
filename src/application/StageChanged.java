@@ -38,7 +38,7 @@ public class StageChanged {
 		return message;
 	}
 
-	public BufferedImage convertStringtoImg(String image) throws IOException {
+	public BufferedImage convertStringtoImg(String image) {
 		if (image == null) {
 			return null;
 		}
@@ -48,7 +48,12 @@ public class StageChanged {
 			imgInByte[i] = Byte.parseByte(byteValues[i].trim());
 		}
 		ByteArrayInputStream ms = new ByteArrayInputStream(imgInByte);
-		return ImageIO.read(ms);
+		try {
+			return ImageIO.read(ms);
+		} catch (IOException e) {
+			// do nothing
+		}
+		return null;
 	}
 
 	public void setStage(String resource, String title, String cssFile) {

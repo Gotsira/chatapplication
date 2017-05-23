@@ -68,6 +68,7 @@ public class ChatController extends StageChanged implements Initializable {
 	}
 
 	public void display(Object friendMessage) {
+		System.out.println(friendMessage);
 		Text text = new Text( friendMessage.toString() + "\n" );
 		message.getChildren().add(text);
 	}
