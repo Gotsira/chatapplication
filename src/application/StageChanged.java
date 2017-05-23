@@ -2,10 +2,7 @@ package application;
 
 import java.awt.Image;
 import java.awt.image.BufferedImage;
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
 import java.util.Arrays;
 
 import javax.imageio.ImageIO;
@@ -13,12 +10,8 @@ import javax.imageio.ImageIO;
 import chat.Client;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.text.Font;
+import javafx.fxml.*;
+import javafx.scene.*;
 import javafx.stage.Stage;
 
 public class StageChanged {
@@ -73,15 +66,7 @@ public class StageChanged {
 			e.printStackTrace();
 		}
 	}
-
-	// public static void main(String[] args) throws Exception {
-	// GetPicture p = new GetPicture("got");
-	// StageChanged s = new StageChanged();
-	// String a = s.convertImgtoString("C:/Users/USER/Desktop/New folder
-	// (2)/chatapplication/src/cat.jpg");
-	// System.out.println(s.convertStringtoImg(p.get()));
-	// }
-
+	
 	/**
 	 * Hide current page.
 	 * 

@@ -19,7 +19,7 @@ import javafx.stage.FileChooser.ExtensionFilter;
 
 public class ChatController extends StageChanged implements Initializable {
 
-	private String friend;
+	private String friend = friendUser;
 
 	@FXML
 	private Button sendButton;
@@ -41,10 +41,6 @@ public class ChatController extends StageChanged implements Initializable {
 
 	@FXML
 	private TextArea message;
-
-	public ChatController() {
-		this.friend = friendUser;
-	}
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
