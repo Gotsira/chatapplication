@@ -75,10 +75,14 @@ public class HomeController extends StageChanged implements Initializable {
 	}
 
 	@FXML
-	public void logout(ActionEvent event) throws IOException {
+	public void logout(ActionEvent event) {
 		setStage("/application/Login.fxml", "Messenger Login", "login.css");
-		client.sendToServer("disconnect " + username);
-		client.closeConnection();
+		try {
+			client.sendToServer("disconnect " + username);
+			client.closeConnection();
+		} catch (IOException e) {
+			// do nothing
+		}
 		hideWindow(event);
 	}
 
@@ -92,19 +96,25 @@ public class HomeController extends StageChanged implements Initializable {
 		setStage("/application/DeleteFriend.fxml", "Messenger Delete Friend", "adddeletefriend.css");
 	}
 
-	public void editPicture(ActionEvent event) throws Exception {
+	public void editPicture(ActionEvent event) {
 		FileChooser chooser = new FileChooser();
 		chooser.getExtensionFilters().addAll(new ExtensionFilter("Image Files", "*.png", "*.jpg"));
 		File file = chooser.showOpenDialog(null);
 		if (file != null) {
 			Image image = new Image(file.toURI().toString());
 			userPicture.setImage(image);
-			EditPicture edit = new EditPicture(username, convertImgtoString(file.getAbsolutePath()));
-			edit.setImage();
+			EditPicture edit;
+			try {
+				edit = new EditPicture(username, convertImgtoString(file.getAbsolutePath()));
+				edit.setImage();
+			} catch (Exception e) {
+				// do nothing
+			}
+			
 		}
 	}
 
-	public void newChat(ActionEvent event) throws IOException {
+	public void newChat(ActionEvent event) {
 		ObservableList<String> selected = friendList.getSelectionModel().getSelectedItems();
 		if (!selected.isEmpty()) {
 			friend = selected;

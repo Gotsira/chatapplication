@@ -25,18 +25,18 @@ public class Client extends AbstractClient {
 		String sender = chat[0];
 		String type = chat[1];
 		String data = "";
-		if (type.equals("message")) {
-			for (int i = 2; i < chat.length; i++) {
-				data += chat[i];
-			}
+		for (int i = 2; i < chat.length; i++) {
+			data += chat[i] + " ";
 		}
-
 		for (ChatController chatUI : allChats) {
 			if (sender.equals(chatUI.getFriend())) {
-				chatUI.display(sender + ": " + data);
+				if (type.equals("message")) {
+					chatUI.display(sender + ": " + data);
+				} else if(type.equals("offline")) {
+					chatUI.display(sender + " " + data);
+				}
 			}
 		}
-
 	}
 
 	public void addChat(ChatController chat) {
