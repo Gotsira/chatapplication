@@ -16,7 +16,6 @@ public class Client extends AbstractClient {
 	private static final int PORT = 3014;
 	private String message;
 	private BufferedImage image = null;
-	private ChatController c = new ChatController();
 	private ArrayList<ChatController> allChats = new ArrayList<ChatController>();
 
 	public Client(String host, int port) {
@@ -25,27 +24,26 @@ public class Client extends AbstractClient {
 
 	@Override
 	public void handleMessageFromServer(Object msg) {
+
 		String[] chat = ((String) msg).split(" ");
 		String sender = chat[0];
-		String type = chat[1];
-		String reciever = chat[chat.length - 1];
+
 		String data = "";
 		for (int i = 2; i < chat.length - 2; i++) {
 			data += chat[i];
 		}
-
-		if (type.equals("message")) {
-			c.display(sender + ": " + data);
-		} else if (type.equals("image")) {
-			try {
-				image = convertStringtoImg(data);
-				c.display(image);
-			} catch (IOException e) {
-				// do nothing
+		
+		for(ChatController chatUI : allChats) {
+			if(sender.equals(chatUI.getFriend())){
+				//senderChat = chatUI;
+				chatUI.display(data);
 			}
-		} else if (type.equals("video")) {
-
 		}
+		
+	}
+	
+	public void addChat(ChatController chat) {
+		allChats.add(chat);
 	}
 
 	public String convertImgtoString(String filePath) throws IOException {
