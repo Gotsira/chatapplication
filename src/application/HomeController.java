@@ -30,7 +30,7 @@ import users.GetPicture;
 import javafx.stage.FileChooser.ExtensionFilter;
 
 public class HomeController extends StageChanged implements Initializable {
-	
+
 	private DisplayFriends display;
 	private GetPicture pic;
 	private Image image = null;
@@ -38,7 +38,7 @@ public class HomeController extends StageChanged implements Initializable {
 
 	@FXML
 	private BorderPane root;
-	
+
 	@FXML
 	private ListView<String> friendList;
 
@@ -78,8 +78,9 @@ public class HomeController extends StageChanged implements Initializable {
 	public void chatRoomAccess(ActionEvent event) {
 		setStage("/application/ChatRoom.fxml", "Messenger Chat Room", "chatroom.css");
 		hideWindow(event);
-//		BorderPane chatRoomPane = FXMLLoader.load( getClass().getResource("/application/ChatRoom.fxml") );
-//		root.getChildren().setAll(chatRoomPane);
+		// BorderPane chatRoomPane = FXMLLoader.load(
+		// getClass().getResource("/application/ChatRoom.fxml") );
+		// root.getChildren().setAll(chatRoomPane);
 	}
 
 	@FXML
@@ -111,13 +112,13 @@ public class HomeController extends StageChanged implements Initializable {
 			edit.setImage();
 		}
 	}
-	
-	public void newChat( ActionEvent event ) throws IOException {
+
+	public void newChat(ActionEvent event) throws IOException {
 		ObservableList<String> selected = friendList.getSelectionModel().getSelectedItems();
 		if (!selected.isEmpty()) {
 			friend = selected;
 			friendUser = friend.toString().substring(1, friend.toString().length() - 1);
-			setStage("/application/Chat.fxml", "Messenger Chat" , "chat.css");
+			setStage("/application/Chat.fxml", "Messenger Chat", "chat.css");
 		}
 	}
 
