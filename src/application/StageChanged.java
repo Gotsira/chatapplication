@@ -57,9 +57,6 @@ public class StageChanged {
 			Parent root = (Parent) loader.load();
 			Scene scene = new Scene(root);
 			scene.getStylesheets().add(getClass().getResource(cssFile).toExternalForm());
-			Font.loadFont(getClass().getResourceAsStream("/application/fonts/Moon Flower Bold.ttf"), 14);
-			Font.loadFont(getClass().getResourceAsStream("/application/fonts/RaiNgan.ttf"), 14);
-			Font.loadFont(getClass().getResourceAsStream("/application/fonts/Sunrise International Demo.otf"), 14);
 			stage.setResizable(false);
 			stage.setTitle(title);
 			stage.setScene(scene);
