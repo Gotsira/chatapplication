@@ -1,12 +1,7 @@
 package chat;
 
-import java.awt.Image;
 import java.awt.image.*;
-import java.io.*;
 import java.util.ArrayList;
-import java.util.Arrays;
-
-import javax.imageio.ImageIO;
 
 import com.lloseng.ocsf.client.AbstractClient;
 
@@ -54,6 +49,14 @@ public class Client extends AbstractClient {
 				allChats.remove(chat);
 			}
 		}
+	}
+	
+	public ArrayList<String> names() {
+		ArrayList<String> users = new ArrayList<String>();
+		for(ChatController chat : allChats) {
+			users.add(chat.getFriend());
+		}
+		return users;
 	}
 
 }
