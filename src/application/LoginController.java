@@ -68,12 +68,8 @@ public class LoginController extends StageChanged implements Initializable {
 			username = getUsername();
 			client.openConnection();
 			client.sendToServer("connect " + getUsername());
-			try {
-				BorderPane homePane = FXMLLoader.load( getClass().getResource("/application/Home.fxml") );
-				root.getChildren().setAll(homePane);
-			} catch (IOException io) {
-				io.printStackTrace();
-			}
+			setStage("/application/Home.fxml", "Messenger Home", "home.css");
+			hideWindow(event);
 		}
 		if ( getUsername().isEmpty() || getPassword().isEmpty() ) {
 			status.setText( "Username or password cannot be empty." );
