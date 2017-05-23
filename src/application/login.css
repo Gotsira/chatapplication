@@ -22,8 +22,19 @@
     -fx-highlight-fill: rgb(255,213,0);
 }
 
+#welcomePane {
+	-fx-background-color: rgb(255,213,0);
+}
+
 #welcomeLabel {
 	-fx-font-family: "Sunrise International Demo";
     -fx-font-size: 100px;
-    -fx-text-fill: rgb(255,213,0);
+    -fx-text-fill: white;
+}
+
+#toLabel {
+	-fx-font-family: "Sunrise International Demo";
+    -fx-font-size: 50px;
+    -fx-text-fill: white;
+
 }

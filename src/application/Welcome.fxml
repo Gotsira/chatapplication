@@ -4,13 +4,13 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane fx:id="welcomePane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Label fx:id="welcomeLabel" layoutX="114.0" layoutY="214.0" prefHeight="123.0" prefWidth="273.0" text="WELCOME">
+      <Label fx:id="welcomeLabel" layoutX="114.0" layoutY="192.0" prefHeight="123.0" prefWidth="273.0" text="WELCOME">
          <font>
             <Font size="64.0" />
          </font>
       </Label>
+      <Label fx:id="toLabel" layoutX="92.0" layoutY="284.0" text="TO CHAT APPLICATION" />
    </children>
 </AnchorPane>
