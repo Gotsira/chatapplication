@@ -33,7 +33,7 @@ public class Client extends AbstractClient {
 
 		for (ChatController chatUI : allChats) {
 			if (sender.equals(chatUI.getFriend())) {
-				chatUI.display(data);
+				chatUI.display(sender + ": " + data);
 			}
 		}
 
@@ -44,16 +44,16 @@ public class Client extends AbstractClient {
 	}
 
 	public void deleteChat(String friend) {
-		for(ChatController chat : allChats) {
-			if(chat.getFriend() == friend) {
+		for (ChatController chat : allChats) {
+			if (chat.getFriend() == friend) {
 				allChats.remove(chat);
 			}
 		}
 	}
-	
+
 	public ArrayList<String> names() {
 		ArrayList<String> users = new ArrayList<String>();
-		for(ChatController chat : allChats) {
+		for (ChatController chat : allChats) {
 			users.add(chat.getFriend());
 		}
 		return users;
