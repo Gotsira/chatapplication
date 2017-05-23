@@ -61,7 +61,7 @@ public class ChatController extends StageChanged implements Initializable {
 	@FXML
 	public void send(ActionEvent event) throws IOException {
 		client.sendToServer("message " + name.getText() + " " + getText());
-		message.appendText(getText() + "\n");
+		message.appendText(username + ": " + getText() + "\n");
 		field.setText("");
 	}
 
