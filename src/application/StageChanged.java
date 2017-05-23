@@ -1,5 +1,6 @@
 package application;
 
+import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -27,13 +28,20 @@ public class StageChanged {
 	static String keep = "";
 	static ObservableList<String> friend = null;
 
-	public String convertImgtoString(String filePath) throws IOException {
+	public String convertImgtoString(String filePath) {
 		File imgPath = new File(filePath);
-		BufferedImage bufferedImage = ImageIO.read(imgPath);
-		ByteArrayOutputStream baos = new ByteArrayOutputStream();
-		ImageIO.write(bufferedImage, "png", baos);
-		byte[] imageByteArray = baos.toByteArray();
-		String message = Arrays.toString(imageByteArray);
+		BufferedImage bufferedImage;
+		String message = null;
+		try {
+			bufferedImage = ImageIO.read(imgPath);
+			bufferedImage.getScaledInstance(5, 5, Image.SCALE_FAST);
+			ByteArrayOutputStream baos = new ByteArrayOutputStream();
+			ImageIO.write(bufferedImage, "png", baos);
+			byte[] imageByteArray = baos.toByteArray();
+			message = Arrays.toString(imageByteArray);
+		} catch (IOException e) {
+			// do nothing
+		}
 		return message;
 	}
 
