@@ -37,9 +37,6 @@ public class HomeController extends StageChanged implements Initializable {
 	ArrayList<String> list = null;
 
 	@FXML
-	private BorderPane root;
-
-	@FXML
 	private ListView<String> friendList;
 
 	@FXML
@@ -78,9 +75,6 @@ public class HomeController extends StageChanged implements Initializable {
 	public void chatRoomAccess(ActionEvent event) {
 		setStage("/application/ChatRoom.fxml", "Messenger Chat Room", "chatroom.css");
 		hideWindow(event);
-		// BorderPane chatRoomPane = FXMLLoader.load(
-		// getClass().getResource("/application/ChatRoom.fxml") );
-		// root.getChildren().setAll(chatRoomPane);
 	}
 
 	@FXML

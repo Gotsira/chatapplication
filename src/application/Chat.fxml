@@ -4,11 +4,11 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.TextFlow?>
 
 <BorderPane prefHeight="600.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.ChatController">
    <bottom>
@@ -19,7 +19,6 @@
             <MenuButton fx:id="menuButton" layoutX="5.0" layoutY="15.0" mnemonicParsing="false" popupSide="TOP" prefHeight="45.0" prefWidth="50.0">
                <items>
                   <MenuItem fx:id="sendPhoto" mnemonicParsing="false" onAction="#photoChooser" text="Photo" />
-                  <MenuItem fx:id="sendVideo" mnemonicParsing="false" onAction="#videoChooser" text="Video" />
                   <MenuItem fx:id="sendContact" mnemonicParsing="false" text="Contact" />
                </items>
                <font>
@@ -42,6 +41,6 @@
       </AnchorPane>
    </top>
    <center>
-      <TextArea fx:id="message" editable="false" prefHeight="400.0" prefWidth="500.0" BorderPane.alignment="CENTER" />
+      <TextFlow fx:id="message" prefHeight="400.0" prefWidth="500.0" BorderPane.alignment="CENTER" />
    </center>
 </BorderPane>

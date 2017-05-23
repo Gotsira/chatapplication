@@ -12,8 +12,9 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuItem;
-import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.text.Text;
+import javafx.scene.text.TextFlow;
 import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
 
@@ -29,10 +30,7 @@ public class ChatController extends StageChanged implements Initializable {
 
 	@FXML
 	private MenuItem sendPhoto;
-
-	@FXML
-	private MenuItem sendVideo;
-
+	
 	@FXML
 	private MenuItem sendContact;
 
@@ -40,7 +38,7 @@ public class ChatController extends StageChanged implements Initializable {
 	private Label name;
 
 	@FXML
-	private TextArea message;
+	private TextFlow message;
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -64,12 +62,14 @@ public class ChatController extends StageChanged implements Initializable {
 	@FXML
 	public void send(ActionEvent event) throws IOException {
 		client.sendToServer("message " + name.getText() + " " + getText());
-		message.appendText(getText() + "\n");
+		Text text = new Text( getText() + "\n" );
+		message.getChildren().add(text);
 		field.setText("");
 	}
 
 	public void display(Object friendMessage) {
-		message.appendText(friendMessage.toString() + "\n");
+		Text text = new Text( friendMessage.toString() + "\n" );
+		message.getChildren().add(text);
 	}
 
 	public void photoChooser(ActionEvent event) {
@@ -79,9 +79,11 @@ public class ChatController extends StageChanged implements Initializable {
 		if (file != null) {
 			try {
 				client.sendToServer("image " + convertImgtoString(file.getName()));
-				message.appendText("Image Sent");
+				Text text = new Text( "Image Sent" );
+				message.getChildren().add(text);
 			} catch (IOException e) {
-				message.appendText("Failed to send image");
+				Text text = new Text( "Failed to send image" );
+				message.getChildren().add(text);
 			}
 		}
 	}
