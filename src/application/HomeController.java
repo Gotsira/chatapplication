@@ -66,12 +66,6 @@ public class HomeController extends StageChanged implements Initializable {
 	}
 
 	@FXML
-	public void chatRoomAccess(ActionEvent event) {
-		setStage("/application/ChatRoom.fxml", "Messenger Chat Room", "chatroom.css");
-		hideWindow(event);
-	}
-
-	@FXML
 	public void logout(ActionEvent event) {
 		setStage("/application/Login.fxml", "Messenger Login", "login.css");
 		try {

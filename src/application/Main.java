@@ -17,7 +17,6 @@ public class Main extends Application {
 			Scene scene = new Scene(root);
 			scene.getStylesheets().add( getClass().getResource("login.css").toExternalForm() );
 			scene.getStylesheets().add( getClass().getResource("home.css").toExternalForm() );
-			scene.getStylesheets().add( getClass().getResource("chatroom.css").toExternalForm() );
 			stage.setHeight(625);
 			stage.setWidth(500);
 			stage.setScene(scene);
