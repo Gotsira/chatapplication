@@ -22,17 +22,11 @@ import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TitledPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.paint.Paint;
-import javafx.scene.web.WebView;
 import javafx.stage.FileChooser;
 import users.DisplayFriends;
 import users.EditPicture;
 import users.GetPicture;
 import javafx.stage.FileChooser.ExtensionFilter;
-import javafx.util.Duration;
-import tray.animations.AnimationType;
-import tray.notification.NotificationType;
-import tray.notification.TrayNotification;
 
 public class HomeController extends StageChanged implements Initializable {
 
@@ -53,9 +47,6 @@ public class HomeController extends StageChanged implements Initializable {
 
 	@FXML
 	private TitledPane freindTitle;
-	
-	@FXML
-	private WebView webView;
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -78,8 +69,8 @@ public class HomeController extends StageChanged implements Initializable {
 		};
 		new Thread(task).start();
 		refreshFreind();
-//		notifyOpen();
 		homeController = this;
+		
 	}
 
 	@FXML
@@ -168,16 +159,5 @@ public class HomeController extends StageChanged implements Initializable {
 
 		new Thread(task).start();
 		
-	}
-	
-	public void notifyOpen() {
-		NotificationType type = NotificationType.SUCCESS;
-		TrayNotification tray = new TrayNotification();
-		tray.setTitle("Hey");
-		tray.setMessage("Haaaaa");
-		tray.setRectangleFill(Paint.valueOf("FFD500"));
-		tray.setAnimationType(AnimationType.POPUP);
-		tray.setNotificationType(type);
-		tray.showAndDismiss(Duration.seconds(3));
 	}
 }

@@ -43,7 +43,7 @@ public class EditPicture {
 	}
 
 	public static void main(String[] args) throws Exception {
-		EditPicture e = new EditPicture("got", "");
+		EditPicture e = new EditPicture("got", "hello");
 		e.setImage();
 	}
 }

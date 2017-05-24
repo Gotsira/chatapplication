@@ -20,7 +20,7 @@ public class Accounts {
 	public Accounts(String username, String password) {
 		this.username = username;
 		this.password = password;
-		this.image = null;
+		this.image = "";
 	}
 	
 	public String getName() {
