@@ -5,16 +5,20 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import javafx.animation.FadeTransition;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 import javafx.util.Duration;
 import users.Login;
 
@@ -64,7 +68,24 @@ public class LoginController extends StageChanged implements Initializable {
 				username = getUsername();
 				client.openConnection();
 				client.sendToServer("connect " + getUsername());
-				setStage("/application/Home.fxml", "Messenger Home", "home.css");
+//				setStage("/application/Home.fxml", "Messenger Home", "home.css");
+				try {
+					Stage stage = new Stage();
+					FXMLLoader loader = new FXMLLoader(getClass().getResource("/application/Home.fxml"));
+					Parent root = (Parent) loader.load();
+					Scene scene = new Scene(root);
+					scene.getStylesheets().add(getClass().getResource("home.css").toExternalForm());
+					stage.setResizable(false);
+					stage.setTitle("Messenger Home");
+					stage.setOnCloseRequest(e -> {
+						Platform.exit();
+						System.exit(0);
+					});
+					stage.setScene(scene);
+					stage.show();
+				} catch (IOException e) {
+					// do nothing
+				}
 				hideWindow(event);
 			}
 			if ( getUsername().isEmpty() || getPassword().isEmpty() ) {

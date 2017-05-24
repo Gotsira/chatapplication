@@ -1,11 +1,16 @@
 package chat;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 import com.lloseng.ocsf.client.AbstractClient;
 
 import application.ChatController;
 import application.StageChanged;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
 
 public class Client extends AbstractClient {
 	private ArrayList<ChatController> allChats = new ArrayList<ChatController>();
@@ -73,11 +78,22 @@ public class Client extends AbstractClient {
 	}
 	
 	public void create(String friend) {
-		StageChanged chat = new StageChanged();
-		System.out.println("almost");
-		chat.setFriendUser(friend);
-		System.out.println("ghey");
-		chat.setStage("/application/Chat.fxml", "Messenger Chat", "chat.css");
+//		StageChanged chat = new StageChanged();
+//		chat.setFriendUser(friend);
+//		chat.setStage("/src/application/Chat.fxml", "Messenger Chat", "chat.css");
+		try {
+			Stage stage = new Stage();
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("application/Chat.fxml"));
+			Parent root = (Parent) loader.load();
+			Scene scene = new Scene(root);
+			scene.getStylesheets().add(getClass().getResource("chat.css").toExternalForm());
+			stage.setResizable(false);
+			stage.setTitle("Messenger Chat");
+			stage.setScene(scene);
+			stage.show();
+		} catch (IOException e) {
+			// do nothing
+		}
 	}
 }
 

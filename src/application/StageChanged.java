@@ -68,13 +68,9 @@ public class StageChanged {
 			stage.setResizable(false);
 			stage.setTitle(title);
 			stage.setScene(scene);
-			stage.setOnCloseRequest(e -> {
-				Platform.exit();
-				System.exit(0);
-			});
 			stage.show();
 		} catch (IOException e) {
-			e.printStackTrace();
+			// do nothing
 		}
 	}
 	
