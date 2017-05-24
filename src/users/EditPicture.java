@@ -1,11 +1,6 @@
 package users;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 
 import com.j256.ormlite.dao.Dao;
@@ -17,8 +12,6 @@ public class EditPicture {
 	private String username;
 	private String image;
 	private ConnectionSource con = null;
-	private PreparedStatement stmt = null;
-	private ResultSet result = null;
 	private Dao<Accounts, String> accountDao = null;
 
 	public EditPicture(String username, String image) {
@@ -28,7 +21,7 @@ public class EditPicture {
 					"mysqlpassword");
 			accountDao = DaoManager.createDao(con, Accounts.class);
 		} catch (Exception e) {
-			//do nothing
+			// do nothing
 		}
 		this.username = username;
 		this.image = image;
@@ -38,19 +31,19 @@ public class EditPicture {
 		List<Accounts> accounts;
 		try {
 			accounts = accountDao.queryForAll();
-			for(Accounts ac: accounts){
-				if(ac.getName().equals(username)){
+			for (Accounts ac : accounts) {
+				if (ac.getName().equals(username)) {
 					ac.setImage(image);
 					accountDao.update(ac);
 				}
 			}
 		} catch (SQLException e) {
-			//do nothing
+			// do nothing
 		}
 	}
 
-//	public static void main(String[] args) throws Exception {
-//		EditPicture e = new EditPicture("got", null);
-//		e.setImage();
-//	}
+	public static void main(String[] args) throws Exception {
+		EditPicture e = new EditPicture("got", "");
+		e.setImage();
+	}
 }
