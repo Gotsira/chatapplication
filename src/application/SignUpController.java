@@ -1,6 +1,5 @@
 package application;
 
-
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -10,7 +9,6 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
@@ -50,23 +48,31 @@ public class SignUpController extends StageChanged implements Initializable {
 	}
 	
 	@FXML
-	public void signup( ActionEvent event ) throws Exception {
-		Register regis = new Register( getRegisUsername() , getRegisPassword() );
-		if ( getRegisUsername().isEmpty() || getRegisPassword().isEmpty() ) {
-			regisStatus.setText( "Cannot register with an empty username or password.");
-		} else if(regis.check()) {
-			regisStatus.setText( "Username already exists.");
-		}
-		else {
-			regis.add();
-			login(event);
+	public void signup( ActionEvent event ) {
+		try {
+			Register regis = new Register( getRegisUsername() , getRegisPassword() );
+			if ( getRegisUsername().isEmpty() || getRegisPassword().isEmpty() ) {
+				regisStatus.setText( "Cannot register with an empty username or password.");
+			} else if(regis.check()) {
+				regisStatus.setText( "Username already exists.");
+			}
+			else {
+				regis.add();
+				login(event);
+			}
+		} catch (Exception e) {
+			// do nothing
 		}
 	}
 	
 	@FXML
-	public void login( ActionEvent event ) throws IOException {
-		AnchorPane loginPane = FXMLLoader.load( getClass().getResource("/application/Login.fxml") );
-		root.getChildren().setAll(loginPane);
+	public void login( ActionEvent event ) {
+		try {
+			AnchorPane loginPane = FXMLLoader.load( getClass().getResource("/application/Login.fxml") );
+			root.getChildren().setAll(loginPane);
+		} catch (IOException e) {
+			// do nothing
+		}
 	}
 	
 	public String getRegisUsername() {
