@@ -16,21 +16,25 @@ public class AddFriendController extends StageChanged {
 	private Label status;
 
 	@FXML
-	public void add(ActionEvent event) throws Exception {
-		addFriend = new AddFriend(username, getFriendName());
-		if (addFriend.exist()) {
-			if (!(addFriend.check()) && !username.equals(getFriendName())) {
-				addFriend.add();
-				homeController.refreshFreind();
-				status.setText("Completed!");
-			} else if (getFriendName().isEmpty()) {
-				status.setText("Username cannot be empty.");
-			} else if (addFriend.check()) {
-				status.setText("Username is already your friend.");
-			} else
-				status.setText("Cannot add your own username.");
-		} else { 
-			status.setText("Username does not exist");
+	public void add(ActionEvent event) {
+		try {
+			addFriend = new AddFriend(username, getFriendName());
+			if (addFriend.exist()) {
+				if (!(addFriend.check()) && !username.equals(getFriendName())) {
+					addFriend.add();
+					homeController.refreshFreind();
+					status.setText("Completed!");
+				} else if (getFriendName().isEmpty()) {
+					status.setText("Username cannot be empty.");
+				} else if (addFriend.check()) {
+					status.setText("Username is already your friend.");
+				} else
+					status.setText("Cannot add your own username.");
+			} else { 
+				status.setText("Username does not exist");
+			}
+		} catch (Exception e) {
+			//do nothing
 		}
 	}
 

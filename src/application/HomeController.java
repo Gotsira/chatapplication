@@ -72,6 +72,7 @@ public class HomeController extends StageChanged implements Initializable {
 		new Thread(task).start();
 		refreshFreind();
 		homeController = this;
+		
 	}
 
 	@FXML
@@ -125,6 +126,14 @@ public class HomeController extends StageChanged implements Initializable {
 		if (!selected.isEmpty()) {
 			friend = selected;
 			friendUser = friend.toString().substring(1, friend.toString().length() - 1);
+			String [] friendsList = friendUser.split(",");
+			friendUser = "";
+			for(int i = 0 ; i < friendsList.length; i++) {
+				friendUser += friendsList[i].trim();
+				if(i != friendsList.length - 1) {
+					friendUser += ",";
+				}
+			}
 			setStage("/application/Chat.fxml", "Messenger Chat", "chat.css");
 		}
 	}

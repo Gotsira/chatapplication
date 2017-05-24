@@ -22,10 +22,14 @@ public class ChatRoomController extends StageChanged {
 	}
 	
 	@FXML
-	public void logout( ActionEvent event ) throws IOException {
+	public void logout( ActionEvent event ) {
 		setStage("/application/Login.fxml", "Messenger Login" , "login.css");
-		client.sendToServer("disconnect " + username);
-		client.closeConnection();
+		try {
+			client.sendToServer("disconnect " + username);
+			client.closeConnection();
+		} catch (IOException e) {
+			// do nothing
+		}
 		hideWindow(event);
 	}
 	
