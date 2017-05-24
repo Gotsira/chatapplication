@@ -69,6 +69,10 @@ public class ChatController extends StageChanged implements Initializable {
 	public void display(Object friendMessage) {
 		message.appendText(friendMessage.toString() + "\n");
 	}
+	
+	public void displayImage(Object friendImage) {
+		setStage("/application/SaveImage.fxml", "Save Image", "home.css");
+	}
 
 	public void photoChooser(ActionEvent event) {
 		FileChooser chooser = new FileChooser();
