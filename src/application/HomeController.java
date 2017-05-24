@@ -51,6 +51,7 @@ public class HomeController extends StageChanged implements Initializable {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		usernameLabel.setText("USERNAME: " + username);
+		set();
 		Task<Void> task = new Task<Void>() {
 
 			@Override

@@ -45,6 +45,8 @@ public class GetPicture {
 		return null;
 	}
 	
+	
+	
 	public static void main(String[] args) throws Exception {
 		GetPicture p = new GetPicture("got");
 		System.out.println(p.get());

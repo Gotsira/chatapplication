@@ -21,7 +21,7 @@ public class EditPicture {
 					"mysqlpassword");
 			accountDao = DaoManager.createDao(con, Accounts.class);
 		} catch (Exception e) {
-			// do nothing
+			//do nothing
 		}
 		this.username = username;
 		this.image = image;
@@ -31,19 +31,19 @@ public class EditPicture {
 		List<Accounts> accounts;
 		try {
 			accounts = accountDao.queryForAll();
-			for (Accounts ac : accounts) {
-				if (ac.getName().equals(username)) {
+			for(Accounts ac: accounts){
+				if(ac.getName().equals(username)){
 					ac.setImage(image);
 					accountDao.update(ac);
 				}
 			}
 		} catch (SQLException e) {
-			// do nothing
+			//do nothing
 		}
 	}
 
 	public static void main(String[] args) throws Exception {
-		EditPicture e = new EditPicture("got", "hello");
+		EditPicture e = new EditPicture("got", "try");
 		e.setImage();
 	}
 }

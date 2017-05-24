@@ -73,6 +73,14 @@ public class StageChanged {
 		}
 	}
 	
+	public void set() {
+		client.setStage(this);
+	}
+	
+	public static void setFriendUser(String friend) {
+		friendUser = friend;
+	}
+	
 	/**
 	 * Hide current page.
 	 * 
