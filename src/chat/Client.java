@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import com.lloseng.ocsf.client.AbstractClient;
 
 import application.ChatController;
+import application.StageChanged;
 
 public class Client extends AbstractClient {
 	private ArrayList<ChatController> allChats = new ArrayList<ChatController>();
@@ -17,7 +18,7 @@ public class Client extends AbstractClient {
 
 	@Override
 	public void handleMessageFromServer(Object msg) {
-
+		boolean check = true;
 		String[] chat = ((String) msg).split(" ");
 		sender = chat[0];
 		String type = chat[1];
@@ -27,12 +28,19 @@ public class Client extends AbstractClient {
 		for (ChatController chatUI : allChats) {
 			if (sender.equals(chatUI.getFriend())) {
 				if (type.equals("message")) {
+					check = false;
 					chatUI.display(sender + ": " + message);
+					message = "";
 				} else if (type.equals("offline")) {
 					chatUI.display(sender + " " + message);
+					message = "";
 				}
 			}
+		} if(check) {
+			System.out.println("yo");
+			create(sender);
 		}
+		check = true;
 	}
 
 	public void addChat(ChatController chat) {
@@ -58,6 +66,18 @@ public class Client extends AbstractClient {
 
 	public String getMessage() {
 		return sender + ": " + message;
+	}
+	
+	public String getSender() {
+		return sender;
+	}
+	
+	public void create(String friend) {
+		StageChanged chat = new StageChanged();
+		System.out.println("almost");
+		chat.setFriendUser(friend);
+		System.out.println("ghey");
+		chat.setStage("/application/Chat.fxml", "Messenger Chat", "chat.css");
 	}
 }
 

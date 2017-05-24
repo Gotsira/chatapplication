@@ -22,11 +22,16 @@ import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TitledPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.paint.Paint;
 import javafx.stage.FileChooser;
 import users.DisplayFriends;
 import users.EditPicture;
 import users.GetPicture;
 import javafx.stage.FileChooser.ExtensionFilter;
+import javafx.util.Duration;
+import tray.animations.AnimationType;
+import tray.notification.NotificationType;
+import tray.notification.TrayNotification;
 
 public class HomeController extends StageChanged implements Initializable {
 
@@ -69,8 +74,8 @@ public class HomeController extends StageChanged implements Initializable {
 		};
 		new Thread(task).start();
 		refreshFreind();
+		popUp();
 		homeController = this;
-		
 	}
 
 	@FXML
@@ -158,6 +163,18 @@ public class HomeController extends StageChanged implements Initializable {
 		};
 
 		new Thread(task).start();
+		
+	}
+	
+	public void popUp() {
+		if ( client.exist( client.getSender()) != null ) {
+//			Image whatsAppImg = new Image("/application/");
+			NotificationType noti = NotificationType.SUCCESS;
+			TrayNotification tray = new TrayNotification();
+			tray.setNotificationType(noti);
+//			tray.setTray( "New message from" + client.getSender(), client.getMessage() , whatsAppImg , Paint.valueOf("#FFD500") , AnimationType.POPUP);
+			tray.showAndDismiss(Duration.seconds(3));
+		}
 		
 	}
 }

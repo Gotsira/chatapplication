@@ -8,6 +8,7 @@ import java.util.Arrays;
 import javax.imageio.ImageIO;
 
 import chat.Client;
+import javafx.application.Platform;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.*;
@@ -67,10 +68,18 @@ public class StageChanged {
 			stage.setResizable(false);
 			stage.setTitle(title);
 			stage.setScene(scene);
+			stage.setOnCloseRequest(e -> {
+				Platform.exit();
+				System.exit(0);
+			});
 			stage.show();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+	}
+	
+	public void setFriendUser(String name) {
+		this.friendUser = name;
 	}
 	
 	/**
