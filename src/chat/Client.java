@@ -1,20 +1,13 @@
 package chat;
 
-import java.io.IOException;
 import java.util.ArrayList;
 
 import com.lloseng.ocsf.client.AbstractClient;
 
 import application.ChatController;
-import application.StageChanged;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.stage.Stage;
 
 public class Client extends AbstractClient {
 	private ArrayList<ChatController> allChats = new ArrayList<ChatController>();
-	private StageChanged st;
 	private String message = "";
 	private String sender;
 
@@ -24,29 +17,23 @@ public class Client extends AbstractClient {
 
 	@Override
 	public void handleMessageFromServer(Object msg) {
-		boolean check = true;
 		String[] chat = ((String) msg).split(" ");
 		sender = chat[0];
 		String type = chat[1];
 		for (int i = 2; i < chat.length; i++) {
 			message += chat[i] + " ";
 		}
+		if (type.equals("message")) {
+			message = sender + ": " + message + "\n";
+		} else if (type.equals("offline")) {
+			message = sender + " is offline";
+		}
 		for (ChatController chatUI : allChats) {
 			if (sender.equals(chatUI.getFriend())) {
-				if (type.equals("message")) {
-					check = false;
-					chatUI.display(sender + ": " + message);
-					message = "";
-				} else if (type.equals("offline")) {
-					chatUI.display(sender + " " + message);
-					message = "";
-				}
+				chatUI.display(message);
+				message = "";
 			}
 		}
-		if (check) {
-			create(sender);
-		}
-		check = true;
 	}
 
 	public void addChat(ChatController chat) {
@@ -61,11 +48,6 @@ public class Client extends AbstractClient {
 		}
 	}
 
-	public void create(String friend) {
-		st.setFriendUser(friend);
-		st.setStage("/application/Chat.fxml", "Messenger Chat", "chat.css");
-	}
-
 	public ChatController exist(String friend) {
 		for (ChatController chat : allChats) {
 			if (chat.getFriend() == friend) {
@@ -73,10 +55,6 @@ public class Client extends AbstractClient {
 			}
 		}
 		return null;
-	}
-
-	public void setStage(StageChanged st) {
-		this.st = st;
 	}
 
 	public String getMessage() {

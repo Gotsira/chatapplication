@@ -78,6 +78,12 @@ public class LoginController extends StageChanged implements Initializable {
 					stage.setResizable(false);
 					stage.setTitle("Messenger Home");
 					stage.setOnCloseRequest(e -> {
+						try {
+							client.sendToServer("disconnect " + username);
+							client.closeConnection();
+						} catch (IOException e1) {
+							//do nothing
+						}
 						Platform.exit();
 						System.exit(0);
 					});

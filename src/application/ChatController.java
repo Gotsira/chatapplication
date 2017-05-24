@@ -67,9 +67,9 @@ public class ChatController extends StageChanged implements Initializable {
 	}
 
 	public void display(Object friendMessage) {
-		message.appendText(friendMessage.toString() + "\n");
+		message.appendText(friendMessage.toString());
 	}
-	
+
 	public void displayImage(Object friendImage) {
 		setStage("/application/SaveImage.fxml", "Save Image", "home.css");
 	}
@@ -99,7 +99,7 @@ public class ChatController extends StageChanged implements Initializable {
 	public String getText() {
 		return field.getText();
 	}
-	
+
 	public void setFriend(String nameFreind) {
 		this.friend = nameFreind;
 	}

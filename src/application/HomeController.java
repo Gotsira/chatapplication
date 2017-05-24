@@ -1,39 +1,23 @@
 package application;
 
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
 import java.net.URL;
 
 import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.ResourceBundle;
+import java.util.*;
 
-import javafx.application.Platform;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
+import javafx.collections.*;
 import javafx.concurrent.Task;
-import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
-import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
-import javafx.scene.control.SelectionMode;
-import javafx.scene.control.TitledPane;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import javafx.scene.paint.Paint;
+import javafx.fxml.*;
+import javafx.scene.control.*;
+import javafx.scene.image.*;
 import javafx.stage.FileChooser;
-import javafx.stage.Stage;
-import users.DisplayFriends;
-import users.EditPicture;
-import users.GetPicture;
+import users.*;
 import javafx.stage.FileChooser.ExtensionFilter;
 import javafx.util.Duration;
-import tray.animations.AnimationType;
-import tray.notification.NotificationType;
-import tray.notification.TrayNotification;
+import tray.notification.*;
 
 public class HomeController extends StageChanged implements Initializable {
 
@@ -58,7 +42,6 @@ public class HomeController extends StageChanged implements Initializable {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		usernameLabel.setText("USERNAME: " + username);
-		set();
 		Task<Void> task = new Task<Void>() {
 
 			@Override
@@ -69,7 +52,7 @@ public class HomeController extends StageChanged implements Initializable {
 				}
 				return null;
 			}
-			
+
 			@Override
 			protected void succeeded() {
 				userPicture.setImage(image);
@@ -123,7 +106,7 @@ public class HomeController extends StageChanged implements Initializable {
 			} catch (Exception e) {
 				// do nothing
 			}
-			
+
 		}
 	}
 
@@ -132,14 +115,6 @@ public class HomeController extends StageChanged implements Initializable {
 		if (!selected.isEmpty()) {
 			friend = selected;
 			friendUser = friend.toString().substring(1, friend.toString().length() - 1);
-			String [] friendsList = friendUser.split(",");
-			friendUser = "";
-			for(int i = 0 ; i < friendsList.length; i++) {
-				friendUser += friendsList[i].trim();
-				if(i != friendsList.length - 1) {
-					friendUser += ",";
-				}
-			}
 			setStage("/application/Chat.fxml", "Messenger Chat", "chat.css");
 		}
 	}
@@ -155,29 +130,31 @@ public class HomeController extends StageChanged implements Initializable {
 				observerList = FXCollections.<String>observableArrayList(list);
 				return observerList;
 			}
-			
+
 			@Override
 			protected void succeeded() {
-	            super.succeeded();
-	            freindTitle.setText("Friends (" + list.size() + ")");
-	            friendList.setItems(observerList);
-	    		friendList.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
-	        }
+				super.succeeded();
+				freindTitle.setText("Friends (" + list.size() + ")");
+				friendList.setItems(observerList);
+				friendList.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+			}
 		};
 
 		new Thread(task).start();
-		
+
 	}
-	
+
 	public void popUp() {
-		if ( client.exist( client.getSender()) != null ) {
-//			Image whatsAppImg = new Image("/application/");
+		if (client.exist(client.getSender()) != null) {
+			// Image whatsAppImg = new Image("/application/");
 			NotificationType noti = NotificationType.SUCCESS;
 			TrayNotification tray = new TrayNotification();
 			tray.setNotificationType(noti);
-//			tray.setTray( "New message from" + client.getSender(), client.getMessage() , whatsAppImg , Paint.valueOf("#FFD500") , AnimationType.POPUP);
+			// tray.setTray( "New message from" + client.getSender(),
+			// client.getMessage() , whatsAppImg , Paint.valueOf("#FFD500") ,
+			// AnimationType.POPUP);
 			tray.showAndDismiss(Duration.seconds(3));
 		}
-		
+
 	}
 }
