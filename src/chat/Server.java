@@ -19,11 +19,10 @@ public class Server extends AbstractServer {
 		String[] message = ((String) msg).split(" ");
 		String type = message[0];
 		String sender = message[message.length - 1];
+		String name = message[1];
 		if (type.equals("connect")) {
-			String name = message[1];
 			client.setInfo("name", name);
 		} else if (type.equals("message") || type.equals("image")) {
-			String name = message[1];
 			String data = "";
 			for (int i = 2; i < message.length - 1; i++) {
 				data += message[i] + " ";
@@ -31,11 +30,11 @@ public class Server extends AbstractServer {
 			System.out.println(Arrays.toString(message));
 			for (Thread t : getClientConnections()) {
 				ConnectionToClient c = (ConnectionToClient) t;
-				System.out.println(c.getInfo("name")); 
+				System.out.println(c.getInfo("name"));
 				if (c.getInfo("name").equals(name)) {
 					try {
 						check = true;
-						c.sendToClient(sender + " " + type + " " + data);
+						c.sendToClient(client.getInfo("name") + " " + type + " " + data);
 					} catch (IOException e) {
 						// do nothing
 					}
