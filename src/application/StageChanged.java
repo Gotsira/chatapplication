@@ -1,6 +1,5 @@
 package application;
 
-import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.*;
 import java.util.Arrays;
@@ -30,8 +29,6 @@ public class StageChanged {
 		try {
 			bufferedImage = ImageIO.read(imgPath);
 			bufferedImage = Scalr.resize(bufferedImage, 150);
-			System.out.println(bufferedImage.getHeight());
-			System.out.println(bufferedImage.getWidth());
 			ByteArrayOutputStream baos = new ByteArrayOutputStream();
 			ImageIO.write(bufferedImage, "png", baos);
 			byte[] imageByteArray = baos.toByteArray();
@@ -74,6 +71,11 @@ public class StageChanged {
 		} catch (IOException e) {
 			// do nothing
 		}
+	}
+	
+	public static void main(String[] args) {
+		StageChanged s = new StageChanged();
+		System.out.println(s.convertImgtoString("C:/Users/USER/Pictures/0.jpg"));
 	}
 
 	/**

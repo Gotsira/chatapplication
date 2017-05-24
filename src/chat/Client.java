@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import com.lloseng.ocsf.client.AbstractClient;
 
 import application.ChatController;
+import application.StageChanged;
 
 public class Client extends AbstractClient {
 	private ArrayList<ChatController> allChats = new ArrayList<ChatController>();
@@ -23,22 +24,15 @@ public class Client extends AbstractClient {
 		for (int i = 2; i < chat.length; i++) {
 			message += chat[i] + " ";
 		}
-		if (type.equals("message")) {
-			message = sender + ": " + message + "\n";
-		} else if (type.equals("offline")) {
-			message = sender + " is offline\n";
-		} else if (type.equals("image")) {
-			for (ChatController chatUI : allChats) {
-				if (sender.equals(chatUI.getFriend())) {
-					chatUI.displayImage(sender + ":" + message);
-					return;
-				}
-			}
-		}
 		for (ChatController chatUI : allChats) {
 			if (sender.equals(chatUI.getFriend())) {
-				chatUI.display(message);
-				message = "";
+				if (type.equals("message")) {
+					chatUI.display(sender + ": " + message);;
+					message = "";
+				} else if (type.equals("offline")) {
+					chatUI.display(sender + " " + message);
+					message = "";
+				}
 			}
 		}
 	}
