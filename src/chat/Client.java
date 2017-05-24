@@ -1,6 +1,5 @@
 package chat;
 
-import java.awt.image.*;
 import java.util.ArrayList;
 
 import com.lloseng.ocsf.client.AbstractClient;
@@ -8,10 +7,6 @@ import com.lloseng.ocsf.client.AbstractClient;
 import application.ChatController;
 
 public class Client extends AbstractClient {
-	private String host;
-	private static final int PORT = 3014;
-	private String message;
-	private BufferedImage image = null;
 	private ArrayList<ChatController> allChats = new ArrayList<ChatController>();
 
 	public Client(String host, int port) {
@@ -32,7 +27,7 @@ public class Client extends AbstractClient {
 			if (sender.equals(chatUI.getFriend())) {
 				if (type.equals("message")) {
 					chatUI.display(sender + ": " + data);
-				} else if(type.equals("offline")) {
+				} else if (type.equals("offline")) {
 					chatUI.display(sender + " " + data);
 				}
 			}
@@ -51,12 +46,12 @@ public class Client extends AbstractClient {
 		}
 	}
 
-	public ArrayList<String> names() {
-		ArrayList<String> users = new ArrayList<String>();
+	public ChatController exist(String friend) {
 		for (ChatController chat : allChats) {
-			users.add(chat.getFriend());
+			if (chat.getFriend() == friend) {
+				return chat;
+			}
 		}
-		return users;
+		return null;
 	}
-
 }

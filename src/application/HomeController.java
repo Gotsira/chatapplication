@@ -64,7 +64,7 @@ public class HomeController extends StageChanged implements Initializable {
 			}
 			userPicture.setImage(image);
 		} catch (Exception e) {
-			e.printStackTrace();
+			//do nothing
 		}
 	}
 
