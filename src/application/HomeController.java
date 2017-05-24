@@ -6,7 +6,9 @@ import java.net.URL;
 
 import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
+
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.ResourceBundle;
 
@@ -31,7 +33,8 @@ public class HomeController extends StageChanged implements Initializable {
 	private DisplayFriends display;
 	private GetPicture pic;
 	private Image image = null;
-	ArrayList<String> list = null;
+	private ObservableList<String> observerList;
+	private ArrayList<String> list = null;
 
 	@FXML
 	private ListView<String> friendList;
@@ -51,14 +54,7 @@ public class HomeController extends StageChanged implements Initializable {
 		try {
 			pic = new GetPicture(username);
 			display = new DisplayFriends(username);
-			if (list == null) {
-				list = display.display();
-			}
-			Collections.sort(list);
-			freindTitle.setText("Friends (" + list.size() + ")");
-			ObservableList<String> observerList = FXCollections.<String>observableArrayList(list);
-			friendList.setItems(observerList);
-			friendList.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+			refreshFreind();
 			if (image == null) {
 				image = SwingFXUtils.toFXImage(convertStringtoImg(pic.get()), null);
 			}
@@ -66,6 +62,7 @@ public class HomeController extends StageChanged implements Initializable {
 		} catch (Exception e) {
 			//do nothing
 		}
+		homeController = this;
 	}
 
 	@FXML
@@ -123,4 +120,18 @@ public class HomeController extends StageChanged implements Initializable {
 		}
 	}
 
+	public void refreshFreind() {
+		try {
+			display = new DisplayFriends(username);
+			list = display.display();
+			System.out.println(Arrays.toString( list.toArray() ));
+			Collections.sort(list);
+			freindTitle.setText("Friends (" + list.size() + ")");
+			observerList = FXCollections.<String>observableArrayList(list);
+			friendList.setItems(observerList);
+			friendList.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+		} catch (Exception e) {
+			
+		}
+	}
 }

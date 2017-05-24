@@ -20,6 +20,7 @@ public class StageChanged {
 	static String friendUser = null;
 	static String keep = "";
 	static ObservableList<String> friend = null;
+	static HomeController homeController;
 
 	public String convertImgtoString(String filePath) {
 		File imgPath = new File(filePath);

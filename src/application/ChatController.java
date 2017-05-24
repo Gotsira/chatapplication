@@ -20,6 +20,7 @@ import javafx.stage.FileChooser.ExtensionFilter;
 public class ChatController extends StageChanged implements Initializable {
 
 	private String friend = friendUser;
+	static File imageFile;
 
 	@FXML
 	private Button sendButton;
@@ -72,10 +73,10 @@ public class ChatController extends StageChanged implements Initializable {
 	public void photoChooser(ActionEvent event) {
 		FileChooser chooser = new FileChooser();
 		chooser.getExtensionFilters().addAll(new ExtensionFilter("Image Files", "*.png", "*.jpg", "*.gif"));
-		File file = chooser.showOpenDialog(null);
-		if (file != null) {
+		imageFile = chooser.showOpenDialog(null);
+		if (imageFile != null) {
 			try {
-				client.sendToServer("image " + convertImgtoString(file.getName()));
+				client.sendToServer("image " + convertImgtoString(imageFile.getName()));
 				message.appendText("Image Sent");
 			} catch (IOException e) {
 				message.appendText("Failed to send image");

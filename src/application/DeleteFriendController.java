@@ -21,6 +21,7 @@ public class DeleteFriendController extends StageChanged {
 		if ( deleteFriend.exist() ) {
 			if ( deleteFriend.check() && !username.equals(getFriendName()) ) {
 				deleteFriend.add();
+				homeController.refreshFreind();
 				status.setText("Completed!");
 			} else if ( getFriendName().isEmpty() ) {
 				status.setText("Username cannot be empty.");
