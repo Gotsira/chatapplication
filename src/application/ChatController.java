@@ -65,6 +65,7 @@ public class ChatController extends StageChanged implements Initializable {
 		} catch (IOException e) {
 			// do nothing
 		}
+		homeController.popUp();
 	}
 
 	public void display(Object friendMessage) {

@@ -13,10 +13,12 @@ import javafx.concurrent.Task;
 import javafx.fxml.*;
 import javafx.scene.control.*;
 import javafx.scene.image.*;
+import javafx.scene.paint.Paint;
 import javafx.stage.FileChooser;
 import users.*;
 import javafx.stage.FileChooser.ExtensionFilter;
 import javafx.util.Duration;
+import tray.animations.AnimationType;
 import tray.notification.*;
 
 public class HomeController extends StageChanged implements Initializable {
@@ -60,7 +62,6 @@ public class HomeController extends StageChanged implements Initializable {
 		};
 		new Thread(task).start();
 		refreshFreind();
-		popUp();
 		homeController = this;
 	}
 
@@ -146,14 +147,14 @@ public class HomeController extends StageChanged implements Initializable {
 
 	public void popUp() {
 		if (client.exist(client.getSender()) != null) {
-			// Image whatsAppImg = new Image("/application/");
 			NotificationType noti = NotificationType.SUCCESS;
 			TrayNotification tray = new TrayNotification();
 			tray.setNotificationType(noti);
-			// tray.setTray( "New message from" + client.getSender(),
-			// client.getMessage() , whatsAppImg , Paint.valueOf("#FFD500") ,
-			// AnimationType.POPUP);
-			tray.showAndDismiss(Duration.seconds(3));
+			tray.setTitle( "New Message from " + client.getSender() );
+			tray.setMessage( client.getSender() + ": " + client.getMessage() );
+			tray.setRectangleFill(Paint.valueOf("#2A9A84"));
+			tray.setAnimationType(AnimationType.POPUP);
+			tray.showAndDismiss(Duration.seconds(2));
 		}
 
 	}
