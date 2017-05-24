@@ -64,32 +64,12 @@ public class LoginController extends StageChanged implements Initializable {
 	
 	@FXML
 	public void login( ActionEvent event ) {
-		Task<Void> task = new Task<Void>() {
-
-			@Override
-			protected Void call() throws Exception {
-				client.openConnection();
-				client.sendToServer("connect " + getUsername());
-				return null;
-			}
-			
-			@Override
-			protected void succeeded() {
-				progressInd.setVisible(false);
-			}
-			
-			@Override
-			protected void running() {
-				progressInd.setVisible(true);
-			}
-			
-		};
-		
 		try {
 			login = new Login( getUsername() , getPassword() );
 			if ( login.matches() ) {
 				username = getUsername();
-				new Thread(task).start();
+				client.openConnection();
+				client.sendToServer("connect " + getUsername());
 				setStage("/application/Home.fxml", "Messenger Home", "home.css");
 				hideWindow(event);
 			}
