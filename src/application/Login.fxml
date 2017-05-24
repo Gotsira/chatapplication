@@ -53,6 +53,6 @@
             </ImageView>
          </graphic>
       </Button>
-      <ProgressIndicator fx:id="progressInd" layoutX="199.0" layoutY="271.0" prefHeight="100.0" prefWidth="100.0" visible="false" />
+      <ProgressIndicator fx:id="progressInd" layoutX="199.0" layoutY="271.0" prefHeight="100.0" prefWidth="100.0" />
    </children>
 </AnchorPane>
