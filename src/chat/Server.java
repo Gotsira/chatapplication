@@ -63,6 +63,10 @@ public class Server extends AbstractServer {
 			}
 		}
 	}
+	
+	public void online() {
+		
+	}
 
 	public static void main(String[] args) {
 		Server server = new Server(3014);

@@ -21,22 +21,31 @@ public class EditPicture {
 	private ResultSet result = null;
 	private Dao<Accounts, String> accountDao = null;
 
-	public EditPicture(String username, String image) throws Exception {
-		Class.forName("com.mysql.jdbc.Driver").newInstance();
-		con = new JdbcConnectionSource("jdbc:mysql://35.186.149.50:3306/projectdb?useSSL=false", "root",
-				"mysqlpassword");
-		accountDao = DaoManager.createDao(con, Accounts.class);
+	public EditPicture(String username, String image) {
+		try {
+			Class.forName("com.mysql.jdbc.Driver").newInstance();
+			con = new JdbcConnectionSource("jdbc:mysql://35.186.149.50:3306/projectdb?useSSL=false", "root",
+					"mysqlpassword");
+			accountDao = DaoManager.createDao(con, Accounts.class);
+		} catch (Exception e) {
+			//do nothing
+		}
 		this.username = username;
 		this.image = image;
 	}
 
-	public void setImage() throws SQLException {
-		List<Accounts> accounts = accountDao.queryForAll();
-		for(Accounts ac: accounts){
-			if(ac.getName().equals(username)){
-				ac.setImage(image);
-				accountDao.update(ac);
+	public void setImage() {
+		List<Accounts> accounts;
+		try {
+			accounts = accountDao.queryForAll();
+			for(Accounts ac: accounts){
+				if(ac.getName().equals(username)){
+					ac.setImage(image);
+					accountDao.update(ac);
+				}
 			}
+		} catch (SQLException e) {
+			//do nothing
 		}
 	}
 
