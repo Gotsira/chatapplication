@@ -33,9 +33,6 @@ public class ChatController extends StageChanged implements Initializable {
 	private MenuItem sendPhoto;
 
 	@FXML
-	private MenuItem sendContact;
-
-	@FXML
 	private Label name;
 
 	@FXML
