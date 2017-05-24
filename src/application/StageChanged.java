@@ -7,6 +7,8 @@ import java.util.Arrays;
 
 import javax.imageio.ImageIO;
 
+import org.imgscalr.Scalr;
+
 import chat.Client;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -27,7 +29,9 @@ public class StageChanged {
 		String message = null;
 		try {
 			bufferedImage = ImageIO.read(imgPath);
-			bufferedImage.getScaledInstance(5, 5, Image.SCALE_FAST);
+			bufferedImage = Scalr.resize(bufferedImage, 150);
+			System.out.println(bufferedImage.getHeight());
+			System.out.println(bufferedImage.getWidth());
 			ByteArrayOutputStream baos = new ByteArrayOutputStream();
 			ImageIO.write(bufferedImage, "png", baos);
 			byte[] imageByteArray = baos.toByteArray();

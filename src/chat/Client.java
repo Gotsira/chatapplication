@@ -26,7 +26,14 @@ public class Client extends AbstractClient {
 		if (type.equals("message")) {
 			message = sender + ": " + message + "\n";
 		} else if (type.equals("offline")) {
-			message = sender + " is offline";
+			message = sender + " is offline\n";
+		} else if (type.equals("image")) {
+			for (ChatController chatUI : allChats) {
+				if (sender.equals(chatUI.getFriend())) {
+					chatUI.displayImage(sender + ":" + message);
+					return;
+				}
+			}
 		}
 		for (ChatController chatUI : allChats) {
 			if (sender.equals(chatUI.getFriend())) {

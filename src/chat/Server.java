@@ -31,11 +31,11 @@ public class Server extends AbstractServer {
 			System.out.println(Arrays.toString(message));
 			for (Thread t : getClientConnections()) {
 				ConnectionToClient c = (ConnectionToClient) t;
-				System.out.println(c.getInfo("name"));
+				System.out.println(c.getInfo("name")); 
 				if (c.getInfo("name").equals(name)) {
 					try {
 						check = true;
-						c.sendToClient(client.getInfo("name") + " " + type + " " + data);
+						c.sendToClient(sender + " " + type + " " + data);
 					} catch (IOException e) {
 						// do nothing
 					}
