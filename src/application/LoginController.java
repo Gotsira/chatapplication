@@ -5,6 +5,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import javafx.animation.FadeTransition;
+import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -16,7 +17,6 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.ProgressIndicator;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.BorderPane;
 import javafx.util.Duration;
 import users.Login;
 
@@ -44,6 +44,7 @@ public class LoginController extends StageChanged implements Initializable {
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		progressInd.setVisible(false);
 		if ( !Main.isWelcome ) loadWelcomeScreen();
 		EventHandler<ActionEvent> loginHandle = new EventHandler<ActionEvent>() {
 			
@@ -62,24 +63,53 @@ public class LoginController extends StageChanged implements Initializable {
 	}
 	
 	@FXML
-	public void login( ActionEvent event ) throws Exception {
-		login = new Login( getUsername() , getPassword() );
-		if ( login.matches() ) {
-			username = getUsername();
-			client.openConnection();
-			client.sendToServer("connect " + getUsername());
-			setStage("/application/Home.fxml", "Messenger Home", "home.css");
-			hideWindow(event);
+	public void login( ActionEvent event ) {
+		Task<Void> task = new Task<Void>() {
+
+			@Override
+			protected Void call() throws Exception {
+				client.openConnection();
+				client.sendToServer("connect " + getUsername());
+				return null;
+			}
+			
+			@Override
+			protected void succeeded() {
+				progressInd.setVisible(false);
+			}
+			
+			@Override
+			protected void running() {
+				progressInd.setVisible(true);
+			}
+			
+		};
+		
+		try {
+			login = new Login( getUsername() , getPassword() );
+			if ( login.matches() ) {
+				username = getUsername();
+				new Thread(task).start();
+				setStage("/application/Home.fxml", "Messenger Home", "home.css");
+				hideWindow(event);
+			}
+			if ( getUsername().isEmpty() || getPassword().isEmpty() ) {
+				status.setText( "Username or password cannot be empty." );
+			} else status.setText( "Username or password is incorrect." );
+		} catch (Exception e) {
+			// do nothing
 		}
-		if ( getUsername().isEmpty() || getPassword().isEmpty() ) {
-			status.setText( "Username or password cannot be empty." );
-		} else status.setText( "Username or password is incorrect." );
 	}
 	
 	@FXML
-	public void signup( ActionEvent event ) throws IOException {
-		AnchorPane signupPane = FXMLLoader.load( getClass().getResource("/application/Signup.fxml") );
-		root.getChildren().setAll(signupPane);
+	public void signup( ActionEvent event ) {
+		AnchorPane signupPane;
+		try {
+			signupPane = FXMLLoader.load( getClass().getResource("/application/Signup.fxml") );
+			root.getChildren().setAll(signupPane);
+		} catch (IOException e) {
+			// do nothing
+		}
 	}
 	
 	public String getUsername() {

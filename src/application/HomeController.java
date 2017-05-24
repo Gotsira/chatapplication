@@ -12,8 +12,10 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.ResourceBundle;
 
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.concurrent.Task;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
@@ -51,17 +53,24 @@ public class HomeController extends StageChanged implements Initializable {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		usernameLabel.setText("USERNAME: " + username);
-		try {
-			pic = new GetPicture(username);
-			display = new DisplayFriends(username);
-			refreshFreind();
-			if (image == null) {
-				image = SwingFXUtils.toFXImage(convertStringtoImg(pic.get()), null);
+		Task<Void> task = new Task<Void>() {
+
+			@Override
+			protected Void call() throws Exception {
+				pic = new GetPicture(username);
+				if (image == null) {
+					image = SwingFXUtils.toFXImage(convertStringtoImg(pic.get()), null);
+				}
+				return null;
 			}
-			userPicture.setImage(image);
-		} catch (Exception e) {
-			//do nothing
-		}
+			
+			@Override
+			protected void succeeded() {
+				userPicture.setImage(image);
+			}
+		};
+		new Thread(task).start();
+		refreshFreind();
 		homeController = this;
 	}
 
@@ -121,17 +130,27 @@ public class HomeController extends StageChanged implements Initializable {
 	}
 
 	public void refreshFreind() {
-		try {
-			display = new DisplayFriends(username);
-			list = display.display();
-			System.out.println(Arrays.toString( list.toArray() ));
-			Collections.sort(list);
-			freindTitle.setText("Friends (" + list.size() + ")");
-			observerList = FXCollections.<String>observableArrayList(list);
-			friendList.setItems(observerList);
-			friendList.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
-		} catch (Exception e) {
+		Task<ObservableList<String>> task = new Task<ObservableList<String>>() {
+
+			@Override
+			protected ObservableList<String> call() throws Exception {
+				display = new DisplayFriends(username);
+				list = display.display();
+				Collections.sort(list);
+				observerList = FXCollections.<String>observableArrayList(list);
+				return observerList;
+			}
 			
-		}
+			@Override
+			protected void succeeded() {
+	            super.succeeded();
+	            freindTitle.setText("Friends (" + list.size() + ")");
+	            friendList.setItems(observerList);
+	    		friendList.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+	        }
+		};
+
+		new Thread(task).start();
+		
 	}
 }
