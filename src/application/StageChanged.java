@@ -53,7 +53,7 @@ public class StageChanged {
 		}
 		ByteArrayInputStream ms = new ByteArrayInputStream(imgInByte);
 		try {
-			return ImageIO.read(ms);
+			return Scalr.resize(ImageIO.read(ms),150);
 		} catch (IOException e) {
 			// do nothing
 		}
