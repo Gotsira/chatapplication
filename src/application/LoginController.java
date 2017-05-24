@@ -5,7 +5,6 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import javafx.animation.FadeTransition;
-import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -14,7 +13,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
-import javafx.scene.control.ProgressIndicator;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.util.Duration;
@@ -39,12 +37,8 @@ public class LoginController extends StageChanged implements Initializable {
 	@FXML
 	private Button loginButton;
 	
-	@FXML
-	private ProgressIndicator progressInd;
-	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		progressInd.setVisible(false);
 		if ( !Main.isWelcome ) loadWelcomeScreen();
 		EventHandler<ActionEvent> loginHandle = new EventHandler<ActionEvent>() {
 			
