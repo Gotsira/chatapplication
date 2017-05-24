@@ -48,11 +48,7 @@ public class ChatController extends StageChanged implements Initializable {
 
 			@Override
 			public void handle(ActionEvent event) {
-				try {
-					send(event);
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
+				send(event);
 			}
 		};
 
@@ -60,10 +56,14 @@ public class ChatController extends StageChanged implements Initializable {
 	}
 
 	@FXML
-	public void send(ActionEvent event) throws IOException {
-		client.sendToServer("message " + name.getText() + " " + getText() + " " + username);
-		message.appendText(username + ": " + getText() + "\n");
-		field.setText("");
+	public void send(ActionEvent event) {
+		try {
+			client.sendToServer("message " + name.getText() + " " + getText() + " " + username);
+			message.appendText(username + ": " + getText() + "\n");
+			field.setText("");
+		} catch (IOException e) {
+			// do nothing
+		}
 	}
 
 	public void display(Object friendMessage) {
