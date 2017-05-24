@@ -99,4 +99,8 @@ public class ChatController extends StageChanged implements Initializable {
 	public String getText() {
 		return field.getText();
 	}
+	
+	public void setFriend(String nameFreind) {
+		this.friend = nameFreind;
+	}
 }

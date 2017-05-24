@@ -1,11 +1,16 @@
 package chat;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 import com.lloseng.ocsf.client.AbstractClient;
 
 import application.ChatController;
 import application.StageChanged;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
 
 public class Client extends AbstractClient {
 	private ArrayList<ChatController> allChats = new ArrayList<ChatController>();
@@ -31,8 +36,10 @@ public class Client extends AbstractClient {
 				if (type.equals("message")) {
 					check = false;
 					chatUI.display(sender + ": " + message);
+					message = "";
 				} else if (type.equals("offline")) {
 					chatUI.display(sender + " " + message);
+					message = "";
 				}
 			}
 		}
@@ -74,5 +81,9 @@ public class Client extends AbstractClient {
 
 	public String getMessage() {
 		return sender + ": " + message;
+	}
+
+	public String getSender() {
+		return sender;
 	}
 }

@@ -69,16 +69,18 @@ public class StageChanged {
 			stage.setScene(scene);
 			stage.show();
 		} catch (IOException e) {
-			e.printStackTrace();
+			// do nothing
 		}
 	}
 	
+
 	public void set() {
 		client.setStage(this);
 	}
 	
-	public static void setFriendUser(String friend) {
-		friendUser = friend;
+
+	public void setFriendUser(String name) {
+		this.friendUser = name;
 	}
 	
 	/**
