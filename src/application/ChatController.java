@@ -12,7 +12,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
@@ -32,9 +31,6 @@ public class ChatController extends StageChanged implements Initializable {
 
 	@FXML
 	private TextField field;
-
-	@FXML
-	private MenuItem sendPhoto;
 
 	@FXML
 	private Label name;
