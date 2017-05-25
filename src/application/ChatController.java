@@ -4,7 +4,6 @@ import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-
 import javafx.concurrent.Task;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
@@ -25,7 +24,6 @@ import users.GetPicture;
 public class ChatController extends StageChanged implements Initializable {
 
 	private String friend = friendUser;
-	private String friendImage;
 	private Image friendIm;
 	static File imageFile;
 
@@ -95,18 +93,6 @@ public class ChatController extends StageChanged implements Initializable {
 		message.appendText(friendMessage.toString() + "\n");
 	}
 
-	public void displayImage(Object friendImage) {
-		setImage((String) friendImage);
-		setStage("/application/SaveImage.fxml", "Save Image", "home.css");
-	}
-	
-	public void setImage(String friendImage) {
-		this.friendImage = friendImage;
-	}
-	
-	public String getImage() {
-		return this.friendImage;
-	}
 
 	public void photoChooser(ActionEvent event) {
 		FileChooser chooser = new FileChooser();

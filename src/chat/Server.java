@@ -7,7 +7,6 @@ import com.lloseng.ocsf.server.AbstractServer;
 import com.lloseng.ocsf.server.ConnectionToClient;
 
 public class Server extends AbstractServer {
-	final private static int DEFAULT_PORT = 3014;
 
 	public Server(int port) {
 		super(port);
@@ -22,7 +21,7 @@ public class Server extends AbstractServer {
 		String name = message[1];
 		if (type.equals("connect")) {
 			client.setInfo("name", name);
-		} else if (type.equals("message") || type.equals("image")) {
+		} else if (type.equals("message")) {
 			String data = "";
 			for (int i = 2; i < message.length - 1; i++) {
 				data += message[i] + " ";
