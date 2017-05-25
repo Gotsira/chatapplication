@@ -16,7 +16,7 @@
    <bottom>
       <AnchorPane fx:id="menu" prefHeight="75.0" prefWidth="500.0" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="homeButton" disable="true" layoutX="86.0" layoutY="13.0" mnemonicParsing="false" text="HOME">
+            <Button fx:id="homeButton" disable="true" layoutX="75.0" layoutY="13.0" mnemonicParsing="false" text="HOME">
                <graphic>
                   <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -24,8 +24,11 @@
                      </image>
                   </ImageView>
                </graphic>
+               <font>
+                  <Font name="Comic Sans MS Bold" size="23.0" />
+               </font>
             </Button>
-            <Button fx:id="logoutButton" layoutX="275.0" layoutY="13.0" mnemonicParsing="false" onAction="#logout" text="LOG OUT">
+            <Button fx:id="logoutButton" layoutX="266.0" layoutY="14.0" mnemonicParsing="false" onAction="#logout" text="LOG OUT">
                <graphic>
                   <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -33,6 +36,9 @@
                      </image>
                   </ImageView>
                </graphic>
+               <font>
+                  <Font name="Comic Sans MS" size="22.0" />
+               </font>
             </Button>
          </children>
       </AnchorPane>
@@ -40,12 +46,12 @@
    <top>
       <AnchorPane fx:id="top" prefHeight="75.0" prefWidth="500.0" BorderPane.alignment="CENTER">
          <children>
-            <Label fx:id="homeLabel" alignment="CENTER" contentDisplay="RIGHT" layoutY="12.0" prefHeight="50.0" prefWidth="104.0" text="HOME" textFill="WHITE">
+            <Label fx:id="homeLabel" alignment="CENTER" contentDisplay="RIGHT" layoutY="12.0" prefHeight="52.0" prefWidth="134.0" text="HOME" textFill="WHITE">
                <font>
-                  <Font name="BebasNeue" size="37.0" />
+                  <Font name="Comic Sans MS Bold Italic" size="34.0" />
                </font>
             </Label>
-            <MenuButton fx:id="menuBar" alignment="TOP_LEFT" ellipsisString="" layoutX="205.0" layoutY="12.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="45.0">
+            <MenuButton fx:id="menuBar" alignment="TOP_LEFT" ellipsisString="" layoutX="234.0" layoutY="12.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="62.0">
                <items>
                   <MenuItem fx:id="addMenu" mnemonicParsing="false" onAction="#addFreind" text="ADD FRIEND">
                      <graphic>
@@ -70,15 +76,18 @@
                   <Font size="24.0" />
                </font>
             </MenuButton>
-            <Button fx:id="newButton" layoutX="346.0" layoutY="13.0" mnemonicParsing="false" onAction="#newChat" prefHeight="49.0" prefWidth="140.0" text="CHAT NOW">
+            <Button fx:id="newButton" layoutX="349.0" layoutY="20.0" mnemonicParsing="false" onAction="#newChat" prefHeight="36.0" prefWidth="140.0" text="CHAT NOW">
                <graphic>
                   <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../images/chat.png" />
                      </image>
                   </ImageView>
-               </graphic></Button>
-            <Button fx:id="refreshButton" layoutX="284.0" layoutY="14.0" mnemonicParsing="false" onAction="#refreshHandle" prefHeight="48.0" prefWidth="33.0">
+               </graphic>
+               <font>
+                  <Font name="Comic Sans MS" size="15.0" />
+               </font></Button>
+            <Button fx:id="refreshButton" layoutX="302.0" layoutY="22.0" mnemonicParsing="false" onAction="#refreshHandle" prefHeight="32.0" prefWidth="33.0">
                <graphic>
                   <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -95,7 +104,10 @@
          <children>
             <AnchorPane prefHeight="100.0" prefWidth="500.0">
                <children>
-                  <Label fx:id="usernameLabel" layoutX="121.0" layoutY="33.0" prefHeight="35.0" prefWidth="310.0" />
+                  <Label fx:id="usernameLabel" layoutX="121.0" layoutY="33.0" prefHeight="35.0" prefWidth="310.0">
+                     <font>
+                        <Font name="Comic Sans MS" size="17.0" />
+                     </font></Label>
                   <ImageView fx:id="userPicture" fitHeight="90.0" fitWidth="90.0" layoutX="14.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../images/profile-pic.png" />
@@ -116,6 +128,9 @@
                <content>
                   <ListView fx:id="friendList" prefHeight="312.0" prefWidth="613.0" />
                </content>
+               <font>
+                  <Font name="Comic Sans MS" size="15.0" />
+               </font>
             </TitledPane>
          </children>
       </AnchorPane>

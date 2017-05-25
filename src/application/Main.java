@@ -1,5 +1,6 @@
 package application;
 
+
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -16,7 +17,6 @@ public class Main extends Application {
 			Parent root = FXMLLoader.load( getClass().getResource("/application/Login.fxml") );
 			Scene scene = new Scene(root);
 			scene.getStylesheets().add( getClass().getResource("login.css").toExternalForm() );
-			scene.getStylesheets().add( getClass().getResource("home.css").toExternalForm() );
 			stage.setHeight(625);
 			stage.setWidth(500);
 			stage.setScene(scene);

@@ -1,41 +1,13 @@
-@font-face {
-	font-family: Moon-Flower-Bold;
-	src: url('Moon-Flower-Bold.ttf');
-	font-family: RaiNgan;
-	src: url('RaiNgan.ttf');
-	font-family: Sunrise-International-Demo;
-	src: url('Sunrise-International-Demo.ttf');
-}
-
-#homeLabel {
-	-fx-font-family: "Sunrise-International-Demo";
-	-fx-font-size: 40px;
-}
-
-#usernameLabel {
-	-fx-font-family: "RaiNgan";
-	-fx-font-size: 20px;
-}
-
-#userStatus {
-	-fx-font-family: "RaiNgan";
-	-fx-font-size: 20px;
-}
-
 #top {
 	-fx-background-color: black;
 }
 
 #menu {
-	-fx-font-family: "Sunrise-International-Demo";
 	-fx-background-color: rgb(255,213,0);
 }
 
 .button {
-	-fx-font-family: "Sunrise-International-Demo";
-    -fx-font-size: 25px;
     -fx-background-color: rgb(255,213,0);
-    -fx-text-fill: black;
 }
 
 .menu-button {
@@ -43,7 +15,6 @@
 }
 
 .menu-item .label {
-	-fx-font-family: "Moon-Flower-Bold";
     -fx-text-fill: white;
 }
 
@@ -56,23 +27,9 @@
 }
 
 .context-menu {
-	-fx-font-size: 18px;
     -fx-background-color: black;
     -fx-background-insets: 0, 1, 2;
     -fx-background-radius: 0 6 6 6, 0 5 5 5, 0 4 4 4;
     -fx-padding: 0.333333em 0.083333em 0.666667em 0.083333em;
-}
-
-.titled-pane {
-	-fx-font-family: "Moon-Flower-Bold";
-	-fx-font-size: 20px;
-}
-
-#editButton {
-	-fx-font-size: 15px;
-}
-
-#friendList {
-	-fx-font-family: "RaiNgan";
 }
 
