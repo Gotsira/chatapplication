@@ -86,6 +86,11 @@ public class HomeController extends StageChanged implements Initializable {
 	public void deleteFriend(ActionEvent event) {
 		setStage("/application/DeleteFriend.fxml", "Messenger Delete Friend", "adddeletefriend.css");
 	}
+	
+	@FXML
+	public void refreshHandle(ActionEvent event) {
+		refreshFreind();
+	}
 
 	public void editPicture(ActionEvent event) {
 		FileChooser chooser = new FileChooser();

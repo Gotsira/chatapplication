@@ -23,6 +23,7 @@
 }
 
 .button {
+	-fx-font-family: "Sunrise International Demo";
     -fx-font-size: 25px;
     -fx-background-color: rgb(255,213,0);
     -fx-text-fill: black;
@@ -59,16 +60,10 @@
 }
 
 #editButton {
-	-fx-font-family: "Sunrise International Demo";
 	-fx-font-size: 15px;
-	-fx-background-color: rgb(255,213,0);
-    -fx-text-fill: black;
 }
 
 #friendList {
 	-fx-font-family: "RaiNgan";
 }
 
-#newButton {
-	-fx-font-family: "Sunrise International Demo";
-}

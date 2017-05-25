@@ -45,7 +45,7 @@
                   <Font name="BebasNeue" size="37.0" />
                </font>
             </Label>
-            <MenuButton fx:id="menuBar" alignment="TOP_LEFT" ellipsisString="" layoutX="312.0" layoutY="14.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="45.0">
+            <MenuButton fx:id="menuBar" alignment="TOP_LEFT" ellipsisString="" layoutX="205.0" layoutY="12.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="45.0">
                <items>
                   <MenuItem fx:id="addMenu" mnemonicParsing="false" onAction="#addFreind" text="ADD FRIEND">
                      <graphic>
@@ -70,7 +70,23 @@
                   <Font size="24.0" />
                </font>
             </MenuButton>
-            <Button fx:id="newButton" layoutX="376.0" layoutY="13.0" mnemonicParsing="false" onAction="#newChat" prefHeight="38.0" prefWidth="110.0" text="NEW CHAT" />
+            <Button fx:id="newButton" layoutX="346.0" layoutY="13.0" mnemonicParsing="false" onAction="#newChat" prefHeight="49.0" prefWidth="140.0" text="CHAT NOW">
+               <graphic>
+                  <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/chat.png" />
+                     </image>
+                  </ImageView>
+               </graphic></Button>
+            <Button fx:id="refreshButton" layoutX="284.0" layoutY="14.0" mnemonicParsing="false" onAction="#refreshHandle" prefHeight="48.0" prefWidth="33.0">
+               <graphic>
+                  <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/refresh.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
          </children>
       </AnchorPane>
    </top>

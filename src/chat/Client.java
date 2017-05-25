@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import com.lloseng.ocsf.client.AbstractClient;
 
 import application.ChatController;
-import application.StageChanged;
 
 public class Client extends AbstractClient {
 	private ArrayList<ChatController> allChats = new ArrayList<ChatController>();
