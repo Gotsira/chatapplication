@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -14,8 +15,11 @@ import javafx.scene.control.Label;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
+import users.GetPicture;
 
 public class ChatController extends StageChanged implements Initializable {
 
@@ -34,6 +38,9 @@ public class ChatController extends StageChanged implements Initializable {
 
 	@FXML
 	private Label name;
+	
+	@FXML
+	private ImageView image;
 
 	@FXML
 	private TextArea message;
@@ -51,6 +58,9 @@ public class ChatController extends StageChanged implements Initializable {
 		};
 
 		field.setOnAction(sendHandle);
+		GetPicture freindDisplay = new GetPicture(friend);
+		Image friendIm = SwingFXUtils.toFXImage(convertStringtoImg(freindDisplay.get()), null);
+		image.setImage(friendIm);
 	}
 
 	@FXML
