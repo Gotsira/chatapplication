@@ -91,6 +91,7 @@ public class ChatController extends StageChanged implements Initializable {
 
 	public void display(Object friendMessage) {
 		message.appendText(friendMessage.toString() + "\n");
+		client.setMessage("");
 	}
 
 

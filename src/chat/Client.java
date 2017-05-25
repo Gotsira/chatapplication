@@ -21,12 +21,20 @@ public class Client extends AbstractClient {
 	 * 
 	 * @param host
 	 *            is the host of the server used to connecting to the server.
-	 * @param port is the port used 
+	 * @param port
+	 *            is the port used
 	 */
 	public Client(String host, int port) {
 		super(host, port);
 	}
 
+	/**
+	 * Handles all the different type of messages received from the server and
+	 * displays on its ui.
+	 * 
+	 * @param msg
+	 *            is the message received from the server.
+	 */
 	@Override
 	public void handleMessageFromServer(Object msg) {
 		String[] chat = ((String) msg).split(" ");
@@ -39,19 +47,29 @@ public class Client extends AbstractClient {
 			if (sender.equals(chatUI.getFriend())) {
 				if (type.equals("message")) {
 					chatUI.display(sender + ": " + message);
-					message = "";
 				} else if (type.equals("offline")) {
 					chatUI.display(sender + " " + message);
-					message = "";
 				}
-			} 
+			}
 		}
 	}
 
+	/**
+	 * Adds the id of the chat ui.
+	 * 
+	 * @param chat
+	 *            is the chat ui.
+	 */
 	public void addChat(ChatController chat) {
 		allChats.add(chat);
 	}
 
+	/**
+	 * Deletes the chat when the user closes a chat.
+	 * 
+	 * @param friend
+	 *            is the name of the friend whose ui needs to be deleted.
+	 */
 	public void deleteChat(String friend) {
 		for (ChatController chat : allChats) {
 			if (chat.getFriend() == friend) {
@@ -60,6 +78,13 @@ public class Client extends AbstractClient {
 		}
 	}
 
+	/**
+	 * Checks whether a chat ui of a friend exist or not.
+	 * 
+	 * @param friend
+	 *            is the name of the friend whose ui needs to be checked.
+	 * @return true if the ui of the friend exist, and false otherwise.
+	 */
 	public ChatController exist(String friend) {
 		for (ChatController chat : allChats) {
 			if (chat.getFriend() == friend) {
@@ -69,10 +94,30 @@ public class Client extends AbstractClient {
 		return null;
 	}
 
+	/**
+	 * Gets the current message of the client.
+	 * 
+	 * @return the current message of the client.
+	 */
 	public String getMessage() {
 		return sender + ": " + message;
 	}
 
+	/**
+	 * Sets the current message for the client.
+	 * 
+	 * @param message
+	 *            is the message to be set.
+	 */
+	public void setMessage(String message) {
+		this.message = message;
+	}
+
+	/**
+	 * Gets the name of the sender of the message.
+	 * 
+	 * @return the name of the sender of the message.
+	 */
 	public String getSender() {
 		return sender;
 	}
