@@ -136,7 +136,7 @@ public class HomeController extends StageChanged implements Initializable {
 				super.succeeded();
 				freindTitle.setText("Friends (" + list.size() + ")");
 				friendList.setItems(observerList);
-				friendList.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+				friendList.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
 			}
 		};
 
