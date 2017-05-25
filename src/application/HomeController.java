@@ -44,7 +44,7 @@ public class HomeController extends StageChanged implements Initializable {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		usernameLabel.setText("USERNAME: " + username);
-		Task<Void> task = new Task<Void>() {
+		Task<Void> getPicTask = new Task<Void>() {
 
 			@Override
 			protected Void call() throws Exception {
@@ -60,7 +60,7 @@ public class HomeController extends StageChanged implements Initializable {
 				userPicture.setImage(image);
 			}
 		};
-		new Thread(task).start();
+		new Thread(getPicTask).start();
 		refreshFreind();
 		homeController = this;
 	}
@@ -120,7 +120,7 @@ public class HomeController extends StageChanged implements Initializable {
 	}
 
 	public void refreshFreind() {
-		Task<ObservableList<String>> task = new Task<ObservableList<String>>() {
+		Task<ObservableList<String>> refreshTask = new Task<ObservableList<String>>() {
 
 			@Override
 			protected ObservableList<String> call() throws Exception {
@@ -140,7 +140,7 @@ public class HomeController extends StageChanged implements Initializable {
 			}
 		};
 
-		new Thread(task).start();
+		new Thread(refreshTask).start();
 
 	}
 

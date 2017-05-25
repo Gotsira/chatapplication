@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import javafx.concurrent.Task;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -25,6 +26,7 @@ public class ChatController extends StageChanged implements Initializable {
 
 	private String friend = friendUser;
 	private String friendImage;
+	private Image friendIm;
 	static File imageFile;
 
 	@FXML
@@ -58,9 +60,24 @@ public class ChatController extends StageChanged implements Initializable {
 		};
 
 		field.setOnAction(sendHandle);
-		GetPicture freindDisplay = new GetPicture(friend);
-		Image friendIm = SwingFXUtils.toFXImage(convertStringtoImg(freindDisplay.get()), null);
-		image.setImage(friendIm);
+		
+		Task<Void> loadImageTask = new Task<Void>() {
+
+			@Override
+			protected Void call() throws Exception {
+				GetPicture freindDisplay = new GetPicture(friend);
+				friendIm = SwingFXUtils.toFXImage(convertStringtoImg(freindDisplay.get()), null);
+				return null;
+			}
+			
+			@Override
+			protected void succeeded() {
+				image.setImage(friendIm);
+			}
+		};
+		
+		new Thread(loadImageTask).start();
+
 	}
 
 	@FXML
