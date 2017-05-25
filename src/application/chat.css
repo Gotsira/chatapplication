@@ -1,5 +1,14 @@
+@font-face {
+	font-family: Moon-Flower-Bold;
+	src: url('Moon-Flower-Bold.ttf');
+	font-family: RaiNgan;
+	src: url('RaiNgan.ttf');
+	font-family: Sunrise-International-Demo;
+	src: url('Sunrise-International-Demo.ttf');
+}
+
 #chatLabel {
-	-fx-font-family: "Sunrise International Demo";
+	-fx-font-family: "Sunrise-International-Demo";
 	-fx-font-size: 40px;
 }
 
@@ -25,7 +34,7 @@
 }
 
 .button {
-	-fx-font-family: "Moon Flower Bold";
+	-fx-font-family: "Moon-Flower-Bold";
     -fx-font-size: 20px;
     -fx-background-color: black;
     -fx-text-fill: rgb(255,213,0);
@@ -36,7 +45,7 @@
 }
 
 .menu-item .label {
-	-fx-font-family: "Moon Flower Bold";
+	-fx-font-family: "Moon-Flower-Bold";
     -fx-text-fill: white;
 }
 

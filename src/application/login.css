@@ -1,12 +1,21 @@
+@font-face {
+	font-family: Moon-Flower-Bold;
+	src: url('Moon-Flower-Bold.ttf');
+	font-family: RaiNgan;
+	src: url('RaiNgan.ttf');
+	font-family: Sunrise-International-Demo;
+	src: url('Sunrise-International-Demo.ttf');
+}
+
 .button {
-	-fx-font-family: "Sunrise International Demo";
+	-fx-font-family: "Sunrise-International-Demo";
     -fx-font-size: 25px;
     -fx-background-color: rgb(255,213,0);
     -fx-text-fill: black;
 }
 
 .label {
-	-fx-font-family: "Moon Flower Bold";
+	-fx-font-family: "Moon-Flower-Bold";
 	-fx-font-size: 25px;
 }
 
@@ -27,13 +36,13 @@
 }
 
 #welcomeLabel {
-	-fx-font-family: "Sunrise International Demo";
+	-fx-font-family: "Sunrise-International-Demo";
     -fx-font-size: 100px;
     -fx-text-fill: white;
 }
 
 #toLabel {
-	-fx-font-family: "Sunrise International Demo";
+	-fx-font-family: "Sunrise-International-Demo";
     -fx-font-size: 50px;
     -fx-text-fill: white;
 

@@ -1,5 +1,14 @@
+@font-face {
+	font-family: Moon-Flower-Bold;
+	src: url('Moon-Flower-Bold.ttf');
+	font-family: RaiNgan;
+	src: url('RaiNgan.ttf');
+	font-family: Sunrise-International-Demo;
+	src: url('Sunrise-International-Demo.ttf');
+}
+
 #homeLabel {
-	-fx-font-family: "Sunrise International Demo";
+	-fx-font-family: "Sunrise-International-Demo";
 	-fx-font-size: 40px;
 }
 
@@ -18,12 +27,12 @@
 }
 
 #menu {
-	-fx-font-family: "Sunrise International Demo";
+	-fx-font-family: "Sunrise-International-Demo";
 	-fx-background-color: rgb(255,213,0);
 }
 
 .button {
-	-fx-font-family: "Sunrise International Demo";
+	-fx-font-family: "Sunrise-International-Demo";
     -fx-font-size: 25px;
     -fx-background-color: rgb(255,213,0);
     -fx-text-fill: black;
@@ -34,7 +43,7 @@
 }
 
 .menu-item .label {
-	-fx-font-family: "Moon Flower Bold";
+	-fx-font-family: "Moon-Flower-Bold";
     -fx-text-fill: white;
 }
 
@@ -55,7 +64,7 @@
 }
 
 .titled-pane {
-	-fx-font-family: "Moon Flower Bold";
+	-fx-font-family: "Moon-Flower-Bold";
 	-fx-font-size: 20px;
 }
 
