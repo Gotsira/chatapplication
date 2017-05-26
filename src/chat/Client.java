@@ -85,13 +85,25 @@ public class Client extends AbstractClient {
 	 *            is the name of the friend whose ui needs to be checked.
 	 * @return true if the ui of the friend exist, and false otherwise.
 	 */
-	public ChatController exist(String friend) {
+	public ChatController existFriend(String friend) {
 		for (ChatController chat : allChats) {
 			if (chat.getFriend() == friend) {
 				return chat;
 			}
 		}
 		return null;
+	}
+
+	/**
+	 * Checks if any chat still exists.
+	 * 
+	 * @return true if a chat still exist, and false otherwise.
+	 */
+	public boolean exists() {
+		if(allChats.isEmpty()) {
+			return false;
+		}
+		return true;
 	}
 
 	/**

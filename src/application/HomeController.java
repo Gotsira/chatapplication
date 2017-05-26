@@ -71,14 +71,15 @@ public class HomeController extends StageChanged implements Initializable {
 
 	@FXML
 	public void logout(ActionEvent event) {
-		setStage("/application/Login.fxml", "Messenger Login", "login.css");
 		try {
 			client.sendToServer("disconnect " + username);
 			client.closeConnection();
+			Platform.exit();
 		} catch (IOException e) {
 			// do nothing
+		} finally {
+			setStage("/application/Login.fxml", "Messenger Login", "login.css");			
 		}
-		hideWindow(event);
 	}
 
 	@FXML
@@ -140,7 +141,6 @@ public class HomeController extends StageChanged implements Initializable {
 			} catch (IOException e) {
 				// do nothing
 			}
-			hideWindow(event);
 		}
 	}
 
@@ -170,7 +170,7 @@ public class HomeController extends StageChanged implements Initializable {
 	}
 
 	public void popUp() {
-		if (client.exist(client.getSender()) != null) {
+		if (client.existFriend(client.getSender()) != null) {
 			NotificationType noti = NotificationType.SUCCESS;
 			TrayNotification tray = new TrayNotification();
 			tray.setNotificationType(noti);
