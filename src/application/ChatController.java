@@ -16,10 +16,13 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.stage.FileChooser;
-import javafx.stage.FileChooser.ExtensionFilter;
 import users.GetPicture;
 
+/**
+ * Controller class for Chat.fxml.
+ * @author Issaree Srisomboon
+ *
+ */
 public class ChatController extends StageChanged implements Initializable {
 
 	private String friend = friendUser;
@@ -41,6 +44,10 @@ public class ChatController extends StageChanged implements Initializable {
 	@FXML
 	private TextArea message;
 
+	/**
+	 * Initializes the stage. It runs automatically as the first method when
+	 * this class is initialized.
+	 */
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		name.setText(friend);
@@ -74,10 +81,14 @@ public class ChatController extends StageChanged implements Initializable {
 
 	}
 
+	/**
+	 * Handle when the user press the send button to send the message conditionally.
+	 * @param event
+	 */
 	@FXML
 	public void send(ActionEvent event) {
 		try {
-			if (!field.getText().trim().isEmpty()) {
+			if (!getText().trim().isEmpty()) {
 				client.sendToServer("message " + name.getText() + " " + getText() + " " + username);
 				message.appendText(username + ": " + getText() + "\n");
 				field.setText("");
@@ -87,39 +98,28 @@ public class ChatController extends StageChanged implements Initializable {
 		}
 	}
 
+	/**
+	 * Show text message in the textarea when someone send a message to the user.
+	 * @param friendMessage is the message from the client
+	 */
 	public void display(Object friendMessage) {
 		message.appendText(friendMessage.toString());
 		client.setMessage("");
 	}
 
-	public void photoChooser(ActionEvent event) {
-		FileChooser chooser = new FileChooser();
-		chooser.getExtensionFilters().addAll(new ExtensionFilter("Image Files", "*.png", "*.jpg", "*.gif"));
-		imageFile = chooser.showOpenDialog(null);
-		if (imageFile != null) {
-			try {
-				client.sendToServer("image " + name.getText() + " " + convertImgtoString(imageFile.getAbsolutePath())
-						+ " " + username);
-				message.appendText("Image Sent\n");
-			} catch (IOException e) {
-				message.appendText("Failed to send image");
-			}
-		}
-	}
-
-	public String getUser() {
-		return username;
-	}
-
-	public String getFriend() {
-		return this.friend;
-	}
-
+	/**
+	 * Text from the user that send in the chat.
+	 * @return text is the user's text that type in the textfield
+	 */
 	public String getText() {
 		return field.getText();
 	}
-
-	public void setFriend(String nameFreind) {
-		this.friend = nameFreind;
+	
+	/**
+	 * Get the name of the friend at current chat page.
+	 * @return the name of the friend at current chat page
+	 */
+	public String getFriend() {
+		return this.friend;
 	}
 }

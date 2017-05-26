@@ -6,6 +6,11 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import users.AddFriend;
 
+/**
+ * Controller class for AddFreind.fxml.
+ * @author Issaree Srisomboon
+ *
+ */
 public class AddFriendController extends StageChanged {
 	private AddFriend addFriend;
 
@@ -15,6 +20,10 @@ public class AddFriendController extends StageChanged {
 	@FXML
 	private Label status;
 
+	/**
+	 * Handle when the user press add button. 
+	 * @param event
+	 */
 	@FXML
 	public void add(ActionEvent event) {
 		try {
@@ -38,11 +47,19 @@ public class AddFriendController extends StageChanged {
 		}
 	}
 
+	/**
+	 * Handle when user press cancel button.
+	 * @param event
+	 */
 	@FXML
 	public void cancel(ActionEvent event) {
 		hideWindow(event);
 	}
 
+	/**
+	 * Get friend's username.
+	 * @return friend's username from the text field
+	 */
 	public String getFriendName() {
 		return friendField.getText();
 	}

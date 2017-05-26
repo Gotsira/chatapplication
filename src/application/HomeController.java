@@ -7,7 +7,6 @@ import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
 import java.util.*;
 
-import javafx.application.Platform;
 import javafx.collections.*;
 import javafx.concurrent.Task;
 import javafx.fxml.*;
@@ -23,6 +22,11 @@ import javafx.util.Duration;
 import tray.animations.AnimationType;
 import tray.notification.*;
 
+/**
+ * Controller class for Home.fxml. 
+ * @author Issaree Srisomboon
+ *
+ */
 public class HomeController extends StageChanged implements Initializable {
 
 	private DisplayFriends display;
@@ -45,6 +49,10 @@ public class HomeController extends StageChanged implements Initializable {
 	@FXML
 	private TitledPane freindTitle;
 
+	/**
+	 * Initializes the stage. It runs automatically as the first method when
+	 * this class is initialized.
+	 */
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		usernameLabel.setText("USERNAME: " + username);
@@ -70,6 +78,10 @@ public class HomeController extends StageChanged implements Initializable {
 		homeController = this;
 	}
 
+	/**
+	 * Handle when the user press logout button.
+	 * @param event
+	 */
 	@FXML
 	public void logout(ActionEvent event) {
 		if (!client.exists()) {
@@ -92,21 +104,38 @@ public class HomeController extends StageChanged implements Initializable {
 		}
 	}
 
+	/**
+	 * Handle when the user press add friend menu.
+	 * @param event
+	 */
 	@FXML
 	public void addFreind(ActionEvent event) {
 		setStage("/application/AddFriend.fxml", "Messenger Add Friend", "adddeletefriend.css");
 	}
 
+	/**
+	 * Handle when the user press delete friend menu.
+	 * @param event
+	 */
 	@FXML
 	public void deleteFriend(ActionEvent event) {
 		setStage("/application/DeleteFriend.fxml", "Messenger Delete Friend", "adddeletefriend.css");
 	}
 
+	/**
+	 * Handle when the user press refresh button.
+	 * @param event
+	 */
 	@FXML
 	public void refreshHandle(ActionEvent event) {
 		refreshFreind();
 	}
 
+	/**
+	 * For changing the user's profile picture.
+	 * The user can get the image from his or her repository.
+	 * @param event
+	 */
 	public void editPicture(ActionEvent event) {
 		FileChooser chooser = new FileChooser();
 		chooser.getExtensionFilters().addAll(new ExtensionFilter("Image Files", "*.png", "*.jpg"));
@@ -125,6 +154,11 @@ public class HomeController extends StageChanged implements Initializable {
 		}
 	}
 
+	/**
+	 * Handle when the user press chat now button.
+	 * It get the friend information when the user select the friend.
+	 * @param event
+	 */
 	public void newChat(ActionEvent event) {
 		ObservableList<String> selected = friendList.getSelectionModel().getSelectedItems();
 		if (!selected.isEmpty()) {
@@ -137,6 +171,7 @@ public class HomeController extends StageChanged implements Initializable {
 				Parent root = (Parent) loader.load();
 				Scene scene = new Scene(root);
 				scene.getStylesheets().add(getClass().getResource("chat.css").toExternalForm());
+				stage.getIcons().add(new Image("/images/logo.png"));
 				stage.setResizable(false);
 				stage.setTitle("Messenger Chat");
 				stage.setOnCloseRequest(e -> {
@@ -154,6 +189,9 @@ public class HomeController extends StageChanged implements Initializable {
 		}
 	}
 
+	/**
+	 * Update the friend list.
+	 */
 	public void refreshFreind() {
 		Task<ObservableList<String>> refreshTask = new Task<ObservableList<String>>() {
 

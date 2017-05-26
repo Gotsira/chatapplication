@@ -15,6 +15,11 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import users.Register;
 
+/**
+ * Controller class for Signup.fxml
+ * @author Issaree Srisomboon
+ *
+ */
 public class SignUpController extends StageChanged implements Initializable {
 	
 	@FXML
@@ -29,6 +34,10 @@ public class SignUpController extends StageChanged implements Initializable {
 	@FXML
 	private AnchorPane root;
 	
+	/**
+	 * Initializes the stage. It runs automatically as the first method when
+	 * this class is initialized.
+	 */
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		EventHandler<ActionEvent> signupHandle = new EventHandler<ActionEvent>() {
@@ -47,6 +56,10 @@ public class SignUpController extends StageChanged implements Initializable {
 		regisPassword.setOnAction(signupHandle);
 	}
 	
+	/**
+	 * Handle when the user press signup button.
+	 * @param event
+	 */
 	@FXML
 	public void signup( ActionEvent event ) {
 		try {
@@ -65,6 +78,10 @@ public class SignUpController extends StageChanged implements Initializable {
 		}
 	}
 	
+	/**
+	 * Handle when the user press login button.
+	 * @param event
+	 */
 	@FXML
 	public void login( ActionEvent event ) {
 		try {
@@ -75,10 +92,18 @@ public class SignUpController extends StageChanged implements Initializable {
 		}
 	}
 	
+	/**
+	 * Get the register username of the user from the textfield.
+	 * @return the register username of the user.
+	 */
 	public String getRegisUsername() {
 		return regisUsername.getText();
 	}
 	
+	/**
+	 * Get the register password of the user from the textfield.
+	 * @return the register password of the user.
+	 */
 	public String getRegisPassword() {
 		return regisPassword.getText();
 	}

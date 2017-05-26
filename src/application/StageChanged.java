@@ -13,8 +13,14 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.*;
 import javafx.scene.*;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
+/**
+ * Class for 
+ * @author Issaree Srisomboon
+ *
+ */
 public class StageChanged {
 	static Client client = new Client("35.185.184.40", 3014);
 	static String username = null;
@@ -57,6 +63,12 @@ public class StageChanged {
 		return null;
 	}
 
+	/**
+	 * Set the new stage to open the given fxml file and add the title and css file to its. 
+	 * @param resource is the resource of the given fxml file
+	 * @param title is the title of the new stage
+	 * @param cssFile is for decorating of the new stage
+	 */
 	public void setStage(String resource, String title, String cssFile) {
 		try {
 			Stage stage = new Stage();
@@ -64,6 +76,7 @@ public class StageChanged {
 			Parent root = (Parent) loader.load();
 			Scene scene = new Scene(root);
 			scene.getStylesheets().add(getClass().getResource(cssFile).toExternalForm());
+			stage.getIcons().add(new Image("/images/logo.png"));
 			stage.setResizable(false);
 			stage.setTitle(title);
 			stage.setScene(scene);
@@ -72,15 +85,9 @@ public class StageChanged {
 			// do nothing
 		}
 	}
-	
-	public static void main(String[] args) {
-		StageChanged s = new StageChanged();
-		System.out.println(s.convertImgtoString("C:/Users/USER/Pictures/0.jpg"));
-	}
 
 	/**
-	 * Hide current page.
-	 * 
+	 * Hide current page. 
 	 * @param event
 	 */
 	@FXML

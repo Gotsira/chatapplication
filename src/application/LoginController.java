@@ -1,6 +1,7 @@
 package application;
 
 import java.io.IOException;
+
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -17,12 +18,17 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import users.Login;
 
-
+/**
+ * Controller class for Login.fxml
+ * @author Issaree Srisomboon
+ *
+ */
 public class LoginController extends StageChanged implements Initializable {
 	private Login login;
 	
@@ -41,6 +47,10 @@ public class LoginController extends StageChanged implements Initializable {
 	@FXML
 	private Button loginButton;
 	
+	/**
+	 * Initializes the stage. It runs automatically as the first method when
+	 * this class is initialized.
+	 */
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		if ( !Main.isWelcome ) loadWelcomeScreen();
@@ -60,6 +70,10 @@ public class LoginController extends StageChanged implements Initializable {
 		passwordField.setOnAction(loginHandle);
 	}
 	
+	/**
+	 * Handle when the user press login button.
+	 * @param event
+	 */
 	@FXML
 	public void login( ActionEvent event ) {
 		try {
@@ -75,6 +89,7 @@ public class LoginController extends StageChanged implements Initializable {
 					Parent root = (Parent) loader.load();
 					Scene scene = new Scene(root);
 					scene.getStylesheets().add(getClass().getResource("home.css").toExternalForm());
+					stage.getIcons().add(new Image("/images/logo.png"));
 					stage.setResizable(false);
 					stage.setTitle("Messenger Home");
 					stage.setOnCloseRequest(e -> {
@@ -102,6 +117,10 @@ public class LoginController extends StageChanged implements Initializable {
 		}
 	}
 	
+	/**
+	 * Handle when the user press signup button.
+	 * @param event
+	 */
 	@FXML
 	public void signup( ActionEvent event ) {
 		AnchorPane signupPane;
@@ -113,14 +132,25 @@ public class LoginController extends StageChanged implements Initializable {
 		}
 	}
 	
+	/**
+	 * Get username of the user from the textfield.
+	 * @return username of the user
+	 */
 	public String getUsername() {
 		return usernameField.getText();
 	}
 	
+	/**
+	 * Get password of the user from the textfield.
+	 * @return password of the user
+	 */
 	public String getPassword() {
 		return passwordField.getText();
 	}
 	
+	/**
+	 * Responsibility for pre-loading page at first opening the application. 
+	 */
 	public void loadWelcomeScreen() {
 		Main.isWelcome = true;
 		try {
