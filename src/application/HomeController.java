@@ -5,7 +5,6 @@ import java.net.URL;
 
 import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
-
 import java.util.*;
 
 import javafx.application.Platform;
@@ -17,8 +16,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.*;
 import javafx.scene.paint.Paint;
-import javafx.stage.FileChooser;
-import javafx.stage.Stage;
+import javafx.stage.*;
 import users.*;
 import javafx.stage.FileChooser.ExtensionFilter;
 import javafx.util.Duration;
@@ -28,6 +26,8 @@ import tray.notification.*;
 public class HomeController extends StageChanged implements Initializable {
 
 	private DisplayFriends display;
+	private NotificationType noti = NotificationType.ERROR;
+	private TrayNotification tray = new TrayNotification();
 	private GetPicture pic;
 	private Image image = null;
 	private ObservableList<String> observerList;
@@ -48,6 +48,7 @@ public class HomeController extends StageChanged implements Initializable {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		usernameLabel.setText("USERNAME: " + username);
+		client.addHome(this);
 		Task<Void> getPicTask = new Task<Void>() {
 
 			@Override
@@ -71,14 +72,23 @@ public class HomeController extends StageChanged implements Initializable {
 
 	@FXML
 	public void logout(ActionEvent event) {
-		try {
-			client.sendToServer("disconnect " + username);
-			client.closeConnection();
-			Platform.exit();
-		} catch (IOException e) {
-			// do nothing
-		} finally {
-			setStage("/application/Login.fxml", "Messenger Login", "login.css");			
+		if (!client.exists()) {
+			try {
+				client.sendToServer("disconnect " + username);
+				client.closeConnection();
+			} catch (IOException e) {
+				// do nothing
+			} finally {
+				setStage("/application/Login.fxml", "Messenger Login", "login.css");
+				hideWindow(event);
+			}
+		} else {
+			tray.setNotificationType(noti);
+			tray.setTitle("Chats");
+			tray.setMessage("Please close all of your chats!");
+			tray.setRectangleFill(Paint.valueOf("#e51902"));
+			tray.setAnimationType(AnimationType.POPUP);
+			tray.showAndDismiss(Duration.seconds(2));
 		}
 	}
 
@@ -166,20 +176,6 @@ public class HomeController extends StageChanged implements Initializable {
 		};
 
 		new Thread(refreshTask).start();
-
-	}
-
-	public void popUp() {
-		if (client.existFriend(client.getSender()) != null) {
-			NotificationType noti = NotificationType.SUCCESS;
-			TrayNotification tray = new TrayNotification();
-			tray.setNotificationType(noti);
-			tray.setTitle("New Message from " + client.getSender());
-			tray.setMessage(client.getSender() + ": " + client.getMessage());
-			tray.setRectangleFill(Paint.valueOf("#2A9A84"));
-			tray.setAnimationType(AnimationType.POPUP);
-			tray.showAndDismiss(Duration.seconds(2));
-		}
 
 	}
 }

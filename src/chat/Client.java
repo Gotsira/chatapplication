@@ -3,6 +3,7 @@ package chat;
 import java.util.ArrayList;
 import com.lloseng.ocsf.client.AbstractClient;
 import application.ChatController;
+import application.HomeController;
 
 /**
  * Client class represents as the user who sends the message to the server and
@@ -13,6 +14,8 @@ import application.ChatController;
  */
 public class Client extends AbstractClient {
 	private ArrayList<ChatController> allChats = new ArrayList<ChatController>();
+	private HomeController home;
+	private String oldmessage = "";
 	private String message = "";
 	private String sender;
 
@@ -46,11 +49,17 @@ public class Client extends AbstractClient {
 		for (ChatController chatUI : allChats) {
 			if (sender.equals(chatUI.getFriend())) {
 				if (type.equals("message")) {
-					chatUI.display(sender + ": " + message);
+					chatUI.display(oldmessage + sender + ": " + message + "\n");
+					message = "";
 				} else if (type.equals("offline")) {
-					chatUI.display(sender + " " + message);
+					chatUI.display(sender + " " + message + "\n");
+					message = "";
 				}
 			}
+		}
+		if (!message.isEmpty()) {
+			oldmessage = oldmessage + sender + ": " + message + "\n";
+			message = "";
 		}
 	}
 
@@ -61,6 +70,8 @@ public class Client extends AbstractClient {
 	 *            is the chat ui.
 	 */
 	public void addChat(ChatController chat) {
+		chat.display(oldmessage);
+		oldmessage = "";
 		allChats.add(chat);
 	}
 
@@ -85,13 +96,13 @@ public class Client extends AbstractClient {
 	 *            is the name of the friend whose ui needs to be checked.
 	 * @return true if the ui of the friend exist, and false otherwise.
 	 */
-	public ChatController existFriend(String friend) {
+	public boolean existFriend(String friend) {
 		for (ChatController chat : allChats) {
 			if (chat.getFriend() == friend) {
-				return chat;
+				return true;
 			}
 		}
-		return null;
+		return false;
 	}
 
 	/**
@@ -100,10 +111,20 @@ public class Client extends AbstractClient {
 	 * @return true if a chat still exist, and false otherwise.
 	 */
 	public boolean exists() {
-		if(allChats.isEmpty()) {
+		if (allChats.isEmpty()) {
 			return false;
 		}
 		return true;
+	}
+
+	/**
+	 * Initialize HomeController so client can have the id of the home page.
+	 * 
+	 * @param home
+	 *            is the HomeController to be added.
+	 */
+	public void addHome(HomeController home) {
+		this.home = home;
 	}
 
 	/**
