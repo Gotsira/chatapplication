@@ -30,7 +30,7 @@ public class DeleteFriendController extends StageChanged {
 			deleteFriend = new DeleteFriend( username, getFriendName() );
 			if ( deleteFriend.exist() ) {
 				if ( deleteFriend.check() && !username.equals(getFriendName()) ) {
-					deleteFriend.add();
+					deleteFriend.delete();
 					homeController.refreshFreind();
 					status.setText("Completed!");
 				} else if ( getFriendName().isEmpty() ) {
