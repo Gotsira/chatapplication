@@ -27,6 +27,7 @@ This messenger application allows people to interact with each other by sending 
 
 - JDBC (Java Database Connectivity)
 - ORMLite
+- OCSF framework
 - JAVAFX and SceneBuilder using MVC (Model View Controller) pattern
 - Tray Notification by [PlusHaze][1]
 
