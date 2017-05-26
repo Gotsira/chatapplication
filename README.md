@@ -52,7 +52,7 @@ This messenger application allows people to interact with each other by sending 
 
 ![](http://i.imgur.com/vM4Ogzu.jpg)
 
-- You can chat 1:1 by selecting one of your friend in the friend list and click the **NEW CHAT** button.
+- You can chat 1:1 by selecting one of your friend in the friend list and click the **CHAT NOW** button.
 
 ![](http://i.imgur.com/rmM73es.jpg)
 
