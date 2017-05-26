@@ -8,13 +8,17 @@ import javafx.event.ActionEvent;
 
 import java.util.*;
 
+import javafx.application.Platform;
 import javafx.collections.*;
 import javafx.concurrent.Task;
 import javafx.fxml.*;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.*;
 import javafx.scene.paint.Paint;
 import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 import users.*;
 import javafx.stage.FileChooser.ExtensionFilter;
 import javafx.util.Duration;
@@ -86,7 +90,7 @@ public class HomeController extends StageChanged implements Initializable {
 	public void deleteFriend(ActionEvent event) {
 		setStage("/application/DeleteFriend.fxml", "Messenger Delete Friend", "adddeletefriend.css");
 	}
-	
+
 	@FXML
 	public void refreshHandle(ActionEvent event) {
 		refreshFreind();
@@ -115,7 +119,28 @@ public class HomeController extends StageChanged implements Initializable {
 		if (!selected.isEmpty()) {
 			friend = selected;
 			friendUser = friend.toString().substring(1, friend.toString().length() - 1);
-			setStage("/application/Chat.fxml", "Messenger Chat", "chat.css");
+			// setStage("/application/Chat.fxml", "Messenger Chat", "chat.css");
+			try {
+				Stage stage = new Stage();
+				FXMLLoader loader = new FXMLLoader(getClass().getResource("/application/Chat.fxml"));
+				Parent root = (Parent) loader.load();
+				Scene scene = new Scene(root);
+				scene.getStylesheets().add(getClass().getResource("chat.css").toExternalForm());
+				stage.setResizable(false);
+				stage.setTitle("Messenger Chat");
+				stage.setOnCloseRequest(e -> {
+					try {
+						client.deleteChat(friendUser);
+					} catch (Exception e1) {
+						// do nothing
+					}
+				});
+				stage.setScene(scene);
+				stage.show();
+			} catch (IOException e) {
+				// do nothing
+			}
+			hideWindow(event);
 		}
 	}
 
@@ -149,8 +174,8 @@ public class HomeController extends StageChanged implements Initializable {
 			NotificationType noti = NotificationType.SUCCESS;
 			TrayNotification tray = new TrayNotification();
 			tray.setNotificationType(noti);
-			tray.setTitle( "New Message from " + client.getSender() );
-			tray.setMessage( client.getSender() + ": " + client.getMessage() );
+			tray.setTitle("New Message from " + client.getSender());
+			tray.setMessage(client.getSender() + ": " + client.getMessage());
 			tray.setRectangleFill(Paint.valueOf("#2A9A84"));
 			tray.setAnimationType(AnimationType.POPUP);
 			tray.showAndDismiss(Duration.seconds(2));

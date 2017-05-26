@@ -34,7 +34,7 @@ public class ChatController extends StageChanged implements Initializable {
 
 	@FXML
 	private Label name;
-	
+
 	@FXML
 	private ImageView image;
 
@@ -54,7 +54,7 @@ public class ChatController extends StageChanged implements Initializable {
 		};
 
 		field.setOnAction(sendHandle);
-		
+
 		Task<Void> loadImageTask = new Task<Void>() {
 
 			@Override
@@ -63,13 +63,13 @@ public class ChatController extends StageChanged implements Initializable {
 				friendIm = SwingFXUtils.toFXImage(convertStringtoImg(freindDisplay.get()), null);
 				return null;
 			}
-			
+
 			@Override
 			protected void succeeded() {
 				image.setImage(friendIm);
 			}
 		};
-		
+
 		new Thread(loadImageTask).start();
 
 	}
@@ -77,9 +77,11 @@ public class ChatController extends StageChanged implements Initializable {
 	@FXML
 	public void send(ActionEvent event) {
 		try {
-			client.sendToServer("message " + name.getText() + " " + getText() + " " + username);
-			message.appendText(username + ": " + getText() + "\n");
-			field.setText("");
+			if (!field.getText().trim().isEmpty()) {
+				client.sendToServer("message " + name.getText() + " " + getText() + " " + username);
+				message.appendText(username + ": " + getText() + "\n");
+				field.setText("");
+			}
 		} catch (IOException e) {
 			// do nothing
 		}
@@ -90,14 +92,14 @@ public class ChatController extends StageChanged implements Initializable {
 		client.setMessage("");
 	}
 
-
 	public void photoChooser(ActionEvent event) {
 		FileChooser chooser = new FileChooser();
 		chooser.getExtensionFilters().addAll(new ExtensionFilter("Image Files", "*.png", "*.jpg", "*.gif"));
 		imageFile = chooser.showOpenDialog(null);
 		if (imageFile != null) {
 			try {
-				client.sendToServer("image " + name.getText() + " " + convertImgtoString(imageFile.getAbsolutePath()) + " " + username);
+				client.sendToServer("image " + name.getText() + " " + convertImgtoString(imageFile.getAbsolutePath())
+						+ " " + username);
 				message.appendText("Image Sent\n");
 			} catch (IOException e) {
 				message.appendText("Failed to send image");
