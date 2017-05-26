@@ -64,12 +64,17 @@ public class SignUpController extends StageChanged implements Initializable {
 	public void signup( ActionEvent event ) {
 		try {
 			Register regis = new Register( getRegisUsername() , getRegisPassword() );
+			for ( int i=0 ; i<getRegisUsername().length() ; i++ ) {
+				if ( !Character.isLetter(getRegisUsername().charAt(i)) && !Character.isDigit(getRegisUsername().charAt(i)) ) {
+					regisStatus.setText( "No special characters allowed" );
+					return;
+				}
+			} 
 			if ( getRegisUsername().isEmpty() || getRegisPassword().isEmpty() ) {
 				regisStatus.setText( "Cannot register with an empty username or password.");
 			} else if(regis.check()) {
 				regisStatus.setText( "Username already exists.");
-			}
-			else {
+			} else {
 				regis.add();
 				login(event);
 			}
