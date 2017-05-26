@@ -4,6 +4,7 @@
 Issaree Srisomboon (`@boranorben`)*
 
 Documentation Online [Click Here](https://gotsira.github.io/chatapplication/).
+Download JAR file [Click Here](https://github.com/Gotsira/chatapplication/blob/master/chatapplication.jar)
 
 ## Description
 This messenger application allows people to interact with each other by sending text messages. With the messenger, it brings people closer together overcoming the barriers known as distance.
@@ -21,12 +22,14 @@ This messenger application allows people to interact with each other by sending 
 ## Interesting Technology
 
 - JDBC (Java Database Connectivity)
+- ORMLite
 - JAVAFX and SceneBuilder using MVC (Model View Controller) pattern
 - Tray Notification by [PlusHaze][1]
 
 [1]: https://github.com/PlusHaze/TrayNotification "PlusHaze"
 
 ## Instruction on how to use this application
+- Download JAR file [Here](https://github.com/Gotsira/chatapplication/blob/master/chatapplication.jar) and run the program.
 - First shown page is Login page, you have 2 options here. If you are already a member of this chat application, just sign in with your username and password and then it will bring you to the second page, Home page.
 
 ![](http://i.imgur.com/b41EHtM.jpg)
