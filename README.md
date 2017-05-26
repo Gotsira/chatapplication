@@ -6,6 +6,10 @@ Issaree Srisomboon (`@boranorben`)*
 Documentation Online [Click Here](https://gotsira.github.io/chatapplication/).
 Download JAR file [Click Here](https://github.com/Gotsira/chatapplication/blob/master/chatapplication.jar)
 
+## UML Diagram
+
+![](http://i.imgur.com/qmdJIhu.png)
+
 ## Description
 This messenger application allows people to interact with each other by sending text messages. With the messenger, it brings people closer together overcoming the barriers known as distance.
 
